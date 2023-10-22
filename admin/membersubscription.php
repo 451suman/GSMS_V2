@@ -41,10 +41,12 @@ include('layout/adminsession.php');
             if ($conn->connect_error) {
                 die("Database connection error");
             }
-            $sql = "SELECT m.name,m.phone, m.mid, mst.msid, mst.renew_date, mst.expiry_date
+            $sql = "SELECT m.name, m.phone, m.mid, mst.msid, mst.renew_date, mst.expiry_date
             FROM member m
             JOIN member_subscription_track mst ON m.mid = mst.mid
-            ORDER BY  mst.expiry_date ASC
+            WHERE m.status = 'online'
+            ORDER BY mst.expiry_date ASC;
+            
             ";
             $result = $conn->query($sql);
             $i = 0;

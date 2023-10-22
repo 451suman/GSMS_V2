@@ -56,11 +56,11 @@ if(isset($_GET['n_search']))
             if ($conn->connect_error) {
                 die("Database connection error");
             }
-            $sql = "SELECT m.name,m.phone, m.mid, mst.msid, mst.renew_date, mst.expiry_date
+            $sql = "SELECT m.name,m.phone,m.status, m.mid, mst.msid, mst.renew_date, mst.expiry_date
             FROM member m
             JOIN member_subscription_track mst ON m.mid = mst.mid
           
-            WHERE m.name LIKE '$S_name%';
+            WHERE m.name LIKE '$S_name%'  and m.status = 'online';
             ";
             $result = $conn->query($sql);
             $i = 0;

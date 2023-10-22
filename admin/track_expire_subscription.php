@@ -29,15 +29,12 @@ include('layout/adminsession.php');
                  <th width=5%;>SN</th>
                 <th width=20%;>Name</th>
                 <th width=15%;>Phone No.</th>
-                
                 <th width=10%;>Details</th>
-   
                 <th width=15%;>Renew Date</th>
                 <th width=15%;>Expiry Date</th>
                 <th width=10%;>Remaining Days</th>
                 <th width=10%;>Action</th>
             </tr>
-
             <?php
 
                
@@ -57,7 +54,7 @@ include('layout/adminsession.php');
     $sql = "SELECT m.name,m.phone, m.mid, mst.msid, mst.renew_date, mst.expiry_date
     FROM member m
     JOIN member_subscription_track mst ON m.mid = mst.mid
-    WHERE mst.expiry_date < CURDATE() 
+    WHERE mst.expiry_date < CURDATE()  and  m.status = 'online'
     ORDER BY mst.expiry_date DESC
     ";
 

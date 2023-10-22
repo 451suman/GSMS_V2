@@ -59,7 +59,7 @@ $sql = "SELECT enrollment.eid, enrollment.mid, enrollment.cid, category.cid, cat
             INNER JOIN enrollment ON enrollment.mid = member.mid
             INNER JOIN category ON enrollment.cid = category.cid
             INNER JOIN routine ON routine.mid = member.mid
-            WHERE routine.verify = 'no'
+            WHERE routine.verify = 'no' 
 
             ";
 

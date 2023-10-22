@@ -37,7 +37,7 @@ if (isset($_GET['delete_member'])) {
             if ($conn->connect_error) {
                 die("Database connection error");
             }
-            $sql="SELECT member.mid,member.name, member.date,member.phone, member.email,member.image,
+            $sql="SELECT member.mid,member.name,member.status, member.date,member.phone, member.email,member.image,
             member_subscription_track.expiry_date
             from member
             JOIN member_subscription_track  ON mEMBER.mid = member_subscription_track.mid 
@@ -55,6 +55,7 @@ if (isset($_GET['delete_member'])) {
                 $phone = $row["phone"];
                 $email = $row["email"];
                 $image = $row["image"];
+                $status = $row["status"];
                 $expiry_date = $row["expiry_date"];
 
            echo"
@@ -75,6 +76,10 @@ if (isset($_GET['delete_member'])) {
               <div class='data'>
                 <h6 class='info'>Cell Phone:</h6>
                 <p class='info'>$phone</p>
+              </div>
+              <div class='data'>
+                <h6 class='info'>Status:</h6>
+                <p class='info'>$status</p>
               </div>
              
               <div class='data'>
