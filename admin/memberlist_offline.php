@@ -37,8 +37,8 @@ if (isset($_GET['delete_member'])) {
         <input type="search" name="text_search" id="" class="centermember_botton" placeholder="Enter a name" value="">
         <input type="submit" name="search" id="" value="search" class="centermember_botton">
     </form>
+    Click here for <button style="background-color: white;" ><a href="memberlist.php" style="color: black; padding:7px;"><strong>Online Members</strong> </a></button>
 
-    Click here for <button style="background-color: white;" ><a href="memberlist_offline.php" style="color: black; padding:7px;"><strong>Offline Members</strong> </a></button>
 
     <div class="table_class">
         <table class="membership">
@@ -62,7 +62,7 @@ if (isset($_GET['delete_member'])) {
             if ($conn->connect_error) {
                 die("Database connection error");
             }
-            $sql = "SELECT * FROM member WHERE status = 'online' ORDER BY name ASC";
+            $sql = "SELECT * FROM member WHERE status = 'offline' ORDER BY name ASC";
 
             $result = $conn->query($sql);
             $i = 0;

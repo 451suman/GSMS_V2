@@ -18,7 +18,7 @@ include('layout/adminsession.php');
 
 <table class="membership">
         <tr>
-           <td colspan="7"> <h1 class="center">MEMBER LIST</h1></td>
+           <td colspan="8"> <h1 class="center">MEMBER LIST</h1></td>
         </tr>
         <tr>
         <th width=5%>SN</th>
