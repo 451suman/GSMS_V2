@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GSMS</title> 
-    <link rel="stylesheet" href="/project/main_dash/main_dash.css">
+    <link rel="stylesheet" href="/V2_project/main_dash/main_dash.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sweetalert.css">
     <script src="js/sweetalert.js"></script>
@@ -42,10 +42,10 @@
        </div>
         <div class="nav-links" >
             <ul>
-                <li><a href="/project/main_dash/GSMS.php">HOME</a></li>
+                <li><a href="/V2_project/main_dash/GSMS.php">HOME</a></li>
          
-                <li><a href="/project/login.php">LOGIN</a></li>
-                <li><a href="/project/signup.php">SIGNUP</a></li>
+                <li><a href="/V2_project/login.php">LOGIN</a></li>
+                <li><a href="/V2_project/signup.php">SIGNUP</a></li>
             </ul>
         </div>
        </nav>

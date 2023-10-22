@@ -8,6 +8,8 @@
 <?php
 // include('layout/header.php');
 include('main_dash/nav.php');
+
+
 if (isset($_POST["signup"])) {
     $name = $_POST["name"];
     $ph = $_POST["phone"];
