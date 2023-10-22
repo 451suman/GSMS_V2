@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2023 at 06:22 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Oct 22, 2023 at 02:13 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fitness`
+-- Database: `gsms`
 --
 
 -- --------------------------------------------------------
@@ -64,7 +64,7 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`cid`, `package_name`, `cname`, `duration`, `package_price`, `image`) VALUES
 (1, 'Gold', 'Gym', 10, 3000, '5575632.jpg'),
-(5, 'Silver', 'Gym', 3, 3000, '5575632.jpg'),
+(5, 'Silver', 'Gym', 1, 3000, '5575632.jpg'),
 (25, 'Mufutau Martinez', 'Imani Douglas', 75, 212, 'final-level 1.jpg'),
 (26, 'Valentine Parks', 'Allegra Hull', 27, 752, 'final-phisical dfd.jpg');
 
@@ -87,7 +87,7 @@ CREATE TABLE `enrollment` (
 --
 
 INSERT INTO `enrollment` (`eid`, `mid`, `cid`, `verified`, `edate`) VALUES
-(1, 1, 1, 'yes', '2023-10-11 08:47:37');
+(1, 1, 5, 'no', '2023-10-22 17:30:31');
 
 -- --------------------------------------------------------
 
@@ -101,6 +101,7 @@ CREATE TABLE `member` (
   `phone` bigint(10) NOT NULL,
   `email` varchar(31) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `status` varchar(500) NOT NULL DEFAULT 'offline',
   `date` datetime NOT NULL DEFAULT current_timestamp(),
   `image` varchar(1100) DEFAULT 'defaultuser.jpg',
   `m_otp` varchar(225) NOT NULL,
@@ -111,8 +112,8 @@ CREATE TABLE `member` (
 -- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`mid`, `name`, `phone`, `email`, `password`, `date`, `image`, `m_otp`, `m_opt_expire_time`) VALUES
-(1, 'Meredith Strong', 1234567890, 'sumanmushyakhwo@gmail.com', '3a2a5ce900c7489c2112302b646bdef3', '2023-10-11 08:44:19', 'defaultuser.jpg', '', '0000-00-00 00:00:00');
+INSERT INTO `member` (`mid`, `name`, `phone`, `email`, `password`, `status`, `date`, `image`, `m_otp`, `m_opt_expire_time`) VALUES
+(1, 'Knox Rose', 1234567890, 'kipyweqyl@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'online', '2023-10-22 17:30:12', 'defaultuser.jpg', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,7 @@ CREATE TABLE `member_subscription_track` (
 --
 
 INSERT INTO `member_subscription_track` (`msid`, `cid`, `mid`, `renew_date`, `expiry_date`) VALUES
-(1, 1, 1, '2023-10-11 08:47:44', '2023-11-11');
+(1, 5, 1, '2023-10-22 17:39:53', '2023-11-22');
 
 -- --------------------------------------------------------
 
@@ -150,13 +151,6 @@ CREATE TABLE `payment` (
   `price` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`pid`, `mid`, `cname`, `package_name`, `duration`, `price`, `date`) VALUES
-(1, 1, 'Gym', 'Gold', 1, 3000, '2023-10-11 08:47:44');
 
 -- --------------------------------------------------------
 
@@ -182,7 +176,7 @@ CREATE TABLE `routine` (
 --
 
 INSERT INTO `routine` (`rid`, `mid`, `chest`, `back`, `soulder`, `biseps`, `triceps`, `leg`, `abs`, `verify`) VALUES
-(1, 1, 'Squats, Deadlifts, Bench Press, Pull-Ups/Chin-Ups, Push-Ups, Lunges,Shoulder Press,Bent-Over Rows, Bicep Curls,Plank,Tricep Dips.', 'Squats, Deadlifts, Bench Press, Pull-Ups/Chin-Ups, Push-Ups, Lunges,Shoulder Press,Bent-Over Rows, Bicep Curls,Plank,Tricep Dips.', 'Squats, Deadlifts, Bench Press, Pull-Ups/Chin-Ups, Push-Ups, Lunges,Shoulder Press,Bent-Over Rows, Bicep Curls,Plank,Tricep Dips.', 'Squats, Deadlifts, Bench Press, Pull-Ups/Chin-Ups, Push-Ups, Lunges,Shoulder Press,Bent-Over Rows, Bicep Curls,Plank,Tricep Dips.', 'Squats, Deadlifts, Bench Press, Pull-Ups/Chin-Ups, Push-Ups, Lunges,Shoulder Press,Bent-Over Rows, Bicep Curls,Plank,Tricep Dips.', 'Squats, Deadlifts, Bench Press, Pull-Ups/Chin-Ups, Push-Ups, Lunges,Shoulder Press,Bent-Over Rows, Bicep Curls,Plank,Tricep Dips.', 'Squats, Deadlifts, Bench Press, Pull-Ups/Chin-Ups, Push-Ups, Lunges,Shoulder Press,Bent-Over Rows, Bicep Curls,Plank,Tricep Dips.', 'no');
+(1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no');
 
 --
 -- Indexes for dumped tables
@@ -276,7 +270,7 @@ ALTER TABLE `member_subscription_track`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `routine`
