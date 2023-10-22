@@ -1,0 +1,15 @@
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+    /* background-color: #819a9a;
+    background-color: #adaeae; */
+  }
+  tr:nth-child(1) {
+    background-color: #ffffff;
+    /* background-color: #819a9a;
+    background-color: #adaeae; */
+  }
+  tr:nth-child(2) {
+    background-color: #71bbbb;
+    /* background-color: #819a9a;
+    background-color: #adaeae; */
+  }

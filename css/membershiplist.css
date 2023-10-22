@@ -1,0 +1,117 @@
+.membership{
+    
+    background: white !important;
+    color: black !important;
+   /* font-size: 25px; */
+     border-collapse: collapse;
+     /* width: 69%; */
+     width: 100%;
+   
+   
+}
+.membership img {
+    height: 35px;
+    width: 35px;
+}
+
+/* .membership img:hover {
+    height: 200px;
+    width: 215px;
+} */
+.heading_member{
+font-size: 25px;
+color: white;
+}
+.centermember{
+    text-align: center !important;
+ 
+    float: right;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 28px;
+    color: rgb(0, 0, 0);
+
+}
+
+.centermember_botton{
+    text-align: center !important;
+ 
+    /* float: right; */
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 28px;
+    color: rgb(0, 0, 0);
+
+}
+
+
+.centermember_botton_trackExpire {
+    text-align: center !important;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 28px;
+    width: 216px;
+    color: rgb(255 255 255);
+    background-color: #c0020293;
+}
+
+.membership th{
+ 
+    text-align: center;
+    border: 1px solid black;
+}
+
+.membership tr td{
+   
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+
+   
+} 
+
+form.editsub_track_form {
+    margin-left: 438px;
+    /* margin-bottom: 217px; */
+    margin-top: 224px;
+    height: 458px;
+}
+
+
+
+.edit_delete_green {
+    height: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%;
+}
+.edit_delete_green:hover{
+    color: rgb(255, 255, 255);
+    background-color:#1E5128;
+}
+
+
+.edit_delete_red {
+    height: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%;
+}
+.edit_delete_red:hover{
+    color: rgb(255, 255, 255);
+    background-color:#950101;
+}
+
+
+.edit_sub_track{
+    width: 100%;
+}
+.edit_sub_track:hover{
+    color: rgb(255, 255, 255);
+    background-color:#4f504f;
+
+}
+
+#q_editdetail_profile {
+    width: 150px;
+    padding: 5px;
+}

@@ -1,0 +1,543 @@
+/* div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+   
+    background-color: #99DBF5 !important;
+    
+} */
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.center {
+    text-align: center;
+}
+form.edit_category_form {
+    margin-left: 452px;
+    margin-top: 74px;
+    height: 84vh;
+    /* margin-bottom: 125px; */
+}
+
+.categories_transparent {
+    background-color: transparent;
+    color: #000000;
+}
+form.addcategory_form {
+    margin-left: 512px;
+    margin-top: 77px;
+    height: 82vh;
+    /* margin-bottom: 123px; */
+}
+/* .transparent {
+    background-color: rgba(77, 77, 77, 0.595);
+    color: #ffffff;
+
+} */
+
+
+
+-----------------------botton -------------------------- */ #adduser_botton {
+    width: 80px;
+    border-radius: 15px;
+    border: #000000 solid 1px;
+
+}
+
+#add_admin {
+    width: 80px;
+    border-radius: 15px;
+    border: #000000 solid 1px;
+
+
+}
+
+
+
+
+/* ---------------------header part ---------------------*/
+#header {
+    width: 100%;
+    height: 35px;
+    position: fixed;
+    background-color: #000000;
+    z-index: 99;
+}
+
+#logo {
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+
+#logo img {
+    height: 35px;
+    /* float:right;     */
+    padding-left: 30%;
+}
+
+#banner {
+    color: white;
+    width: 85%;
+    height: 100%;
+    float: left;
+    font-size: 25px;
+}
+
+
+
+/* ----------------------------main part---------------------- */
+#main {
+    padding-top: 35px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(115, 115, 115);
+
+
+}
+
+#left {
+    text-align: center;
+    position: fixed;
+    width: 15%;
+    /* padding-top: 40px; */
+    height: 100%;
+    background-color: #202123;
+    float: left;
+}
+
+#left ol li a {
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(255, 255, 255);
+    display: block;
+    text-decoration: none;
+}
+
+#left a:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+/*-----------------------right------------------*/
+
+
+
+#right {
+    text-align: justify;
+    color: rgb(255, 250, 250);
+    width: 85%;
+     background-color: #292b2e;
+    float: right;
+}
+
+
+
+#right .right_wrapper {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.index {
+    text-align: center;
+    font-size: 40px;
+    padding-top: 255px;
+    padding-bottom: 254px;
+}
+
+/*-------------login-------------*/
+p a {
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    padding: 3px;
+    border-radius: 15px;
+    border: #000000 2px solid;
+}
+
+p a:hover {
+    background-color: #000000;
+    color: white;
+}
+#login_form {
+    padding-left: 615px;
+    /* padding-right: 625px; */
+    padding-top: 164px;
+    /* padding-bottom: 17px; */
+    background-image: url(../img/login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 514px;
+}
+.form_container {
+
+    text-align: center;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.436);
+    border-radius: 30px;
+    border: rgba(2, 163, 150, 0.289) solid 5px;
+}
+
+.form_container div {
+    color: rgb(0, 0, 0);
+}
+
+form div {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    padding-bottom: 15px;
+}
+
+form div input {
+    height: 30px;
+}
+
+input#login {
+
+    width: 70px;
+    border-radius: 15px;
+
+}
+
+/* -----------------------------------signup------------*/
+.signup_form {
+    padding-left: 620px;
+    padding-right: 620px;
+    padding-top: 44px;
+    padding-bottom: 23px;
+    background-image: url(../img/signup.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+}
+
+
+input#signup {
+
+    width: 80px;
+    border-radius: 15px;
+
+}
+
+#categorie {
+    width: 80px;
+    height: 25px;
+
+
+}
+
+/* memberlist.php */
+.adduser_form {
+
+    margin-left: 525px;
+    margin-top: 160px;
+    margin-bottom: 162px;
+}
+
+.edituser_form {
+    margin-left: 456px;
+    margin-top: 169px;
+    /* margin-bottom: 200px; */
+    height: 70vh;
+}
+
+.about {
+    text-align: center;
+    padding: 25px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    /* height: 100%; */
+}
+
+
+.about_author {
+    width: 50%;
+    float: left;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.about_author p {
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+
+.about_author img {
+    width: 20%;
+    padding: 20px;
+    border-radius: 30%;
+}
+
+
+
+.enrol_form_container {
+    text-align: center;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.436);
+    border-radius: 30px;
+    border: rgba(254, 200, 130, 0.785) solid 5px;
+    font-size: 10px;
+}
+
+.enrol_form_container table tr td {
+    padding-top: 10px;
+    padding-left: 37%;
+}
+
+.enrol_form_container label {
+    font-size: medium;
+}
+#enroll_botton {
+    width: 120px;
+    border-radius: 10px;
+    margin-left: 57px;
+}
+
+
+
+
+
+
+.dashboard_botton {
+    color: rgb(0, 0, 0);
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(255, 255, 255);
+}
+
+.dashboard_botton:hover {
+    color: white;
+    background: grey;
+}
+
+/* ----------------------------------footer part---------------------------------- */
+
+#footer {
+    /* margin-left: 15%; */
+    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    float: right;
+    /* display: inline-block; */
+    width: 100%;
+    height: 20px;
+    background-color: #202123de;
+}
+
+
+
+
+#footer div {
+    margin-left: 253px;
+}
+
+
+
+
+
+
+
+/* -----------------------------user profile---------------------- */
+#user_profile_size {
+    height: 250px;
+    border: #ffffff 4px solid;
+    border-radius: 5%;
+    width: 250px;
+}
+
+.profile {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.profile form tr td {
+    padding-top: 20px;
+    /* font-size: larger; */
+}
+
+.profile_detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-top: 15%; */
+    /* padding-bottom: 18%; */
+    height: 94vh;
+    margin-top: 7px;
+}
+
+.profile_detail form tr td {
+    padding-top: 10px;
+    font-size: larger;
+
+}
+
+.profile_detail form tr td input {
+    height: 30px;
+
+}
+.profile_form_container {
+    color: black;
+    text-align: center;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.436);
+    border-radius: 30px;
+    border: rgba(2, 163, 150, 0.289) solid 5px;
+}
+
+
+/* admin */
+form.edit_admin_form {
+    margin-left: 445px;
+    margin-top: 160px;
+    margin-bottom: 160px;
+}
+form.add_admin_form {
+    margin-top: 118px;
+    margin-bottom: 115px;
+    margin-left: 454px;
+}
+input#editdetail_profile {
+    margin: 5px;
+    padding: 5px;
+
+}
+
+
+
+.enrolluser_form {
+    padding-left: 395px;
+    padding-top: 115px;
+    height: 76vh;
+}
+
+.adminprofile {
+    margin-left: 461px;
+    height: 71vh;
+    margin-top: 167px;
+}
+
+.adminprofile .aform_container {
+    text-align: center;
+    padding: 15px;
+    width: 300px;
+    /* background-color: rgba(255, 255, 255, 0.436); */
+    border-radius: 30px;
+    border: #FFA559 solid 5px;
+}
+.aform_container h1{
+    color: #FFA559;
+}
+.aform_container div{
+    color: #FFA559;
+    font-size: 25px;
+    padding: 5px;
+}
+.aform_container .profile_inp{
+    height: 20px;
+    width: 250px;
+}
+
+.admin_profile_button{
+    width: 120px;
+   
+}
+/* ===================change password ============ */
+.achange_pass {
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    margin-left: 420px;
+    margin-right: 420px;
+}
+
+.achange_pass div{
+    color: black;
+    /* border: #FFA559 solid 5px; */
+    border: rgba(2, 163, 150, 0.289) solid 5px;
+    background-color: rgba(255, 255, 255, 0.436);
+
+    font-size: 25px;
+    padding: 15px;
+    border-radius: 15px;
+
+   
+    }
+
+    .change_pass {
+        text-align: center;
+        margin-top: 200px;
+        margin-bottom: 200px;
+        margin-left: 420px;
+        margin-right: 420px;
+    }
+
+.change_pass div{
+    border: #FFA559 solid 5px;
+    font-size: 25px;
+    padding: 15px;
+    border-radius: 15px;
+
+   
+    }
+    .res_password {
+        text-align: center;
+        margin-top: 225px;
+        margin-bottom: 208px;
+        margin-left: 450px;
+        margin-right: 450px;
+        font-size: 30px;
+        border: #FFA559 solid 5px;
+        padding: 30px;
+        border-radius: 20px;
+    }
+
+    .res_password input{
+        height: 25px;
+    }
+
+    .res_password #reset{
+        width: 70px;
+    }
+    
+    .mtable_class {
+        width: 655px;
+        margin-left: 400px;
+        margin-top: 194px;
+        height: 67vh;
+    }
+    table.mm_membership {
+        border: 5px solid #FFA559;
+        border-radius: 15px;
+        padding: 34px;
+        text-align: center;
+        background-color: #555556;
+    }
+    table.mm_membership td{
+        font-size: 25px;
+    }
+   
+
+    /* ------------------------payment--------------------------- */
+    .payment_table {
+        width: 100%;
+        background-color: white;
+        text-align: center;
+        color: black;
+        border: 1px black solid;
+        border-collapse: collapse;
+    } 
