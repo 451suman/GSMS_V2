@@ -24,7 +24,7 @@ if (isset($_POST["add_category"])) {
             $destination = "../img/" . $file_name;
 
             if (move_uploaded_file($file_tmp, $destination)) {
-                $conn = new mysqli("localhost", "root", "", "gsms`");
+                $conn = new mysqli("localhost", "root", "", "gsms");
                 if ($conn->connect_error) {
                     die("database connection error");
                 }  

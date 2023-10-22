@@ -76,7 +76,7 @@ if (isset($_GET['remaining_days'])) {
 <?php
 if (isset($_GET['reject_verify'])) {
     $eid = $_GET["enroll_id"];
-    $conn = new mysqli("localhost", "root", "", "gsmd");
+    $conn = new mysqli("localhost", "root", "", "gsms");
     if ($conn->connect_error) {
         die("Database connection error");
     }

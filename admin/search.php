@@ -10,9 +10,6 @@ include('layout/adminsession.php');
 <div id="right">
 <link rel="stylesheet" href="../css/tableDecorate.css">
 
-<form action="addmember.php">
-      <input type="submit" name="adduser" id="" value="Add Member"class="centermember"> 
-      </form>
       
       <form action="search.php" method="post">
           <input type="search" name="text_search" id=""class="centermember_botton" placeholder="Enter a name" value="">

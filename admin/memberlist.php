@@ -85,7 +85,7 @@ if (isset($_GET['delete_member'])) {
 
                
                         <td class='h-center'>
-                        <form action='edit_member_list.php' method='get'>
+                        <form action='edit_member_list.php' method='get' target= blank >
                         <input type='hidden' value='$id' name='member_id' />
                         <input type='submit' name='edit_member' value='Edit' class='edit_delete_green'>
                     </form>
