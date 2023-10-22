@@ -178,16 +178,15 @@ if($conn->connect_error)
                 <label for="status">Status</label><br>
                 <!-- <input type="status" name="status"  value="<?php echo $status;  ?>" required> <br> -->
             <select name="status" id="">
-                <option value="offline"><?php echo $status;?></option>
+                <option value="<?php echo $status;?>"><?php echo $status;?></option>
 
 
                 <?php
-
                 if($status=='offline'){
                 echo"   <option value='online'>Online</option>  ";
                 }
                 else{
-                    echo"   <option value='offline'>Offliwne</option>  ";
+                    echo"   <option value='offline'>Offline</option>  ";
                 }
                 ?>
             </select>

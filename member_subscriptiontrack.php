@@ -3,41 +3,54 @@ include('layout_member/header.php');
 include('layout_member/left.php');
 include('layout_member/member_session.php');
 
-if($status=="offline"){
-    echo '<script >';
-    echo 'swal.fire({
-         icon: "error",
-        text: "Your current status is offline.",
-       
-    }).then(function() {
-        window.location = "index.php";
-    });';
-    echo '</script>';
-}
+
 ?>
 
 <?php
  $conn = new mysqli("localhost", "root", "", "gsms");
  if ($conn->connect_error) {
-     die("Database connection error");
- }
- $csql = "SELECT * FROM member_subscription_track where mid='$id'" ;
- $r=$conn->query($csql);
- if($r->num_rows>0 == false)
- {
-    echo '<script type="text/javascript">';
-    echo 'swal.fire({
-        icon: "warning",
-          
-        text: "No enrollment found. to access this page you have to enroll package first",
+die("Connection error");
+}
+$check_sql = "SELECT * FROM member WHERE mid='$id' ";
+$r = $conn->query($check_sql);
+   if($r){
+    $row=$r->fetch_assoc();
+    $status = $row['status'];
     
-    }).then(function() {
-        window.location = "index.php";
-    });';
-        // echo 'alert("No enrollment found. to access this page you have to enroll package first");';
-        // echo 'window.location.href = "index.php";';
+    if($status=="offline"){
+        echo '<script >';
+        echo 'swal.fire({
+             icon: "error",
+            text: "Your current status is offline.",
+           
+        }).then(function() {
+            window.location = "index.php";
+        });';
         echo '</script>';
- }
+    }
+    else
+    {
+        $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($conn->connect_error) {
+            die("Database connection error");
+        }
+       //  check wether member have paid membership or not
+        $csql = "SELECT * FROM member_subscription_track where mid='$id'" ;
+        $r=$conn->query($csql);
+        if($r->num_rows>0 == false)
+        {
+           echo '<script type="text/javascript">';
+           echo 'swal.fire({
+               icon: "warning",
+               text: "No enrollment found. to access this page you have to enroll package first",
+           }).then(function() {
+               window.location = "index.php";
+           });';
+               echo '</script>';
+        }
+    }
+
+   }
 
 
 ?>
