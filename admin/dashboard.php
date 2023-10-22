@@ -13,42 +13,62 @@ if (isset($_GET['remaining_days'])) {
         die("Database connection error");
     }
     $mid = $_GET['mid'];
+    $check_status = "select * from member WHERE mid='$mid'";
+    $check_s_r = $conn->query($check_status);
+    if ($check_s_r->num_rows > 0) {
+        $row = $check_s_r->fetch_assoc();
+        $status = $row['status'];
+    }
 
-    $currentDate = date("Y-m-d");
-    $sql = "select * from member_subscription_track where mid='$mid'";
-    $r = $conn->query($sql);
-    if ($r->num_rows > 0) {
-        $row = $r->fetch_assoc();
-        $expiry_date = $row["expiry_date"];
-        $date = date('F j, Y');
-        // Convert the expiry date and today's date to Unix timestamps
-        $expiry_timestamp = strtotime($expiry_date);
-        $today_timestamp = strtotime($date);
-        // Calculate the difference in seconds
-        $difference = $expiry_timestamp - $today_timestamp;
-        // Convert the difference to days
-        $days_remaining = round($difference / (60 * 60 * 24));
-        echo '<script type="text/javascript">';
-        // assignng days remaining in var remainingdays  in JS code
-        echo 'var remainingDays = ' . $days_remaining . ';';
-        // display VAr remainig days
+    if ($status == 'offline') {
+        echo '<script>';
+        echo 'var status = "' . $status . '";'; 
         echo 'swal.fire({
-              title: "Remaining days: " + remainingDays
-           }).then(function() {
-               window.location = "dashboard.php";
-           });';
-        // echo 'alert("Remaining days: " + remainingDays);';
-        // echo 'window.location.href = "dashboard.php";';
-        echo '</script>';
-    } else {
-        echo '<script type="text/javascript">';
-        echo 'swal.fire({
-                    title:" New Member"
-                 }).then(function() {
-                     window.location = "dashboard.php";
-                 });';
+            title: "Status: " + status,
+        }).then(function() {
+            window.location = "dashboard.php";
+        });';
         echo '</script>';
     }
+    else {
+
+        $currentDate = date("Y-m-d");
+        $sql = "select * from member_subscription_track where mid='$mid'";
+        $r = $conn->query($sql);
+        if ($r->num_rows > 0) {
+            $row = $r->fetch_assoc();
+            $expiry_date = $row["expiry_date"];
+            $date = date('F j, Y');
+            // Convert the expiry date and today's date to Unix timestamps
+            $expiry_timestamp = strtotime($expiry_date);
+            $today_timestamp = strtotime($date);
+            // Calculate the difference in seconds
+            $difference = $expiry_timestamp - $today_timestamp;
+            // Convert the difference to days
+            $days_remaining = round($difference / (60 * 60 * 24));
+            echo '<script type="text/javascript">';
+            // assignng days remaining in var remainingdays  in JS code
+            echo 'var remainingDays = ' . $days_remaining . ';';
+            echo 'var status = "' . $status . '";';             // display VAr remainig days
+            echo 'swal.fire({
+                title: "Remaining days: " + remainingDays,
+                text: "Status: "+ status,
+            }).then(function() {
+                window.location = "dashboard.php";
+            });';
+            echo '</script>';
+        } else {
+            echo '<script type="text/javascript">';
+            echo 'swal.fire({
+                        title:" New Member",
+                        text: " "
+                    }).then(function() {
+                        window.location = "dashboard.php";
+                    });';
+            echo '</script>';
+        }
+    }
+
 }
 ?>
 
@@ -213,9 +233,7 @@ if (isset($_GET['verify'])) {
                                       });';
                     echo '</script>';
                 }
-            } 
-            else if($status == 'offline')
-                {
+            } else if ($status == 'offline') {
                 // date calculation
                 $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
                 $nnewDate = date("Y-m-d", $newDate);
@@ -224,7 +242,7 @@ if (isset($_GET['verify'])) {
                 $msql = "INSERT INTO member_subscription_track (mid,cid, renew_date, expiry_date) VALUES ($mid,$cid, current_timestamp(),
                 '$nnewDate') ";
                 $re = $conn->query($msql);
-                
+
                 $paymentsql = "INSERT INTO payment (mid, cname, package_name, duration, price, date)
                                  VALUES ( '$mid', '$cname', '$package_name', '$duration', '$package_price', current_timestamp())";
                 $r = $conn->query($paymentsql);
@@ -240,7 +258,7 @@ if (isset($_GET['verify'])) {
                                   }).then(function() {
                                       window.location = "dashboard.php";
                                   });';
-                  
+
                     echo '</script>';
                 } else {
                     echo '<script type="text/javascript">   ';
