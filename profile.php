@@ -10,6 +10,34 @@ include('layout_member/member_session.php');
     <link rel="stylesheet" href="css/member_detail.css">
 
 
+    <?php
+ $conn = new mysqli("localhost", "root", "", "gsms");
+ if ($conn->connect_error) {
+die("Connection error");
+}
+$check_sql = "SELECT * FROM member WHERE mid='$id' ";
+$r = $conn->query($check_sql);
+   if($r){
+    $row=$r->fetch_assoc();
+    $status = $row['status'];
+    
+    if($status=="offline"){
+        echo '<script >';
+        echo 'swal.fire({
+             icon: "error",
+            text: "Your current status is offline.",
+           
+        }).then(function() {
+            window.location = "index.php";
+        });';
+        echo '</script>';
+    }
+   }
+     
+
+?>
+
+
 <?php
      $conn = new mysqli("localhost","root","","gsms");
      if($conn->connect_error)
