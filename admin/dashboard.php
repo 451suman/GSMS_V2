@@ -47,7 +47,7 @@ if (isset($_GET['remaining_days'])) {
             // Convert the difference to days
             $days_remaining = round($difference / (60 * 60 * 24));
             echo '<script type="text/javascript">';
-            // assignng days remaining in var remainingdays  in JS code
+           
             echo 'var remainingDays = ' . $days_remaining . ';';
             echo 'var status = "' . $status . '";';             // display VAr remainig days
             echo 'swal.fire({
