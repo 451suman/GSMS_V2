@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 11:45 AM
+-- Generation Time: Oct 22, 2023 at 02:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -63,7 +63,10 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`cid`, `package_name`, `cname`, `duration`, `package_price`, `image`) VALUES
-(2, 'Ryder Case', 'Guy Nunez', 2, 2000, 'wallpaperflare.com_wallpaper (1).jpg');
+(1, 'Gold', 'Gym', 10, 3000, '5575632.jpg'),
+(5, 'Silver', 'Gym', 1, 3000, '5575632.jpg'),
+(25, 'Mufutau Martinez', 'Imani Douglas', 75, 212, 'final-level 1.jpg'),
+(26, 'Valentine Parks', 'Allegra Hull', 27, 752, 'final-phisical dfd.jpg');
 
 -- --------------------------------------------------------
 
@@ -84,7 +87,7 @@ CREATE TABLE `enrollment` (
 --
 
 INSERT INTO `enrollment` (`eid`, `mid`, `cid`, `verified`, `edate`) VALUES
-(4, 3, 2, 'yes', '2023-11-16 16:19:45');
+(1, 1, 5, 'no', '2023-10-22 17:30:31');
 
 -- --------------------------------------------------------
 
@@ -110,7 +113,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`mid`, `name`, `phone`, `email`, `password`, `status`, `date`, `image`, `m_otp`, `m_opt_expire_time`) VALUES
-(3, 'Colton Serrano', 1234567890, 'zikazaqu@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'offline', '2023-11-16 16:19:23', 'defaultuser.jpg', '', '0000-00-00 00:00:00');
+(1, 'Knox Rose', 1234567890, 'kipyweqyl@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'online', '2023-10-22 17:30:12', 'defaultuser.jpg', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -120,6 +123,7 @@ INSERT INTO `member` (`mid`, `name`, `phone`, `email`, `password`, `status`, `da
 
 CREATE TABLE `member_subscription_track` (
   `msid` int(11) NOT NULL,
+  `cid` int(11) NOT NULL,
   `mid` int(11) NOT NULL,
   `renew_date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `expiry_date` date NOT NULL
@@ -129,8 +133,8 @@ CREATE TABLE `member_subscription_track` (
 -- Dumping data for table `member_subscription_track`
 --
 
-INSERT INTO `member_subscription_track` (`msid`, `mid`, `renew_date`, `expiry_date`) VALUES
-(2, 3, '2023-11-16 16:20:19', '2024-01-16');
+INSERT INTO `member_subscription_track` (`msid`, `cid`, `mid`, `renew_date`, `expiry_date`) VALUES
+(1, 5, 1, '2023-10-22 17:39:53', '2023-11-22');
 
 -- --------------------------------------------------------
 
@@ -147,13 +151,6 @@ CREATE TABLE `payment` (
   `price` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `payment`
---
-
-INSERT INTO `payment` (`pid`, `mid`, `cname`, `package_name`, `duration`, `price`, `date`) VALUES
-(4, 3, 'Guy Nunez', 'Ryder Case', 2, 2000, '2023-11-16 16:20:19');
 
 -- --------------------------------------------------------
 
@@ -173,6 +170,13 @@ CREATE TABLE `routine` (
   `abs` varchar(500) DEFAULT NULL,
   `verify` varchar(4) NOT NULL DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `routine`
+--
+
+INSERT INTO `routine` (`rid`, `mid`, `chest`, `back`, `soulder`, `biseps`, `triceps`, `leg`, `abs`, `verify`) VALUES
+(1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'no');
 
 --
 -- Indexes for dumped tables
@@ -211,7 +215,8 @@ ALTER TABLE `member`
 --
 ALTER TABLE `member_subscription_track`
   ADD PRIMARY KEY (`msid`),
-  ADD UNIQUE KEY `mid` (`mid`);
+  ADD UNIQUE KEY `mid` (`mid`),
+  ADD KEY `cid` (`cid`);
 
 --
 -- Indexes for table `payment`
@@ -241,37 +246,37 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `member_subscription_track`
 --
 ALTER TABLE `member_subscription_track`
-  MODIFY `msid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `msid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `routine`
 --
 ALTER TABLE `routine`
-  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -282,19 +287,20 @@ ALTER TABLE `routine`
 --
 ALTER TABLE `enrollment`
   ADD CONSTRAINT `enrollment_ibfk_2` FOREIGN KEY (`mid`) REFERENCES `member` (`mid`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `enrollment_ibfk_3` FOREIGN KEY (`cid`) REFERENCES `category` (`cid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `enrollment_ibfk_3` FOREIGN KEY (`cid`) REFERENCES `category` (`cid`);
 
 --
 -- Constraints for table `member_subscription_track`
 --
 ALTER TABLE `member_subscription_track`
-  ADD CONSTRAINT `member_subscription_track_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `member` (`mid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `member_subscription_track_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `member` (`mid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `member_subscription_track_ibfk_2` FOREIGN KEY (`cid`) REFERENCES `category` (`cid`);
 
 --
 -- Constraints for table `payment`
 --
 ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `member` (`mid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `member` (`mid`);
 
 --
 -- Constraints for table `routine`
