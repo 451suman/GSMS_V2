@@ -170,7 +170,7 @@ p a:hover {
     /* padding-right: 625px; */
     padding-top: 164px;
     /* padding-bottom: 17px; */
-    background-image: url(../img/login.jpg);
+    background-image: url(../img/static/login.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -212,7 +212,7 @@ input#login {
     padding-right: 620px;
     padding-top: 44px;
     padding-bottom: 23px;
-    background-image: url(../img/signup.jpg);
+    background-image: url(../img/static/signup.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -275,7 +275,8 @@ input#signup {
 
 
 .about_author img {
-    width: 20%;
+    width: 150px;
+    height: 170px;
     padding: 20px;
     border-radius: 30%;
 }

@@ -33,7 +33,7 @@ $p=$row['phone'];
 
 
                 <div class="about_author">
-                <img src="img/suman.jpg" alt="">
+                <img src="img/static/aboutboy.jpg" alt="">
                 <br>
                 <p>Name: Suman Mushyakhwo  <br>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus pariatur quos cumque! Voluptate neque eligendi, qui soluta ex quisquam sint!
@@ -41,7 +41,7 @@ $p=$row['phone'];
                 </div>
 
                 <div class="about_author">
-                <img src="img/sarmila.jpg" alt="">
+                <img src="img/static/aboutgirl.jpg" alt="">
                 <br>
                 <p>Name: Sharmila Pyatha  <br>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus pariatur quos cumque! Voluptate neque eligendi, qui soluta ex quisquam sint!

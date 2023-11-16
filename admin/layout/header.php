@@ -15,7 +15,7 @@
 <body>
     <div id="header">
     <div id="logo"> 
-           <a href="dashboard.php"> <img src="../../../project/img/logo.png" alt="" ></a>
+           <a href="dashboard.php"> <img src="../../../project/img/static/logo.png" alt="" ></a>
         </div>
 
 

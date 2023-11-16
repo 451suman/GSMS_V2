@@ -25,7 +25,7 @@ $r = $conn->query($check_sql);
         echo '<script >';
         echo 'swal.fire({
              icon: "error",
-            text: "Your current status is offline.",
+             text: "You are current status is offline. To change that, talk to the admin or purchase a package to go online.",
            
         }).then(function() {
             window.location = "index.php";

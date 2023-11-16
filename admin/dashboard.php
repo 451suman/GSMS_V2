@@ -142,6 +142,7 @@ if (isset($_GET['verify'])) {
                 die("Database connection error");
             }
 
+        
             $check_status = "select * from member WHERE mid='$mid'";
             $check_s_r = $conn->query($check_status);
             if ($check_s_r->num_rows > 0) {
@@ -190,7 +191,7 @@ if (isset($_GET['verify'])) {
                 }
             }
 
-            // if status is off line
+            // if status is off line (old member)
             if ($check_r->num_rows > 0 && $status == 'offline') {
 
                 $row = $check_r->fetch_assoc();
@@ -203,7 +204,7 @@ if (isset($_GET['verify'])) {
 
                 // date calculation
                 $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($currentDate)));
-                // SQL for ipdate in DB
+                // SQL for update in DB
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
                 $update_r = $conn->query($update_sql);
 
@@ -233,13 +234,15 @@ if (isset($_GET['verify'])) {
                                       });';
                     echo '</script>';
                 }
-            } else if ($status == 'offline') {
+            } 
+            // new mwmber status offline
+            else if ($status == 'offline') {
                 // date calculation
                 $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
                 $nnewDate = date("Y-m-d", $newDate);
 
                 // if new member enrolleed
-                $msql = "INSERT INTO member_subscription_track (mid,cid, renew_date, expiry_date) VALUES ($mid,$cid, current_timestamp(),
+                $msql = "INSERT INTO member_subscription_track (mid, renew_date, expiry_date) VALUES ($mid, current_timestamp(),
                 '$nnewDate') ";
                 $re = $conn->query($msql);
 
