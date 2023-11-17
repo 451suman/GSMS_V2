@@ -2,13 +2,14 @@
     height: 98vh;
     background-color: #292b2e;
 }
+
 .routineform_container {
     border-radius: 25px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.436);
     width: 500px;
     padding: 20px;
-  
+
 }
 
 form.routine_form {
@@ -18,8 +19,8 @@ form.routine_form {
     margin-left: 377px;
 }
 
-.transparent_textarea{
-    background-color:white;
+.transparent_textarea {
+    background-color: white;
     color: #000000;
 }
 
@@ -27,14 +28,17 @@ form.routine_form {
     padding-left: 10px;
     padding-right: 10px;
 }
-.routineform_container textarea{
+
+.routineform_container textarea {
     width: 100%;
     border-radius: 5px;
 }
-.routineform_container div label{
+
+.routineform_container div label {
     font-size: 20px;
 
 }
+
 input#routine_form_inp {
     width: 500px;
 }
@@ -42,8 +46,9 @@ input#routine_form_inp {
 input.detail_botton {
     width: 22%;
 }
-input.detail_botton:hover{
-    color:white ;
+
+input.detail_botton:hover {
+    color: white;
     background: #666565;
 }
 
@@ -53,11 +58,11 @@ input.detail_botton:hover{
 /* ------------------------------routine detail css---------------------- */
 #routine_right {
     text-align: justify;
-    color: rgb(255, 250, 250);  
+    color: rgb(255, 250, 250);
     width: 85%;
     /* height: 100vh; */
     /* height: 723px; */
-    background-color: #292b2e;  
+    background-color: #292b2e;
     float: right;
 }
 
@@ -69,10 +74,12 @@ input.detail_botton:hover{
     background-color: #292b2e !important;
     /* height: 100%; */
 }
+
 .li_class {
     background-color: #292b2e !important;
     margin-bottom: 373px;
 }
+
 .li2_class {
     font-size: 20px;
     background-color: #bdbdd733;
@@ -82,6 +89,7 @@ input.detail_botton:hover{
     width: 880px;
     /* margin-left: 290px; */
 }
+
 .li2_class_a {
     font-size: 20px;
     background-color: #bdbdd733;
@@ -91,13 +99,15 @@ input.detail_botton:hover{
     width: 880px;
     margin-left: 183px;
 }
+
 .li2_class_a div strong {
     font-size: 30px;
     /* display: block; */
     color: #FFA559;
 }
-.li2_class div{
-padding-top: 20px;
+
+.li2_class div {
+    padding-top: 20px;
 }
 
 
@@ -107,9 +117,9 @@ padding-top: 20px;
     color: #FFA559;
 }
 
-.routine_btn{
+.routine_btn {
     width: 50%;
-float: left;
+    float: left;
 }
 
 
@@ -122,8 +132,9 @@ input#rr {
     color: #ffffff;
 }
 
-input#rr:hover{
+input#rr:hover {
     background-color: #acacac;
     color: black;
-    transition: 30px;;
+    transition: 30px;
+    ;
 }

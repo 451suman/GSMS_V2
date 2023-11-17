@@ -6,56 +6,53 @@ include('layout_member/member_session.php');
 
 
 <div id="right">
-    <!-- <link rel="stylesheet" href="css/p.css"> -->
-    <link rel="stylesheet" href="css/member_detail.css">
+  <!-- <link rel="stylesheet" href="css/p.css"> -->
+  <link rel="stylesheet" href="css/member_detail.css">
 
 
-    <?php
- $conn = new mysqli("localhost", "root", "", "gsms");
- if ($conn->connect_error) {
-die("Connection error");
-}
-$check_sql = "SELECT * FROM member WHERE mid='$id' ";
-$r = $conn->query($check_sql);
-   if($r){
-    $row=$r->fetch_assoc();
+  <?php
+  $conn = new mysqli("localhost", "root", "", "gsms");
+  if ($conn->connect_error) {
+    die("Connection error");
+  }
+  $check_sql = "SELECT * FROM member WHERE mid='$id' ";
+  $r = $conn->query($check_sql);
+  if ($r) {
+    $row = $r->fetch_assoc();
     $status = $row['status'];
-    
-    if($status=="offline"){
-        echo '<script >';
-        echo 'swal.fire({
+
+    if ($status == "offline") {
+      echo '<script >';
+      echo 'swal.fire({
              icon: "error",
              text: "You are current status is offline. To change that, talk to the admin or purchase a package to go online.",
            
         }).then(function() {
             window.location = "index.php";
         });';
-        echo '</script>';
+      echo '</script>';
     }
-   }
-     
-
-?>
+  }
+  ?>
 
 
-<?php
-     $conn = new mysqli("localhost","root","","gsms");
-     if($conn->connect_error)
-     {
-         die("connection error");
-     }
-     $sql="SELECT * FROM member where mid='$id' ";
-     $r=$conn->query($sql);
-     $row=$r->fetch_assoc();
-     $mid=$row['mid'];
-     $name = $row["name"];
-     $phone = $row["phone"];
-     $email = $row["email"];
-     $image = $row["image"];
-     $date = $row["date"];  
-     $status = $row["status"];  
+  <?php
+  $conn = new mysqli("localhost", "root", "", "gsms");
+  if ($conn->connect_error) {
+    die("connection error");
+  }
+  $sql = "SELECT * FROM member where mid='$id' ";
+  $r = $conn->query($sql);
+  $row = $r->fetch_assoc();
+  $mid = $row['mid'];
+  $name = $row["name"];
+  $phone = $row["phone"];
+  $email = $row["email"];
+  $image = $row["image"];
+  $date = $row["date"];
+  $status = $row["status"];
 
-echo"
+  echo "
              <div class='container v-center'>
       <div class='profile-card space-between gap-5'>
         <div class='img-field'>
@@ -107,7 +104,7 @@ echo"
     </div>
 
 ";
-?>
+  ?>
 </div>
 <?php
 include('layout_member/footer.php');

@@ -7,38 +7,36 @@ include('layout/adminsession.php');
 ?>
 <div id="right">
 
-<div class="li_class">
+    <div class="li_class">
         <h1 style="text-align: center; color: #FFA559;">ROUTINE</h1>
-            <div class="li2_class_a">
-<?php
+        <div class="li2_class_a">
+            <?php
 
-$conn=new mysqli("localhost","root","","gsms");
-if($conn->connect_error)
-{
-    die("Database connection error");
-}
-
+            $conn = new mysqli("localhost", "root", "", "gsms");
+            if ($conn->connect_error) {
+                die("Database connection error");
+            }
 
 
-if(isset($_GET['routine_detail']))
-{
-$id=$_GET["routine_id"];
 
-        $sql="select * from routine where rid= '$id'";
-        $result=$conn->query($sql);
-        $i=0;   
-        while ($row = $result->fetch_assoc()) {
-            $i++;
-           
-           $chest=$row["chest"];
-           $back=$row["back"];
-           $soulder=$row["soulder"];
-           $biseps=$row["biseps"];
-           $triceps =$row["triceps"];
-           $leg=$row["leg"];
-           $abs=$row["abs"];
-        
-           echo "
+            if (isset($_GET['routine_detail'])) {
+                $id = $_GET["routine_id"];
+
+                $sql = "select * from routine where rid= '$id'";
+                $result = $conn->query($sql);
+                $i = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $i++;
+
+                    $chest = $row["chest"];
+                    $back = $row["back"];
+                    $soulder = $row["soulder"];
+                    $biseps = $row["biseps"];
+                    $triceps = $row["triceps"];
+                    $leg = $row["leg"];
+                    $abs = $row["abs"];
+
+                    echo "
            <div>
            <strong>Chest</strong> <br>
            
@@ -99,13 +97,13 @@ $id=$_GET["routine_id"];
        </form>
        </div>
    ";
-        }
-    }
-        ?>  
+                }
+            }
+            ?>
 
 
-</div>
-</div>
+        </div>
+    </div>
 </div>
 
 

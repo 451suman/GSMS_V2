@@ -10,18 +10,17 @@ include('layout_member/member_session.php');
 
 <div id="right">
 
-<div class="right_indexx"> 
-    <?php
-        $conn=new mysqli("localhost","root","","gsms");
-        if($conn->connect_error)
-        {
+    <div class="right_indexx">
+        <?php
+        $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($conn->connect_error) {
             die("Database connection error");
         }
-        $sql="select * from category 
+        $sql = "select * from category 
         ORDER BY duration ASC
         ";
-        $result=$conn->query($sql);
-        $i=0;   
+        $result = $conn->query($sql);
+        $i = 0;
 
         while ($row = $result->fetch_assoc()) {
             $i++;
@@ -30,8 +29,8 @@ include('layout_member/member_session.php');
             $cname = $row["cname"];
             $duration = $row["duration"];
             $price = $row["package_price"];
-            $image=$row["image"];
-           
+            $image = $row["image"];
+
             echo "
             <div class='index_content'>
             <div class='card'>
@@ -64,16 +63,16 @@ include('layout_member/member_session.php');
             
             ";
         }
-        
+
         ?>
-        </div>
-    
+    </div>
 
 
-     
 
-    
-    
+
+
+
+
 
 
 

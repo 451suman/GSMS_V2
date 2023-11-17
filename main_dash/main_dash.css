@@ -1,13 +1,15 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.center{
+
+.center {
     text-align: center;
 }
-hr{
+
+hr {
     border: 2px solid rgb(0, 0, 0);
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
 
@@ -15,6 +17,7 @@ body {
     background-color: #202123;
 
 }
+
 .header {
     min-height: 100vh;
     width: 100%;
@@ -24,59 +27,71 @@ body {
     background-size: cover;
     position: relative;
 }
-nav{
+
+nav {
     background-color: black;
 }
-nav{
+
+nav {
     display: flex;
- 
+
     justify-content: space-between;
     align-items: center;
 }
-nav img{
+
+nav img {
     width: 150px;
 }
-.nav-links{
+
+.nav-links {
     flex: 1;
     text-align: right;
 }
-.nav-links ul li{
+
+.nav-links ul li {
     list-style: none;
     display: inline-block;
     padding: 8px 12px;
     position: relative;
 }
-.nav-links ul li:hover{
+
+.nav-links ul li:hover {
     background-color: rgba(255, 255, 255, 0.189);
 }
+
 .nav-links ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 13px;
 }
 
-.nav-links ul li:hover::after{
+.nav-links ul li:hover::after {
     width: 100%;
 }
-.text-box{
+
+.text-box {
     width: 90%;
     columns: #fff;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%); /*to adjust in the center of div*/
+    transform: translate(-50%, -50%);
+    /*to adjust in the center of div*/
     text-align: center;
 }
+
 .text-box h1 {
     font-size: 62px;
     color: #ffffff;
 }
+
 .text-box p {
     margin: 10px 0 40px;
     font-size: 14px;
     color: #ffffff;
 }
-.l-btn{
+
+.l-btn {
     display: inline-block;
     text-decoration: none;
     color: #fff;
@@ -88,37 +103,42 @@ nav img{
     cursor: pointer;
     width: 150px;
 }
-.l-btn:hover{
+
+.l-btn:hover {
     border: 1x solid #f44336;
     background: #f44336;
     transition: 1s;
-    
+
 }
 
 /* CSS for about us */
-.about-us{
+.about-us {
     width: 80%;
     color: white;
     margin: auto;
     text-align: center;
     padding-top: 100px;
 }
-h1{
+
+h1 {
     font-size: 36px;
     font-weight: 600;
 }
-p{
- 
+
+p {
+
     font-size: 14px;
     font-weight: 300;
     line-height: 22px;
     padding: 10px;
 }
-.row{
+
+.row {
     margin-top: 5%;
     display: flex;
     justify-content: space-between;
 }
+
 .about-col {
     flex-basis: 31%;
     background: #98d5ff30;
@@ -128,16 +148,19 @@ p{
     box-sizing: border-box;
     transition: 0.5s;
 }
-.about-col:hover{
-    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+
+.about-col:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
 }
-.faq{
+
+.faq {
     width: 80%;
     margin: auto;
     text-align: center;
     padding-top: 100px;
 }
-.faq-col{
+
+.faq-col {
     flex-basis: 44%;
     background: #fff3f3;
     border-radius: 10px;
@@ -147,7 +170,7 @@ p{
 }
 
 /* CSS for Contact US */
-.con{
+.con {
     margin: 100px auto;
     width: 80%;
     /* background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)); */
@@ -157,25 +180,27 @@ p{
     text-align: center;
     padding: 100px 0;
 }
-.con div{
+
+.con div {
     color: white;
 }
 
-.con h1{
+.con h1 {
     color: #fffdfd;
     margin-bottom: 40px;
     padding: 0;
 }
 
 /* footer */
-.footer{
+.footer {
     color: white;
     width: 100%;
     text-align: center;
     padding: 30px 0;
 }
-.footer h4{
+
+.footer h4 {
     margin-bottom: 25px;
     margin-top: 20px;
-    font-weight: 600; 
+    font-weight: 600;
 }

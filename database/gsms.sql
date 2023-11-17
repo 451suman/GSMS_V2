@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2023 at 11:45 AM
+-- Generation Time: Nov 17, 2023 at 04:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`aid`, `name`, `email`, `password`, `phone`, `date`) VALUES
-(1, 'Alexis Cabrera', 'admin@gmail.com', '7ece99e593ff5dd200e2b9233d9ba654', 1234567890, '2023-09-18 19:39:10');
+(1, 'Raphael Olsen', 'admin@gmail.com', '7ece99e593ff5dd200e2b9233d9ba654', 1234567890, '2023-09-18 19:39:10');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`cid`, `package_name`, `cname`, `duration`, `package_price`, `image`) VALUES
-(2, 'Ryder Case', 'Guy Nunez', 2, 2000, 'wallpaperflare.com_wallpaper (1).jpg');
+(2, 'Ciaran Knowles', 'Clare Powell', 1, 1000, '120731998.png');
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,8 @@ CREATE TABLE `enrollment` (
 --
 
 INSERT INTO `enrollment` (`eid`, `mid`, `cid`, `verified`, `edate`) VALUES
-(4, 3, 2, 'yes', '2023-11-16 16:19:45');
+(2, 2, 2, 'yes', '2023-11-17 21:23:31'),
+(3, 3, 2, 'yes', '2023-11-17 21:34:20');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`mid`, `name`, `phone`, `email`, `password`, `status`, `date`, `image`, `m_otp`, `m_opt_expire_time`) VALUES
-(3, 'Colton Serrano', 1234567890, 'zikazaqu@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'offline', '2023-11-16 16:19:23', 'defaultuser.jpg', '', '0000-00-00 00:00:00');
+(2, 'Kamal Jenkins', 1234567890, 'hahirunug@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'online', '2023-11-17 21:22:52', 'defaultuser.jpg', '', '0000-00-00 00:00:00'),
+(3, 'Cyrus Schwartz', 1234567890, 'hixotok@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'online', '2023-11-17 21:34:09', 'defaultuser.jpg', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -130,7 +132,8 @@ CREATE TABLE `member_subscription_track` (
 --
 
 INSERT INTO `member_subscription_track` (`msid`, `mid`, `renew_date`, `expiry_date`) VALUES
-(2, 3, '2023-11-16 16:20:19', '2024-01-16');
+(2, 2, '2023-11-17 21:34:57', '2023-12-29'),
+(3, 3, '2023-11-17 21:35:18', '2024-01-17');
 
 -- --------------------------------------------------------
 
@@ -153,7 +156,15 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`pid`, `mid`, `cname`, `package_name`, `duration`, `price`, `date`) VALUES
-(4, 3, 'Guy Nunez', 'Ryder Case', 2, 2000, '2023-11-16 16:20:19');
+(6, 2, 'Clare Powell', 'Ciaran Knowles', 33, 237, '2023-11-17 21:23:35'),
+(7, 2, 'Clare Powell', 'Ciaran Knowles', 33, 237, '2023-11-17 21:23:58'),
+(8, 2, 'Clare Powell', 'Ciaran Knowles', 33, 237, '2023-11-17 21:24:14'),
+(9, 2, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:30:25'),
+(10, 2, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:30:34'),
+(11, 2, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:30:57'),
+(12, 3, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:34:27'),
+(13, 3, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:35:03'),
+(14, 3, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:35:18');
 
 -- --------------------------------------------------------
 
@@ -241,13 +252,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `enrollment`
 --
 ALTER TABLE `enrollment`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `member`
@@ -259,19 +270,19 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `member_subscription_track`
 --
 ALTER TABLE `member_subscription_track`
-  MODIFY `msid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `msid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `routine`
 --
 ALTER TABLE `routine`
-  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

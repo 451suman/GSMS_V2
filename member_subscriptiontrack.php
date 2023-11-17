@@ -7,17 +7,17 @@ include('layout_member/member_session.php');
 ?>
 
 <?php
- $conn = new mysqli("localhost", "root", "", "gsms");
- if ($conn->connect_error) {
-die("Connection error");
+$conn = new mysqli("localhost", "root", "", "gsms");
+if ($conn->connect_error) {
+    die("Connection error");
 }
 $check_sql = "SELECT * FROM member WHERE mid='$id' ";
 $r = $conn->query($check_sql);
-   if($r){
-    $row=$r->fetch_assoc();
+if ($r) {
+    $row = $r->fetch_assoc();
     $status = $row['status'];
-    
-    if($status=="offline"){
+
+    if ($status == "offline") {
         echo '<script >';
         echo 'swal.fire({
              icon: "error",
@@ -28,20 +28,20 @@ $r = $conn->query($check_sql);
         });';
         echo '</script>';
     }
-   }
+}
 ?>
 
 
 <div id="right">
-   
+
     <div class="mtable_class">
         <table class="mm_membership">
             <tr>
                 <td colspan="8" class="center" style="color:  #FFA559;">
-                <strong> MEMBER SUBSCRIPTION REPORT</strong>
+                    <strong> MEMBER SUBSCRIPTION REPORT</strong>
                 </td>
             </tr>
-            
+
             <?php
             $conn = new mysqli("localhost", "root", "", "gsms");
             if ($conn->connect_error) {
@@ -57,25 +57,25 @@ $r = $conn->query($check_sql);
                 $i++;
                 $id = $row["mid"];
                 $name = $row["name"];
-              
-        
-                $renew_date=$row["renew_date"];
-                $expiry_date=$row["expiry_date"];
-                
+
+
+                $renew_date = $row["renew_date"];
+                $expiry_date = $row["expiry_date"];
+
                 $date = date('F j, Y');
                 // Convert the expiry date and today's date to Unix timestamps
-            $expiry_timestamp = strtotime($expiry_date);
-            $today_timestamp = strtotime($date);
-            // Calculate the difference in seconds
-            $difference = $expiry_timestamp - $today_timestamp;
+                $expiry_timestamp = strtotime($expiry_date);
+                $today_timestamp = strtotime($date);
+                // Calculate the difference in seconds
+                $difference = $expiry_timestamp - $today_timestamp;
 
-            // Convert the difference to days
-            $days_remaining = round($difference / (60 * 60 * 24));
-            // if($days_remaining <0)
-            // {
-            //     $days_remaining ="EXPIRE";
-            // }
-
+                // Convert the difference to days
+                $days_remaining = round($difference / (60 * 60 * 24));
+                // if($days_remaining <0)
+                // {
+                //     $days_remaining ="EXPIRE";
+                // }
+            
 
                 echo " <tr>
                 <td>Name: $name</td>
@@ -91,9 +91,9 @@ $r = $conn->query($check_sql);
                     </tr>";
             }
             ?>
-           
-                        
-        
+
+
+
         </table>
     </div>
 </div>

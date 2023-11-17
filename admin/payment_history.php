@@ -4,7 +4,7 @@ include('layout/left.php');
 include('layout/adminsession.php');
 
 
-if(isset($_POST['pay_delete'])) {
+if (isset($_POST['pay_delete'])) {
     $conn = new mysqli("localhost", "root", "", "gsms");
     if ($conn->connect_error) {
         die("Database connection error");
@@ -13,8 +13,8 @@ if(isset($_POST['pay_delete'])) {
     $pid = $_POST['p_id'];
     $sql = "DELETE FROM payment WHERE pid='$pid'";
     $r = $conn->query($sql);
-    
-    if($r) {
+
+    if ($r) {
         echo '<script>';
         echo 'swal.fire({
             icon: "success",
@@ -23,8 +23,7 @@ if(isset($_POST['pay_delete'])) {
             window.location = "payment_history.php";
         });';
         echo '</script>';
-    }
-    else{
+    } else {
         echo '<script>';
         echo 'swal.fire({
             icon: "error",
@@ -43,7 +42,8 @@ if(isset($_POST['pay_delete'])) {
         height: 35px;
         width: 35px;
     }
-    #pay_delete{
+
+    #pay_delete {
         width: 100%;
         background-color: #952323;
         color: white;

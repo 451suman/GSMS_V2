@@ -1,4 +1,3 @@
-
 .card {
   width: 17rem;
   border: #FFA559 solid 5px;
@@ -6,12 +5,13 @@
   padding: 10px;
   background-color: rgb(179, 179, 179);
   color: black;
-   /* float: right; */
+  /* float: right; */
   border-radius: 27px;
   height: 100%;
-  font-family:'Times New Roman', Times, serif ;
+  font-family: 'Times New Roman', Times, serif;
 }
-.card:hover{
+
+.card:hover {
   background: white;
   color: black;
   border: #fa8423 solid 5px;
@@ -22,18 +22,20 @@
   height: 185px;
   width: 100%;
   border-radius: 22px;
-} 
+}
 
 
- p.card_text {
+p.card_text {
   font-size: 17px;
 }
-#enroll{
+
+#enroll {
   width: 25%;
   padding: 3px;
   border-radius: 10px;
 }
-#enroll:hover{
+
+#enroll:hover {
   background-color: #fcb57a;
 }
 
@@ -43,6 +45,7 @@
   margin-bottom: 740px;
   margin-left: 49px;
 }
+
 .index_content {
   padding: 50px;
   display: flex;
@@ -51,19 +54,3 @@
   justify-content: center;
   float: left;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

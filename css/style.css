@@ -17,6 +17,7 @@ a {
 .center {
     text-align: center;
 }
+
 form.edit_category_form {
     margin-left: 452px;
     margin-top: 74px;
@@ -28,12 +29,14 @@ form.edit_category_form {
     background-color: transparent;
     color: #000000;
 }
+
 form.addcategory_form {
     margin-left: 512px;
     margin-top: 76px;
     height: 84vh;
- 
+
 }
+
 /* .transparent {
     background-color: rgba(77, 77, 77, 0.595);
     color: #ffffff;
@@ -134,7 +137,7 @@ form.addcategory_form {
     text-align: justify;
     color: rgb(255, 250, 250);
     width: 85%;
-     background-color: #292b2e;
+    background-color: #292b2e;
     float: right;
 }
 
@@ -165,6 +168,7 @@ p a:hover {
     background-color: #000000;
     color: white;
 }
+
 #login_form {
     padding-left: 615px;
     /* padding-right: 625px; */
@@ -176,6 +180,7 @@ p a:hover {
     background-position: center;
     height: 514px;
 }
+
 .form_container {
 
     text-align: center;
@@ -252,7 +257,8 @@ input#signup {
     text-align: center;
     padding: 25px;
     font-family: 'Playfair Display', serif;
-    font-style: italic;}
+    font-style: italic;
+}
 
 
 .about_author {
@@ -297,6 +303,7 @@ input#signup {
 .enrol_form_container label {
     font-size: medium;
 }
+
 #enroll_botton {
     width: 120px;
     border-radius: 10px;
@@ -388,6 +395,7 @@ input#signup {
     height: 30px;
 
 }
+
 .profile_form_container {
     color: black;
     text-align: center;
@@ -404,11 +412,13 @@ form.edit_admin_form {
     margin-top: 160px;
     margin-bottom: 160px;
 }
+
 form.add_admin_form {
     margin-top: 118px;
     margin-bottom: 115px;
     margin-left: 454px;
 }
+
 input#editdetail_profile {
     margin: 5px;
     padding: 5px;
@@ -437,23 +447,27 @@ input#editdetail_profile {
     border-radius: 30px;
     border: #FFA559 solid 5px;
 }
-.aform_container h1{
+
+.aform_container h1 {
     color: #FFA559;
 }
-.aform_container div{
+
+.aform_container div {
     color: #FFA559;
     font-size: 25px;
     padding: 5px;
 }
-.aform_container .profile_inp{
+
+.aform_container .profile_inp {
     height: 20px;
     width: 250px;
 }
 
-.admin_profile_button{
+.admin_profile_button {
     width: 120px;
-   
+
 }
+
 /* ===================change password ============ */
 .achange_pass {
     text-align: center;
@@ -463,7 +477,7 @@ input#editdetail_profile {
     margin-right: 420px;
 }
 
-.achange_pass div{
+.achange_pass div {
     color: black;
     /* border: #FFA559 solid 5px; */
     border: rgba(2, 163, 150, 0.289) solid 5px;
@@ -473,69 +487,72 @@ input#editdetail_profile {
     padding: 15px;
     border-radius: 15px;
 
-   
-    }
 
-    .change_pass {
-        text-align: center;
-        margin-top: 200px;
-        margin-bottom: 200px;
-        margin-left: 420px;
-        margin-right: 420px;
-    }
+}
 
-.change_pass div{
+.change_pass {
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 200px;
+    margin-left: 420px;
+    margin-right: 420px;
+}
+
+.change_pass div {
     border: #FFA559 solid 5px;
     font-size: 25px;
     padding: 15px;
     border-radius: 15px;
 
-   
-    }
-    .res_password {
-        text-align: center;
-        margin-top: 225px;
-        margin-bottom: 208px;
-        margin-left: 450px;
-        margin-right: 450px;
-        font-size: 30px;
-        border: #FFA559 solid 5px;
-        padding: 30px;
-        border-radius: 20px;
-    }
 
-    .res_password input{
-        height: 25px;
-    }
+}
 
-    .res_password #reset{
-        width: 70px;
-    }
-    
-    .mtable_class {
-        width: 655px;
-        margin-left: 400px;
-        margin-top: 194px;
-        height: 67vh;
-    }
-    table.mm_membership {
-        border: 5px solid #FFA559;
-        border-radius: 15px;
-        padding: 34px;
-        text-align: center;
-        background-color: #555556;
-    }
-    table.mm_membership td{
-        font-size: 25px;
-    }
-   
+.res_password {
+    text-align: center;
+    margin-top: 225px;
+    margin-bottom: 208px;
+    margin-left: 450px;
+    margin-right: 450px;
+    font-size: 30px;
+    border: #FFA559 solid 5px;
+    padding: 30px;
+    border-radius: 20px;
+}
 
-    /* ------------------------payment--------------------------- */
-    .payment_table {
-        width: 100%;
-        background-color: white;
-        text-align: center;
-        color: black;
-        border: 1px black solid;
-        border-collapse: collapse;
-    } 
+.res_password input {
+    height: 25px;
+}
+
+.res_password #reset {
+    width: 70px;
+}
+
+.mtable_class {
+    width: 655px;
+    margin-left: 400px;
+    margin-top: 194px;
+    height: 67vh;
+}
+
+table.mm_membership {
+    border: 5px solid #FFA559;
+    border-radius: 15px;
+    padding: 34px;
+    text-align: center;
+    background-color: #555556;
+}
+
+table.mm_membership td {
+    font-size: 25px;
+}
+
+
+/* ------------------------payment--------------------------- */
+.payment_table {
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    color: black;
+    border: 1px black solid;
+    border-collapse: collapse;
+}

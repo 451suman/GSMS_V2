@@ -4,30 +4,27 @@ include('layout/left.php');
 include('layout/adminsession.php');
 ?>
 
-<?php     
-    if(isset($_GET['delete_category']))
-{
-        $id=$_GET['category_id'];
-              $conn = new mysqli("localhost","root","","gsms");
-        if($conn->connect_error)
-        {
-            die("connection error");
-        }
-        $sql="DELETE FROM category WHERE  cid = '$id' ";
-        $r=$conn->query($sql);
-        if($r){
-            echo '<script type="text/javascript">';
-      
-            echo "Swal.fire({
+<?php
+if (isset($_GET['delete_category'])) {
+    $id = $_GET['category_id'];
+    $conn = new mysqli("localhost", "root", "", "gsms");
+    if ($conn->connect_error) {
+        die("connection error");
+    }
+    $sql = "DELETE FROM category WHERE  cid = '$id' ";
+    $r = $conn->query($sql);
+    if ($r) {
+        echo '<script type="text/javascript">';
+
+        echo "Swal.fire({
                 title: 'DELETE SUCCESSFULL!',
                 icon: 'success',
               })";
-            echo '</script>';
-            // header("location:category.php");
-        }
-        else{
-            echo("not successful");
-        }
+        echo '</script>';
+        // header("location:category.php");
+    } else {
+        echo ("not successful");
+    }
 }
 ?>
 <div id="right">
@@ -65,25 +62,24 @@ include('layout/adminsession.php');
 
             </tr>
             <?php
-        $conn=new mysqli("localhost","root","","gsms");
-        if($conn->connect_error)
-        {
-            die("Database connection error");
-        }
-        $sql="select * from category ORDER BY duration ASC";
-        $result=$conn->query($sql);
-        $i=0;   
-        while ($row = $result->fetch_assoc()) {
-            $i++;
-            $cid = $row["cid"]; // Add this line to fetch the id
-            $cname = $row["cname"];
-            $pname = $row["package_name"];
-            $duration = $row["duration"];
-            $price = $row["package_price"];
-            $image = $row["image"];
-        
-          
-            echo "<tr>
+            $conn = new mysqli("localhost", "root", "", "gsms");
+            if ($conn->connect_error) {
+                die("Database connection error");
+            }
+            $sql = "select * from category ORDER BY duration ASC";
+            $result = $conn->query($sql);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $i++;
+                $cid = $row["cid"]; // Add this line to fetch the id
+                $cname = $row["cname"];
+                $pname = $row["package_name"];
+                $duration = $row["duration"];
+                $price = $row["package_price"];
+                $image = $row["image"];
+
+
+                echo "<tr>
                 <td>$i</td>
                 <td>$pname</td>
                 <td>$cname</td>
@@ -105,9 +101,9 @@ include('layout/adminsession.php');
             
                 
             </tr>";
-        }
-        
-        ?>
+            }
+
+            ?>
         </table>
     </div>
 </div>

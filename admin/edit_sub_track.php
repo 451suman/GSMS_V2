@@ -12,68 +12,64 @@ include('layout/adminsession.php');
 
 
 // getting values from page form down for edit
-if(isset($_POST['sub_update']))
-{
-$id=$_POST['memebr_id'];
-// $renew_date=$_POST['renew_date'];
-$expiry_date=$_POST['expiry_date'];
+if (isset($_POST['sub_update'])) {
+    $id = $_POST['memebr_id'];
+    // $renew_date=$_POST['renew_date'];
+    $expiry_date = $_POST['expiry_date'];
 
 
-$conn = new mysqli("localhost","root","","gsms");
-if($conn->connect_error)
-{
-    die("connection error");
-}
-$sql="UPDATE member_subscription_track SET  expiry_date = '$expiry_date' WHERE mid = '$id';";
-$r=$conn->query($sql);
+    $conn = new mysqli("localhost", "root", "", "gsms");
+    if ($conn->connect_error) {
+        die("connection error");
+    }
+    $sql = "UPDATE member_subscription_track SET  expiry_date = '$expiry_date' WHERE mid = '$id';";
+    $r = $conn->query($sql);
 
-if($r)
-{echo '<script type="text/javascript">';
-    echo "Swal.fire({
+    if ($r) {
+        echo '<script type="text/javascript">';
+        echo "Swal.fire({
         text: 'Date Update Successful.',
         icon: 'success',
     }).then(function() {
         window.location = 'membersubscription.php';
     });";
-    echo '</script>';
-    
-//    header("location:membersubscription.php");
-}
-else{
-    echo"unsuccessful";
-}
+        echo '</script>';
+
+        //    header("location:membersubscription.php");
+    } else {
+        echo "unsuccessful";
+    }
 }
 
 
 
 
 //  get values from book category.php after click edit botton//
-if(isset($_GET['edit_track'])){
-    $id=$_GET['member_id'];
- $conn = new mysqli("localhost","root","","gsms");
-if($conn->connect_error)
-{
-    die("connection error");
-}
+if (isset($_GET['edit_track'])) {
+    $id = $_GET['member_id'];
+    $conn = new mysqli("localhost", "root", "", "gsms");
+    if ($conn->connect_error) {
+        die("connection error");
+    }
 
-           $sql = "SELECT member.name, member_subscription_track.expiry_date
+    $sql = "SELECT member.name, member_subscription_track.expiry_date
            FROM member
            INNER JOIN member_subscription_track ON member.mid = member_subscription_track.mid
            WHERE member.mid = $id;";
-            $r = $conn->query($sql);
-            $row=$r->fetch_assoc();
-                    // $id=$row["mid"];
-                    $name=$row["name"];
-                // $renew_date=$row["renew_date"];
-                $expiry_date=$row["expiry_date"];
-        
+    $r = $conn->query($sql);
+    $row = $r->fetch_assoc();
+    // $id=$row["mid"];
+    $name = $row["name"];
+    // $renew_date=$row["renew_date"];
+    $expiry_date = $row["expiry_date"];
+
 
 }
 ?>
 
 
 <div id="right">
-<form action="edit_sub_track.php" method="post" class="editsub_track_form" >
+    <form action="edit_sub_track.php" method="post" class="editsub_track_form">
         <div class="form_container">
             <div> <b>EDIT CATEGORY</b></div>
             <div>
@@ -83,19 +79,19 @@ if($conn->connect_error)
 
             <!-- <div>
                 <label for="renew_date">Renew Date</label><br>
-                <input type="date" name="renew_date" id="renew_date" value="<?php echo $renew_date;  ?>" ><br>
+                <input type="date" name="renew_date" id="renew_date" value="<?php echo $renew_date; ?>" ><br>
             </div> -->
             <div>
                 <label for="expiry_date">Expire date</label><br>
-                <input type="date" name="expiry_date" id="expiry_date" value="<?php echo $expiry_date;  ?>"  ><br>
+                <input type="date" name="expiry_date" id="expiry_date" value="<?php echo $expiry_date; ?>"><br>
             </div>
-            
-            
-            
-        <div>
-        <input type="hidden" name="memebr_id" id="" value="<?php echo $id; ?>">
-        <input type="submit" name="sub_update" id="" value="Update">
-        </div>
+
+
+
+            <div>
+                <input type="hidden" name="memebr_id" id="" value="<?php echo $id; ?>">
+                <input type="submit" name="sub_update" id="" value="Update">
+            </div>
         </div>
     </form>
 
@@ -103,5 +99,3 @@ if($conn->connect_error)
 <?php
 include('layout/footer.php');
 ?>
-
-

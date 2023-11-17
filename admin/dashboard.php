@@ -22,15 +22,14 @@ if (isset($_GET['remaining_days'])) {
 
     if ($status == 'offline') {
         echo '<script>';
-        echo 'var status = "' . $status . '";'; 
+        echo 'var status = "' . $status . '";';
         echo 'swal.fire({
             title: "Status: " + status,
         }).then(function() {
             window.location = "dashboard.php";
         });';
         echo '</script>';
-    }
-    else {
+    } else {
 
         $currentDate = date("Y-m-d");
         $sql = "select * from member_subscription_track where mid='$mid'";
@@ -47,7 +46,7 @@ if (isset($_GET['remaining_days'])) {
             // Convert the difference to days
             $days_remaining = round($difference / (60 * 60 * 24));
             echo '<script type="text/javascript">';
-           
+
             echo 'var remainingDays = ' . $days_remaining . ';';
             echo 'var status = "' . $status . '";';             // display VAr remainig days
             echo 'swal.fire({
@@ -133,7 +132,7 @@ if (isset($_GET['verify'])) {
                 die("Database connection error");
             }
 
-        
+
             $check_status = "select * from member WHERE mid='$mid'";
             $check_s_r = $conn->query($check_status);
             if ($check_s_r->num_rows > 0) {
@@ -181,9 +180,8 @@ if (isset($_GET['verify'])) {
                     echo ' </script>';
                 }
             }
-
-            // if status is off line (old member)
-            if ($check_r->num_rows > 0 && $status == 'offline') {
+            // if status is offline member detail is already exist in sub track table(old member)
+            else if ($check_r->num_rows > 0 && $status == 'offline') {
 
                 $row = $check_r->fetch_assoc();
                 $msid = $row['msid'];
@@ -225,8 +223,8 @@ if (isset($_GET['verify'])) {
                                       });';
                     echo '</script>';
                 }
-            } 
-            // new mwmber status offline
+            }
+            // new member status offline. And does not have any data in sub track table
             else if ($status == 'offline') {
                 // date calculation
                 $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
@@ -254,16 +252,17 @@ if (isset($_GET['verify'])) {
                                   });';
 
                     echo '</script>';
-                } else {
-                    echo '<script type="text/javascript">   ';
-                    echo 'Swal.fire({
-                                    icon: "error",
-                                      title: "Error updating subscription. "
-                                  }).then(function() {
-                                      window.location = "dashboard.php";
-                                  });';
-                    echo ' </script>';
-                }
+                } 
+            }
+            else {
+                echo '<script type="text/javascript">   ';
+                echo 'Swal.fire({
+                                icon: "error",
+                                  title: "Error updating subscription. "
+                              }).then(function() {
+                                  window.location = "dashboard.php";
+                              });';
+                echo ' </script>';
             }
         }
     }
@@ -299,35 +298,35 @@ if (isset($_GET['verify'])) {
                 <th width=10%;>Action</th>
             </tr>
             <?php
-$conn = new mysqli("localhost", "root", "", "gsms");
-if ($conn->connect_error) {
-    die("Database connection error");
-}
+            $conn = new mysqli("localhost", "root", "", "gsms");
+            if ($conn->connect_error) {
+                die("Database connection error");
+            }
 
-$sql = "SELECT m.mid, m.name, m.phone, m.email, m.date, c.package_name,
+            $sql = "SELECT m.mid, m.name, m.phone, m.email, m.date, c.package_name,
             c.cid, c.cname, c.duration, c.package_price, e.eid, e.verified, e.edate
             FROM member m
             INNER JOIN enrollment e ON m.mid = e.mid
             INNER JOIN category c ON e.cid = c.cid  where e.verified='no' ";
 
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $i = 0;
-    while ($row = $result->fetch_assoc()) {
-        $i++;
-        $mid = $row["mid"];
-        $name = $row["name"];
-        $phone = $row["phone"];
-        $email = $row["email"];
-        $cid = $row["cid"];
-        $eid = $row["eid"];
-        $cname = $row["cname"];
-        $package_name = $row["package_name"];
-        $date = $row["edate"];
-        $duration = $row["duration"];
-        $verified = $row["verified"];
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $i = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $i++;
+                    $mid = $row["mid"];
+                    $name = $row["name"];
+                    $phone = $row["phone"];
+                    $email = $row["email"];
+                    $cid = $row["cid"];
+                    $eid = $row["eid"];
+                    $cname = $row["cname"];
+                    $package_name = $row["package_name"];
+                    $date = $row["edate"];
+                    $duration = $row["duration"];
+                    $verified = $row["verified"];
 
-        echo "<tr>
+                    echo "<tr>
                                 <td>$i</td>
                                 <td>$name</td>
                                 <td>$phone</td>
@@ -363,12 +362,12 @@ if ($result->num_rows > 0) {
 
                                 </td>
                             </tr>";
-    }
-} else {
-    echo "<tr><td colspan='11'>No new enrollment found</td></tr>";
-}
+                }
+            } else {
+                echo "<tr><td colspan='11'>No new enrollment found</td></tr>";
+            }
 
-?>
+            ?>
         </table>
     </div>
 </div>

@@ -6,17 +6,17 @@ include('layout/adminsession.php');
 
 ?>
 <div id="right">
-<link rel="stylesheet" href="../css/tableDecorate.css">
+    <link rel="stylesheet" href="../css/tableDecorate.css">
 
 
-    
+
     <!-- <form action="asc_dec.php" method="post">
         
         <input type="submit" name="asc" id="" value="Ascending" class="centermember_botton">
     </form>  -->
     <form action="track_expire_subscription.php" method="post">
-        
-        
+
+
         <input type="submit" name="dec" id="" value="Track Expired Membership" class="centermember_botton_trackExpire">
     </form>
     <form action="" method="get">
@@ -32,12 +32,12 @@ include('layout/adminsession.php');
                 </td>
             </tr>
             <tr>
-            <th width=5%;>SN</th>
+                <th width=5%;>SN</th>
                 <th width=20%;>Name</th>
                 <th width=15%;>Phone No.</th>
-                
+
                 <th width=10%;>Details</th>
-   
+
                 <th width=15%;>Renew Date</th>
                 <th width=15%;>Expiry Date</th>
                 <th width=10%;>Remaining Days</th>
@@ -45,47 +45,46 @@ include('layout/adminsession.php');
             </tr>
             <?php
 
-if(isset($_GET['n_search']))
-    {
-        $S_name=$_GET['name_search'];
-
-   
+            if (isset($_GET['n_search'])) {
+                $S_name = $_GET['name_search'];
 
 
-            $conn = new mysqli("localhost", "root", "", "gsms");
-            if ($conn->connect_error) {
-                die("Database connection error");
-            }
-            $sql = "SELECT m.name,m.phone,m.status, m.mid, mst.msid, mst.renew_date, mst.expiry_date
+
+
+                $conn = new mysqli("localhost", "root", "", "gsms");
+                if ($conn->connect_error) {
+                    die("Database connection error");
+                }
+                $sql = "SELECT m.name,m.phone,m.status, m.mid, mst.msid, mst.renew_date, mst.expiry_date
             FROM member m
             JOIN member_subscription_track mst ON m.mid = mst.mid
           
             WHERE m.name LIKE '$S_name%'  and m.status = 'online';
             ";
-            $result = $conn->query($sql);
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                $i++;
-                $id = $row["mid"];
-                $name = $row["name"];
-                $phone = $row["phone"];
+                $result = $conn->query($sql);
+                $i = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $i++;
+                    $id = $row["mid"];
+                    $name = $row["name"];
+                    $phone = $row["phone"];
 
-                
-              
-                $renew_date=$row["renew_date"];
-                $expiry_date=$row["expiry_date"];
-                $date = date('F j, Y');
-                // Convert the expiry date and today's date to Unix timestamps
-            $expiry_timestamp = strtotime($expiry_date);
-            $today_timestamp = strtotime($date);
-            // Calculate the difference in seconds
-            $difference = $expiry_timestamp - $today_timestamp;
 
-            // Convert the difference to days
-            $days_remaining = round($difference / (60 * 60 * 24));
 
-        
-                echo "<tr>
+                    $renew_date = $row["renew_date"];
+                    $expiry_date = $row["expiry_date"];
+                    $date = date('F j, Y');
+                    // Convert the expiry date and today's date to Unix timestamps
+                    $expiry_timestamp = strtotime($expiry_date);
+                    $today_timestamp = strtotime($date);
+                    // Calculate the difference in seconds
+                    $difference = $expiry_timestamp - $today_timestamp;
+
+                    // Convert the difference to days
+                    $days_remaining = round($difference / (60 * 60 * 24));
+
+
+                    echo "<tr>
                         <td>$i</td>
                         <td>$name</td>
                         <td>$phone</td>
@@ -109,9 +108,9 @@ if(isset($_GET['n_search']))
                             </form>
                         </td>
                     </tr>";
-            }
+                }
 
-        }
+            }
             ?>
         </table>
     </div>

@@ -6,11 +6,11 @@ include('layout/adminsession.php');
 
 ?>
 <div id="right">
-<link rel="stylesheet" href="../css/tableDecorate.css">
+    <link rel="stylesheet" href="../css/tableDecorate.css">
 
-   
+
     <form action="track_expire_subscription.php" method="post">
-        
+
         <input type="submit" name="dec" id="" value="Track Expired Membership" class="centermember_botton_trackExpire">
     </form>
 
@@ -29,7 +29,7 @@ include('layout/adminsession.php');
             <tr>
                 <th width=5%;>SN</th>
                 <th width=20%;>Name</th>
-                <th width=15%;>Phone No.</th>               
+                <th width=15%;>Phone No.</th>
                 <th width=10%;>Details</th>
                 <th width=15%;>Renew Date</th>
                 <th width=15%;>Expiry Date</th>
@@ -55,21 +55,21 @@ include('layout/adminsession.php');
                 $id = $row["mid"];
                 $name = $row["name"];
                 $phone = $row["phone"];
-             
-              
-                $renew_date=$row["renew_date"];
-                $expiry_date=$row["expiry_date"];
+
+
+                $renew_date = $row["renew_date"];
+                $expiry_date = $row["expiry_date"];
                 $date = date('F j, Y');
                 // Convert the expiry date and today's date to Unix timestamps
-            $expiry_timestamp = strtotime($expiry_date);
-            $today_timestamp = strtotime($date);
-            // Calculate the difference in seconds
-            $difference = $expiry_timestamp - $today_timestamp;
+                $expiry_timestamp = strtotime($expiry_date);
+                $today_timestamp = strtotime($date);
+                // Calculate the difference in seconds
+                $difference = $expiry_timestamp - $today_timestamp;
 
-            // Convert the difference to days
-            $days_remaining = round($difference / (60 * 60 * 24));
+                // Convert the difference to days
+                $days_remaining = round($difference / (60 * 60 * 24));
 
-        
+
                 echo "<tr>
                         <td>$i</td>
                         <td>$name</td>

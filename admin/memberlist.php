@@ -16,7 +16,7 @@ if (isset($_GET['delete_member'])) {
     if ($r) {
         // header("location:memberlist.php");
         echo '<script type="text/javascript">';
-      
+
         echo 'Swal.fire(
           "DELETE SUCCESSFULL!",
           "Member Delete Successful",
@@ -38,7 +38,8 @@ if (isset($_GET['delete_member'])) {
         <input type="submit" name="search" id="" value="search" class="centermember_botton">
     </form>
 
-    Click here for <button style="background-color: white;" ><a href="memberlist_offline.php" style="color: black; padding:7px;"><strong>Offline Members</strong> </a></button>
+    Click here for <button style="background-color: white;"><a href="memberlist_offline.php"
+            style="color: black; padding:7px;"><strong>Offline Members</strong> </a></button>
 
     <div class="table_class">
         <table class="membership">
@@ -76,7 +77,7 @@ if (isset($_GET['delete_member'])) {
                 $image = $row["image"];
                 $status = $row["status"];
 
-        
+
                 echo "<tr>
                         <td>$i</td>
                         <td>$name</td>

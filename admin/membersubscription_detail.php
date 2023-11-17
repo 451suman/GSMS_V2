@@ -5,60 +5,59 @@ include('layout/adminsession.php');
 
 
 if (isset($_GET['delete_member'])) {
-    $id = $_GET['member_id'];
-    $conn = new mysqli("localhost", "root", "", "gsms");
-    if ($conn->connect_error) {
-        die("connection error");
-    }
-    $sql = "DELETE FROM member WHERE mid='$id'";
-    $r = $conn->query($sql);
-    if ($r) {
-        header("location:memberlist.php");
-    } else {
-        echo "not successful";
-    }
+  $id = $_GET['member_id'];
+  $conn = new mysqli("localhost", "root", "", "gsms");
+  if ($conn->connect_error) {
+    die("connection error");
+  }
+  $sql = "DELETE FROM member WHERE mid='$id'";
+  $r = $conn->query($sql);
+  if ($r) {
+    header("location:memberlist.php");
+  } else {
+    echo "not successful";
+  }
 }
 ?>
 
 <div id="right">
-    
-<link rel="stylesheet" href="../css/member_detail.css" />
 
-<div class="container v-center">
-      <div class="profile-card space-between gap-5">
-      
+  <link rel="stylesheet" href="../css/member_detail.css" />
 
-         <?php
-            if(isset($_GET['detail']))
-            {
-          $mid=$_GET['member_id'];
-           
-            $conn = new mysqli("localhost", "root", "", "gsms");
-            if ($conn->connect_error) {
-                die("Database connection error");
-            }
-            $sql="SELECT member.mid,member.name,member.status, member.date,member.phone, member.email,member.image,
+  <div class="container v-center">
+    <div class="profile-card space-between gap-5">
+
+
+      <?php
+      if (isset($_GET['detail'])) {
+        $mid = $_GET['member_id'];
+
+        $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($conn->connect_error) {
+          die("Database connection error");
+        }
+        $sql = "SELECT member.mid,member.name,member.status, member.date,member.phone, member.email,member.image,
             member_subscription_track.expiry_date
             from member
             JOIN member_subscription_track  ON mEMBER.mid = member_subscription_track.mid 
             where member.mid='$mid';
 
             ";
-            // $sql = "select * from member where mid=$mid";
-            $result = $conn->query($sql);
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                $i++;
-                $id = $row["mid"];
-                $name = $row["name"];
-                $date = $row["date"];
-                $phone = $row["phone"];
-                $email = $row["email"];
-                $image = $row["image"];
-                $status = $row["status"];
-                $expiry_date = $row["expiry_date"];
+        // $sql = "select * from member where mid=$mid";
+        $result = $conn->query($sql);
+        $i = 0;
+        while ($row = $result->fetch_assoc()) {
+          $i++;
+          $id = $row["mid"];
+          $name = $row["name"];
+          $date = $row["date"];
+          $phone = $row["phone"];
+          $email = $row["email"];
+          $image = $row["image"];
+          $status = $row["status"];
+          $expiry_date = $row["expiry_date"];
 
-           echo"
+          echo "
             <div class='img-field'>
           <img class='profile-img' src='../img/$image' alt=' '/>
           </div>
@@ -108,13 +107,13 @@ if (isset($_GET['delete_member'])) {
                     
                     ";
 
-            }
         }
+      }
 
-?>
+      ?>
 
-</div>
-      </div>
+    </div>
+  </div>
 </div>
 
 <!-- right div close -->

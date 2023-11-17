@@ -5,7 +5,7 @@ include('layout/adminsession.php');
 ?>
 
 <div id="right">
-lorem5000
+    lorem5000
 </div>
 
 

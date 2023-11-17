@@ -1,14 +1,15 @@
-.membership{
-    
+.membership {
+
     background: white !important;
     color: black !important;
-   /* font-size: 25px; */
-     border-collapse: collapse;
-     /* width: 69%; */
-     width: 100%;
-   
-   
+    /* font-size: 25px; */
+    border-collapse: collapse;
+    /* width: 69%; */
+    width: 100%;
+
+
 }
+
 .membership img {
     height: 35px;
     width: 35px;
@@ -18,13 +19,14 @@
     height: 200px;
     width: 215px;
 } */
-.heading_member{
-font-size: 25px;
-color: white;
+.heading_member {
+    font-size: 25px;
+    color: white;
 }
-.centermember{
+
+.centermember {
     text-align: center !important;
- 
+
     float: right;
     padding-left: 16px;
     padding-right: 16px;
@@ -33,9 +35,9 @@ color: white;
 
 }
 
-.centermember_botton{
+.centermember_botton {
     text-align: center !important;
- 
+
     /* float: right; */
     padding-left: 16px;
     padding-right: 16px;
@@ -55,19 +57,19 @@ color: white;
     background-color: #c0020293;
 }
 
-.membership th{
- 
+.membership th {
+
     text-align: center;
     border: 1px solid black;
 }
 
-.membership tr td{
-   
+.membership tr td {
+
     text-align: center;
     border: 1px solid rgb(0, 0, 0);
 
-   
-} 
+
+}
 
 form.editsub_track_form {
     margin-left: 438px;
@@ -84,9 +86,10 @@ form.editsub_track_form {
     padding-right: 25px;
     width: 100%;
 }
-.edit_delete_green:hover{
+
+.edit_delete_green:hover {
     color: rgb(255, 255, 255);
-    background-color:#1E5128;
+    background-color: #1E5128;
 }
 
 
@@ -96,18 +99,20 @@ form.editsub_track_form {
     padding-right: 25px;
     width: 100%;
 }
-.edit_delete_red:hover{
+
+.edit_delete_red:hover {
     color: rgb(255, 255, 255);
-    background-color:#950101;
+    background-color: #950101;
 }
 
 
-.edit_sub_track{
+.edit_sub_track {
     width: 100%;
 }
-.edit_sub_track:hover{
+
+.edit_sub_track:hover {
     color: rgb(255, 255, 255);
-    background-color:#4f504f;
+    background-color: #4f504f;
 
 }
 

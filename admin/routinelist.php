@@ -5,27 +5,27 @@ include 'layout/adminsession.php';
 ?>
 
 <div id="right">
-<link rel="stylesheet" href="../css/tableDecorate.css">
+    <link rel="stylesheet" href="../css/tableDecorate.css">
 
-<?php
-if (isset($_GET['noUpdateNeeded'])) {
-    $rid = $_GET['routine_id'];
-    $conn = new mysqli("localhost", "root", "", "gsms");
-    if ($conn->connect_error) {
-        die("Connection error");
-    }
-    $sql = "UPDATE routine SET verify='yes' WHERE rid = $rid";
-    $r = $conn->query($sql);
-    if ($r) {
-        header("location:routinelist.php");
-    } else {
-        echo '<script type="text/javascript">';
-        echo 'alert("Update error");';
-        echo '</script>';
-    }
+    <?php
+    if (isset($_GET['noUpdateNeeded'])) {
+        $rid = $_GET['routine_id'];
+        $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($conn->connect_error) {
+            die("Connection error");
+        }
+        $sql = "UPDATE routine SET verify='yes' WHERE rid = $rid";
+        $r = $conn->query($sql);
+        if ($r) {
+            header("location:routinelist.php");
+        } else {
+            echo '<script type="text/javascript">';
+            echo 'alert("Update error");';
+            echo '</script>';
+        }
 
-}
-?>
+    }
+    ?>
 
 
 
@@ -49,12 +49,12 @@ if (isset($_GET['noUpdateNeeded'])) {
             </tr>
 
             <?php
-$conn = new mysqli("localhost", "root", "", "gsms");
-if ($conn->connect_error) {
-    die("Database connection error");
-}
+            $conn = new mysqli("localhost", "root", "", "gsms");
+            if ($conn->connect_error) {
+                die("Database connection error");
+            }
 
-$sql = "SELECT enrollment.eid, enrollment.mid, enrollment.cid, category.cid, category.cname, member.mid, member.name, routine.mid, routine.rid, routine.verify
+            $sql = "SELECT enrollment.eid, enrollment.mid, enrollment.cid, category.cid, category.cname, member.mid, member.name, routine.mid, routine.rid, routine.verify
             FROM member
             INNER JOIN enrollment ON enrollment.mid = member.mid
             INNER JOIN category ON enrollment.cid = category.cid
@@ -63,19 +63,19 @@ $sql = "SELECT enrollment.eid, enrollment.mid, enrollment.cid, category.cid, cat
 
             ";
 
-$result = $conn->query($sql);
+            $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    $i = 0;
-    while ($row = $result->fetch_assoc()) {
-        $i++;
-        $rid = $row["rid"];
-        $mid = $row["mid"];
-        $name = $row["name"];
-        $cname = $row["cname"];
-        $verify = $row["verify"];
+            if ($result->num_rows > 0) {
+                $i = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $i++;
+                    $rid = $row["rid"];
+                    $mid = $row["mid"];
+                    $name = $row["name"];
+                    $cname = $row["cname"];
+                    $verify = $row["verify"];
 
-        echo "<tr>
+                    echo "<tr>
                 <td>$i</td>
                 <td>$name</td>
                 <td>$cname</td>
@@ -91,12 +91,12 @@ if ($result->num_rows > 0) {
                 </form>
                 </td>
                     </tr>";
-        $i++;
-    }
-} else {
-    echo "<tr><td colspan='5'>No rows found</td></tr>";
-}
-?>
+                    $i++;
+                }
+            } else {
+                echo "<tr><td colspan='5'>No rows found</td></tr>";
+            }
+            ?>
         </table>
     </div>
 </div>
