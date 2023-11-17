@@ -243,19 +243,16 @@ input#signup {
 }
 
 .edituser_form {
-    margin-left: 456px;
-    margin-top: 169px;
-    /* margin-bottom: 200px; */
-    height: 70vh;
+    margin-top: 107px;
+    margin-bottom: 107px;
+    margin-left: 437px;
 }
 
 .about {
     text-align: center;
     padding: 25px;
     font-family: 'Playfair Display', serif;
-    font-style: italic;
-    /* height: 100%; */
-}
+    font-style: italic;}
 
 
 .about_author {
