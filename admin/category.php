@@ -2,14 +2,13 @@
 include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
-
 ?>
 
-<?php
-                       if(isset($_GET['delete_category']))
+<?php     
+    if(isset($_GET['delete_category']))
 {
         $id=$_GET['category_id'];
-        $conn = new mysqli("localhost","root","","gsms");
+              $conn = new mysqli("localhost","root","","gsms");
         if($conn->connect_error)
         {
             die("connection error");
@@ -31,39 +30,41 @@ include('layout/adminsession.php');
         }
 }
 ?>
-<div id="right"> 
-<link rel="stylesheet" href="../css/tableDecorate.css">
+<div id="right">
+    <link rel="stylesheet" href="../css/tableDecorate.css">
 
 
-      <form action="addcategory.php">
-      <input type="submit" name="addcategory" id="" value="Add Category"class="centermember"> 
-      </form>
-      <!-- <form action="search.php" method="post">
+    <form action="addcategory.php">
+        <input type="submit" name="addcategory" id="" value="Add Category" class="centermember">
+    </form>
+    <!-- <form action="search.php" method="post">
           <input type="search" name="text_search" id=""class="centermember_botton" placeholder="Enter a name" value="">
           
              <input type="submit" name="search" id="" value="search"class="centermember_botton">
           </form> -->
-          
 
-<div class="table_class">
-<link rel="stylesheet" href="../css/tableDecorate.css">
 
-    <table class="membership">
-        <tr>
-           <td colspan="7"> <h1 class="center">CATEGORY LIST</h1></td>
-        </tr>
-        <tr>
-        <th width= 5%;>SN</th>
+    <div class="table_class">
+        <link rel="stylesheet" href="../css/tableDecorate.css">
 
-        <th width=25%;>Package Name</th>
-        <th width=25%;>Category Name</th>
-        <th width=15%;>Month</th>
-        <th width=15%;>Price</th>
-        <th width=5%;>Image</th>
-        <th width=10%;>action</th>
-        
-        </tr>
-        <?php
+        <table class="membership">
+            <tr>
+                <td colspan="7">
+                    <h1 class="center">CATEGORY LIST</h1>
+                </td>
+            </tr>
+            <tr>
+                <th width=5%;>SN</th>
+
+                <th width=25%;>Package Name</th>
+                <th width=25%;>Category Name</th>
+                <th width=15%;>Month</th>
+                <th width=15%;>Price</th>
+                <th width=5%;>Image</th>
+                <th width=10%;>action</th>
+
+            </tr>
+            <?php
         $conn=new mysqli("localhost","root","","gsms");
         if($conn->connect_error)
         {
@@ -106,8 +107,8 @@ include('layout/adminsession.php');
             </tr>";
         }
         
-        ?>        
-    </table>
+        ?>
+        </table>
     </div>
 </div>
 
