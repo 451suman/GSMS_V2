@@ -57,15 +57,6 @@ if (isset($_GET['remaining_days'])) {
                 window.location = "dashboard.php";
             });';
             echo '</script>';
-        } else {
-            echo '<script type="text/javascript">';
-            echo 'swal.fire({
-                        title:" New Member",
-                        text: " "
-                    }).then(function() {
-                        window.location = "dashboard.php";
-                    });';
-            echo '</script>';
         }
     }
 

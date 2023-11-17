@@ -5,14 +5,8 @@ include('layout/adminsession.php');
 
 ?>
 
-
 <?php
-
-
-
-
-
-if(isset($_GET['delete_category']))
+                       if(isset($_GET['delete_category']))
 {
         $id=$_GET['category_id'];
         $conn = new mysqli("localhost","root","","gsms");
