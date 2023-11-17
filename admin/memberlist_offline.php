@@ -44,7 +44,7 @@ if (isset($_GET['delete_member'])) {
         <table class="membership">
             <tr>
                 <td colspan="8">
-                    <h1 class="center">MEMBER LIST</h1>
+                    <h1 class="center">OFFLINE MEMBER LIST</h1>
                 </td>
             </tr>
             <tr>
