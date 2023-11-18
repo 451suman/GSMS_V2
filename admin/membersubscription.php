@@ -9,7 +9,6 @@ include('layout/adminsession.php');
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
 <a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Expired Membership </a>
-
    
     <form action="memberSubscrition_search.php" method="get">
         <input type="search" name="name_search" id="" placeholder="Search Name">
@@ -26,7 +25,8 @@ include('layout/adminsession.php');
             <tr>
                 <th width=5%;>SN</th>
                 <th width=20%;>Name</th>
-                <th width=15%;>Phone No.</th>
+                <th width=10%;>Phone No.</th>
+                <th width=5%;>Status</th>
                 <th width=10%;>Details</th>
                 <th width=15%;>Renew Date</th>
                 <th width=15%;>Expiry Date</th>
@@ -38,7 +38,7 @@ include('layout/adminsession.php');
             if ($conn->connect_error) {
                 die("Database connection error");
             }
-            $sql = "SELECT m.name, m.phone, m.mid, mst.msid, mst.renew_date, mst.expiry_date
+            $sql = "SELECT m.name, m.phone, m.status, m.mid, mst.msid, mst.renew_date, mst.expiry_date
             FROM member m
             JOIN member_subscription_track mst ON m.mid = mst.mid
             WHERE m.status = 'online'
@@ -52,6 +52,7 @@ include('layout/adminsession.php');
                 $id = $row["mid"];
                 $name = $row["name"];
                 $phone = $row["phone"];
+                $status = $row["status"];
 
 
                 $renew_date = $row["renew_date"];
@@ -71,14 +72,13 @@ include('layout/adminsession.php');
                         <td>$i</td>
                         <td>$name</td>
                         <td>$phone</td>
+                        <td>$status</td>
                        <td>  
                        <form action='membersubscription_detail.php' method='get' target='_blank'>
                        <input type='hidden' value='$id' name='member_id' />
                        <input type='submit' name='detail' value='Detail' class='edit_sub_track'>
                    </form>
                        </td>
-                       
-                     
                         <td>$renew_date</td>
                         <td>$expiry_date</td>
                         <td>$days_remaining</td>
