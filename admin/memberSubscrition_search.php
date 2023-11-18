@@ -27,14 +27,15 @@ include('layout/adminsession.php');
     <div class="table_class">
         <table class="membership">
             <tr>
-                <td colspan="8">
+                <td colspan="9">
                     <h1 class="center">MEMBER SUBSCRIPTION REPORT</h1>
                 </td>
             </tr>
             <tr>
                 <th width=5%;>SN</th>
                 <th width=20%;>Name</th>
-                <th width=15%;>Phone No.</th>
+                <th width=10%;>Phone No.</th>
+                <th width=5%;>Status</th>
 
                 <th width=10%;>Details</th>
 
@@ -55,11 +56,12 @@ include('layout/adminsession.php');
                 if ($conn->connect_error) {
                     die("Database connection error");
                 }
-                $sql = "SELECT m.name,m.phone,m.status, m.mid, mst.msid, mst.renew_date, mst.expiry_date
-            FROM member m
-            JOIN member_subscription_track mst ON m.mid = mst.mid
-          
-            WHERE m.name LIKE '$S_name%'  and m.status = 'online';
+                $sql = "SELECT m.name, m.phone, m.status, m.mid, mst.msid, mst.renew_date, mst.expiry_date
+                FROM member m
+                JOIN member_subscription_track mst ON m.mid = mst.mid
+                WHERE m.name LIKE '$S_name%'
+                ORDER BY m.status DESC
+                -- m.status = 'online';
             ";
                 $result = $conn->query($sql);
                 $i = 0;
@@ -68,6 +70,7 @@ include('layout/adminsession.php');
                     $id = $row["mid"];
                     $name = $row["name"];
                     $phone = $row["phone"];
+                    $status = $row["status"];
 
 
 
@@ -83,11 +86,11 @@ include('layout/adminsession.php');
                     // Convert the difference to days
                     $days_remaining = round($difference / (60 * 60 * 24));
 
-
                     echo "<tr>
                         <td>$i</td>
                         <td>$name</td>
                         <td>$phone</td>
+                        <td>$status</td>
 
                        <td>  
                        <form action='membersubscription_detail.php' method='get' target='_blank'>

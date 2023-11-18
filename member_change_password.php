@@ -81,7 +81,7 @@ include('layout_member/member_session.php');
                     echo '</script>';
                 }
             }
-        } else {
+              } else {
             echo '<script>';
             echo "Swal.fire({
                     icon: 'error',
@@ -94,7 +94,7 @@ include('layout_member/member_session.php');
             // echo 'window.location.href = "profile.php";';
             echo '</script>';
         }
-
+        
 
     }
 

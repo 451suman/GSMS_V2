@@ -43,7 +43,7 @@ if (isset($_GET['remaining_days'])) {
             $today_timestamp = strtotime($date);
             // Calculate the difference in seconds
             $difference = $expiry_timestamp - $today_timestamp;
-            // Convert the difference to days
+            // Convert the difference to days by doing roundoff
             $days_remaining = round($difference / (60 * 60 * 24));
             echo '<script type="text/javascript">';
 
@@ -151,6 +151,9 @@ if (isset($_GET['verify'])) {
                 $expiry_date = $row['expiry_date'];
 
                 // date calculation
+                // date by adding the subscription period to the expiry date and formatting the result as 'Y-m-d'.
+                // strtotime convert date into sec or Unix timestamp
+
                 $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($expiry_date)));
 
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
@@ -192,6 +195,9 @@ if (isset($_GET['verify'])) {
                 $expiryTimestamp = strtotime($expiry_date);
 
                 // date calculation
+                // date by adding the subscription period to the expiry date and formatting the result as 'Y-m-d'.
+                // strtotime convert date into sec or Unix timestamp
+
                 $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($currentDate)));
                 // SQL for update in DB
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
@@ -226,7 +232,8 @@ if (isset($_GET['verify'])) {
             }
             // new member status offline. And does not have any data in sub track table
             else if ($status == 'offline') {
-                // date calculation
+                // date by adding the subscription period to the expiry date and formatting the result as 'Y-m-d'.
+                // strtotime convert date into sec or Unix timestamp
                 $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
                 $nnewDate = date("Y-m-d", $newDate);
 
@@ -252,9 +259,8 @@ if (isset($_GET['verify'])) {
                                   });';
 
                     echo '</script>';
-                } 
-            }
-            else {
+                }
+            } else {
                 echo '<script type="text/javascript">   ';
                 echo 'Swal.fire({
                                 icon: "error",
@@ -352,7 +358,6 @@ if (isset($_GET['verify'])) {
                                         <input type='hidden' value='$mid' name='mid'>
                                         <input type='submit' name='verify' value='Verify' class='edit_sub_track'>
                                     </form>
-
 
                                     </form>
                                     <form action='dashboard.php' method='get'>

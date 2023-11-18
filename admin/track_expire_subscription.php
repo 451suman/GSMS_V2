@@ -21,14 +21,15 @@ include('layout/adminsession.php');
     <div class="table_class">
         <table class="membership">
             <tr>
-                <td colspan="8">
+                <td colspan="9">
                     <h1 class="center">MEMBER SUBSCRIPTION REPORT</h1>
                 </td>
             </tr>
             <tr>
                 <th width=5%;>SN</th>
                 <th width=20%;>Name</th>
-                <th width=15%;>Phone No.</th>
+                <th width=10%;>Phone No.</th>
+                <th width=5%;>Status</th>
                 <th width=10%;>Details</th>
                 <th width=15%;>Renew Date</th>
                 <th width=15%;>Expiry Date</th>
@@ -50,13 +51,13 @@ include('layout/adminsession.php');
                 }
 
 
-                $sql = "SELECT m.name,m.phone, m.mid, mst.msid, mst.renew_date, mst.expiry_date
-    FROM member m
-    JOIN member_subscription_track mst ON m.mid = mst.mid
-    WHERE mst.expiry_date < CURDATE()  and  m.status = 'online'
-    ORDER BY mst.expiry_date DESC
-    ";
-
+                $sql = "SELECT member.name, member.phone, member.status, member.mid, mst.msid, mst.renew_date, mst.expiry_date
+                FROM member 
+                JOIN member_subscription_track mst ON member.mid = mst.mid
+                WHERE mst.expiry_date < CURDATE()
+                ORDER BY member.status DESC,
+                 mst.expiry_date DESC";
+        
 
                 $result = $conn->query($sql);
                 $i = 0;
@@ -65,6 +66,7 @@ include('layout/adminsession.php');
                     $id = $row["mid"];
                     $name = $row["name"];
                     $phone = $row["phone"];
+                    $status = $row["status"];
 
                     $renew_date = $row["renew_date"];
                     $expiry_date = $row["expiry_date"];
@@ -83,6 +85,7 @@ include('layout/adminsession.php');
             <td>$i</td>
             <td>$name</td>
             <td>$phone</td>
+            <td>$status</td>
 
            <td>  
            <form action='membersubscription_detail.php' method='get' target='_blank'>

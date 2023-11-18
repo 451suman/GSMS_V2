@@ -83,27 +83,12 @@ if (isset($_POST['otp_Submit'])) {
         $DB_otp = $row['m_otp'];
         $DB_otp_eDate = $row['m_opt_expire_time'];
 
-        if ($hash_otp != $DB_otp) {
-            echo '<script type="text/javascript">';
-            echo 'swal.fire({
-                icon: "error",
-                title: "Error!",
-                text: "The OTP (One-Time Password) did not matched",
-            }).then(function() {
-                window.location = "forgetpassEmail.php";
-            });';
-            echo '</script>';
-        }
+
 
         date_default_timezone_set('Asia/Kathmandu');
         $current = date('Y-m-d H:i:s');
 
-        // Check if the OTP has expired
-
-
         if ($DB_otp_eDate < $current) {
-
-            // OTP has expired
             echo '<script type="text/javascript">';
             echo 'swal.fire({
                 icon: "error",
@@ -113,12 +98,23 @@ if (isset($_POST['otp_Submit'])) {
                 window.location = "forgetpassEmail.php";
             });';
             echo '</script>';
-        } else {
-            // OTP is valid, display success message
+        } 
+        else if ($hash_otp == $DB_otp) {
             echo '<script type="text/javascript">';
             echo 'swal.fire({
                 icon: "success",
                 text: "The OTP (One-Time Password) has been successfully verified.",
+            });';
+            echo '</script>';
+        } else {
+            // OTP is invalid
+            echo '<script type="text/javascript">';
+            echo 'swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "The OTP (One-Time Password) did not matched",
+            }).then(function() {
+                window.location = "forgetpassEmail.php";
             });';
             echo '</script>';
         }

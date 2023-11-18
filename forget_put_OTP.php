@@ -19,11 +19,8 @@ if (isset($_POST['searchs'])) {
         // $otp_expiryy=date('y-m-d h:i:s');
         $otp_expiry = date('Y-m-d H:i:s', time() + 60 * 3);
 
-
         $otp = rand(100000, 999999);
         $hash_otp = md5($otp);
-
-
 
         // Assuming you have already defined $otp_expiry and $mid securely
 
