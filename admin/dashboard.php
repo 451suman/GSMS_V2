@@ -150,9 +150,11 @@ if (isset($_GET['verify'])) {
                 $mid = $row['mid'];
                 $expiry_date = $row['expiry_date'];
 
-                // date calculation
-                // date by adding the subscription period to the expiry date and formatting the result as 'Y-m-d'.
-                // strtotime convert date into sec or Unix timestamp
+                // strtotime($subscriptionPeriod, strtotime($expiry_date))
+                // This part uses the strtotime function again, but with an additional parameter. 
+                // It takes the $subscriptionPeriod (which is presumably a duration like "1 month") and 
+                // adds it to the timestamp obtained from $expiry_date. 
+                // This effectively calculates the new timestamp representing the updated date
 
                 $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($expiry_date)));
 
@@ -194,10 +196,6 @@ if (isset($_GET['verify'])) {
                 $currentTimestamp = strtotime($currentDate);
                 $expiryTimestamp = strtotime($expiry_date);
 
-                // date calculation
-                // date by adding the subscription period to the expiry date and formatting the result as 'Y-m-d'.
-                // strtotime convert date into sec or Unix timestamp
-
                 $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($currentDate)));
                 // SQL for update in DB
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
@@ -232,8 +230,7 @@ if (isset($_GET['verify'])) {
             }
             // new member status offline. And does not have any data in sub track table
             else if ($status == 'offline') {
-                // date by adding the subscription period to the expiry date and formatting the result as 'Y-m-d'.
-                // strtotime convert date into sec or Unix timestamp
+                
                 $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
                 $nnewDate = date("Y-m-d", $newDate);
 
