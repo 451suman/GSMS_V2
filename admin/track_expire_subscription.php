@@ -42,7 +42,8 @@ include('layout/adminsession.php');
             // --------------------------------descending order---------------------------
             
 
-            if (isset($_POST["dec"])) {
+            // if (isset($_POST["dec"])) 
+            // {
 
 
                 $conn = new mysqli("localhost", "root", "", "gsms");
@@ -108,7 +109,7 @@ include('layout/adminsession.php');
                 }
 
 
-            }
+            // }
 
 
 
