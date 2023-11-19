@@ -254,8 +254,9 @@ input#signup {
 }
 
 .about {
-    text-align: center;
-    padding: 25px;
+    /* text-align: center; */
+    padding-left: 25px;
+    padding-right: 25px;
     font-family: 'Playfair Display', serif;
     font-style: italic;
 }

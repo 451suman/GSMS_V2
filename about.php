@@ -32,6 +32,7 @@ $p = $row['phone'];
                 managing their gym memberships and attendance, making it a valuable tool for both gym members and
                 administrators
             </p>
+            <p style=" font-size: 15px; ">Contact: xxxxxxxxxx</p>
         </div>
         <br>
         <p style="color: #A7ECEE;">
