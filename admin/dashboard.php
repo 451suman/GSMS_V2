@@ -212,7 +212,7 @@ if (isset($_GET['verify'])) {
                     echo '<script type="text/javascript">';
                     echo 'Swal.fire({
                                         icon: "success",
-                                          title: "Reset and Verify were successful, and the status is online."
+                                          title: "Old member return. Verify were successful, and the status is online."
                                       }).then(function() {
                                           window.location = "dashboard.php";
                                       });';

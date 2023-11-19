@@ -56,9 +56,7 @@ include('layout/adminsession.php');
                 FROM member 
                 JOIN member_subscription_track mst ON member.mid = mst.mid
                 WHERE mst.expiry_date < CURDATE()
-                ORDER BY member.status DESC,
-                 mst.expiry_date DESC";
-        
+                ORDER BY member.status DESC, mst.expiry_date DESC";
 
                 $result = $conn->query($sql);
                 $i = 0;
