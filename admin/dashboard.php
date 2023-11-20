@@ -37,7 +37,7 @@ if (isset($_GET['remaining_days'])) {
         if ($r->num_rows > 0) {
             $row = $r->fetch_assoc();
             $expiry_date = $row["expiry_date"];
-            $date = date('F j, Y');
+            $date = date('Y-m-d');
             // Convert the expiry date and today's date to Unix timestamps
             $expiry_timestamp = strtotime($expiry_date);
             $today_timestamp = strtotime($date);
