@@ -160,10 +160,12 @@ if (isset($_GET['verify'])) {
 
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
                 $update_r_online = $conn->query($update_sql);
+                if ($update_r_online) {
 
-                $paymentsql = "INSERT INTO payment (mid, cname, package_name, duration, price, date)
+                    $paymentsql = "INSERT INTO payment (mid, cname, package_name, duration, price, date)
                 VALUES ( '$mid', '$cname', '$package_name', '$duration', '$package_price', current_timestamp())";
-                $r = $conn->query($paymentsql);
+                    $r = $conn->query($paymentsql);
+                }
 
                 if ($update_r_online && $r) {
                     echo '<script type="text/javascript">';
@@ -200,14 +202,17 @@ if (isset($_GET['verify'])) {
                 // SQL for update in DB
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
                 $update_r = $conn->query($update_sql);
+                if ($update_r) {
 
-                $paymentsql = "INSERT INTO payment (mid, cname, package_name, duration, price, date)
+                    $paymentsql = "INSERT INTO payment (mid, cname, package_name, duration, price, date)
                 VALUES ( '$mid', '$cname', '$package_name', '$duration', '$package_price', current_timestamp())";
-                $r = $conn->query($paymentsql);
+                    $r = $conn->query($paymentsql);
+                    if ($r) {
 
-                $online_sql = "UPDATE member SET status = 'online' WHERE mid = '$mid'";
-                $online_r = $conn->query($online_sql);
-
+                        $online_sql = "UPDATE member SET status = 'online' WHERE mid = '$mid'";
+                        $online_r = $conn->query($online_sql);
+                    }
+                }
                 if ($update_r && $r && $online_r) {
                     echo '<script type="text/javascript">';
                     echo 'Swal.fire({
@@ -230,7 +235,7 @@ if (isset($_GET['verify'])) {
             }
             // new member status offline. And does not have any data in sub track table
             else if ($status == 'offline') {
-                
+
                 $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
                 $nnewDate = date("Y-m-d", $newDate);
 
@@ -238,14 +243,19 @@ if (isset($_GET['verify'])) {
                 $msql = "INSERT INTO member_subscription_track (mid, renew_date, expiry_date) VALUES ($mid, current_timestamp(),
                 '$nnewDate') ";
                 $re = $conn->query($msql);
+                if ($re) {
 
-                $paymentsql = "INSERT INTO payment (mid, cname, package_name, duration, price, date)
+
+
+                    $paymentsql = "INSERT INTO payment (mid, cname, package_name, duration, price, date)
                                  VALUES ( '$mid', '$cname', '$package_name', '$duration', '$package_price', current_timestamp())";
-                $r = $conn->query($paymentsql);
+                    $r = $conn->query($paymentsql);
+                    if ($r) {
 
-                $online_sql = "UPDATE member SET status = 'online' WHERE mid = '$mid'";
-                $online_r = $conn->query($online_sql);
-
+                        $online_sql = "UPDATE member SET status = 'online' WHERE mid = '$mid'";
+                        $online_r = $conn->query($online_sql);
+                    }
+                }
                 if ($re && $r && $online_r) {
                     echo '<script type="text/javascript">';
                     echo 'Swal.fire({
