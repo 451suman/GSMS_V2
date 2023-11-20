@@ -156,7 +156,7 @@ if (isset($_GET['verify'])) {
                 // adds it to the timestamp obtained from $expiry_date. 
                 // This effectively calculates the new timestamp representing the updated date
 
-                $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($expiry_date)));
+                $update_date = date("Y-m-d", strtotime($currentDate . $subscriptionPeriod ));
 
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
                 $update_r_online = $conn->query($update_sql);
@@ -198,7 +198,8 @@ if (isset($_GET['verify'])) {
                 $currentTimestamp = strtotime($currentDate);
                 $expiryTimestamp = strtotime($expiry_date);
 
-                $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($currentDate)));
+                // $update_date = date('Y-m-d', strtotime($subscriptionPeriod, strtotime($currentDate)));
+                $update_date = date('Y-m-d',strtotime($currentDate. $subscriptionPeriod ));
                 // SQL for update in DB
                 $update_sql = " UPDATE member_subscription_track SET expiry_date = '$update_date' WHERE msid = '$msid ' and mid='$mid' ";
                 $update_r = $conn->query($update_sql);
@@ -236,7 +237,8 @@ if (isset($_GET['verify'])) {
             // new member status offline. And does not have any data in sub track table
             else if ($status == 'offline') {
 
-                $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
+                // $newDate = strtotime($subscriptionPeriod, strtotime($currentDate));
+                $newDate = strtotime($currentDate .$subscriptionPeriod);
                 $nnewDate = date("Y-m-d", $newDate);
 
                 // if new member enrolleed
