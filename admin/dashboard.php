@@ -38,7 +38,7 @@ if (isset($_GET['remaining_days'])) {
             $row = $r->fetch_assoc();
             $expiry_date = $row["expiry_date"];
             $date = date('Y-m-d');
-            // Convert the expiry date and today's date to Unix timestamps
+            // Convert the expiry date and today's date to Unix timestamps i.e convert date into sec 
             $expiry_timestamp = strtotime($expiry_date);
             $today_timestamp = strtotime($date);
             // Calculate the difference in seconds
