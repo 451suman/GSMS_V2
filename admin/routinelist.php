@@ -23,16 +23,16 @@ include 'layout/adminsession.php';
             echo 'alert("Update error");';
             echo '</script>';
         }
-
     }
     ?>
 
 
-
-
-
-
     <div class="table_class">
+        <!-- routine search -->
+        <form action="routine_detail.php" method="post">
+        <input type="search" name="m_name" placeholder="Enter a  full name to search routine" style="width: 250px;" required>
+        <input type="submit" name="search_routine" id="" value="search">
+        </form>
         <table class="membership">
             <tr>
                 <td colspan="7">
