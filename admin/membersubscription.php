@@ -8,8 +8,8 @@ include('layout/adminsession.php');
 <div id="right">
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
-<a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Expired Membership </a>
-   
+    <a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Expired Membership </a>
+
     <form action="memberSubscrition_search.php" method="get">
         <input type="search" name="name_search" id="" placeholder="Search Name">
         <input type="submit" name="n_search" value="Search" id="">
@@ -48,6 +48,7 @@ include('layout/adminsession.php');
             $result = $conn->query($sql);
             $i = 0;
             while ($row = $result->fetch_assoc()) {
+
                 $i++;
                 $id = $row["mid"];
                 $name = $row["name"];
@@ -66,9 +67,9 @@ include('layout/adminsession.php');
 
                 // Convert the difference to days
                 $days_remaining = round($difference / (60 * 60 * 24));
-
-
-                echo "<tr>
+                // expire members display row in red colour
+                if ($days_remaining <= 0) {
+                    echo "<tr style='background-color: #ffb3b3;'>
                         <td>$i</td>
                         <td>$name</td>
                         <td>$phone</td>
@@ -90,6 +91,33 @@ include('layout/adminsession.php');
                             </form>
                         </td>
                     </tr>";
+                }
+                //  members display row in green colour
+                // if ($days_remaining > 0)
+                 else{
+                    echo "<tr style='background-color: #C5E898;'>
+                        <td>$i</td>
+                        <td>$name</td>
+                        <td>$phone</td>
+                        <td>$status</td>
+                       <td>  
+                       <form action='membersubscription_detail.php' method='get' target='_blank'>
+                       <input type='hidden' value='$id' name='member_id' />
+                       <input type='submit' name='detail' value='Detail' class='edit_sub_track'>
+                   </form>
+                       </td>
+                        <td>$renew_date</td>
+                        <td>$expiry_date</td>
+                        <td>$days_remaining</td>
+                        <td class='h-center'>
+                            
+                            <form action='edit_sub_track.php' method='get'>
+                                <input type='hidden' value='$id' name='member_id'/>
+                                <input type='submit' name='edit_track' value='Edit' class='edit_sub_track'>
+                            </form>
+                        </td>
+                    </tr>";
+                }
             }
             ?>
         </table>

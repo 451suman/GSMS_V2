@@ -22,7 +22,7 @@ include('layout/adminsession.php');
         <table class="membership">
             <tr>
                 <td colspan="9">
-                    <h1 class="center">MEMBER SUBSCRIPTION REPORT</h1>
+                    <h1 class="center">EXPIRED MEMBER SUBSCRIPTION REPORT</h1>
                 </td>
             </tr>
             <tr>
@@ -38,81 +38,61 @@ include('layout/adminsession.php');
             </tr>
             <?php
 
-
-            // --------------------------------descending order---------------------------
-            
-
-            // if (isset($_POST["dec"])) 
-            // {
+            $conn = new mysqli("localhost", "root", "", "gsms");
+            if ($conn->connect_error) {
+                die("Database connection error");
+            }
 
 
-                $conn = new mysqli("localhost", "root", "", "gsms");
-                if ($conn->connect_error) {
-                    die("Database connection error");
-                }
-
-
-                $sql = "SELECT member.name, member.phone, member.status, member.mid, mst.msid, mst.renew_date, mst.expiry_date
+            $sql = "SELECT member.name, member.phone, member.status, member.mid, mst.msid, mst.renew_date, mst.expiry_date
                 FROM member 
                 JOIN member_subscription_track mst ON member.mid = mst.mid
                 WHERE mst.expiry_date < CURDATE()
                 ORDER BY member.status DESC, mst.expiry_date DESC";
 
-                $result = $conn->query($sql);
-                $i = 0;
-                while ($row = $result->fetch_assoc()) {
-                    $i++;
-                    $id = $row["mid"];
-                    $name = $row["name"];
-                    $phone = $row["phone"];
-                    $status = $row["status"];
+            $result = $conn->query($sql);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $i++;
+                $id = $row["mid"];
+                $name = $row["name"];
+                $phone = $row["phone"];
+                $status = $row["status"];
 
-                    $renew_date = $row["renew_date"];
-                    $expiry_date = $row["expiry_date"];
-                    $date = date('F j, Y');
-                    // Convert the expiry date and today's date to Unix timestamps
-                    $expiry_timestamp = strtotime($expiry_date);
-                    $today_timestamp = strtotime($date);
-                    // Calculate the difference in seconds
-                    $difference = $expiry_timestamp - $today_timestamp;
+                $renew_date = $row["renew_date"];
+                $expiry_date = $row["expiry_date"];
+                $date = date('F j, Y');
+                // Convert the expiry date and today's date to Unix timestamps
+                $expiry_timestamp = strtotime($expiry_date);
+                $today_timestamp = strtotime($date);
+                // Calculate the difference in seconds
+                $difference = $expiry_timestamp - $today_timestamp;
 
-                    // Convert the difference to days
-                    $days_remaining = round($difference / (60 * 60 * 24));
-
-
-                    echo "<tr>
-            <td>$i</td>
-            <td>$name</td>
-            <td>$phone</td>
-            <td>$status</td>
-
-           <td>  
-           <form action='membersubscription_detail.php' method='get' target='_blank'>
-           <input type='hidden' value='$id' name='member_id' />
-           <input type='submit' name='detail' value='Detail' class='edit_sub_track'>
-       </form>
-           </td>
-           
-            <td>$renew_date</td>
-            <td>$expiry_date</td>
-            <td>$days_remaining</td>
-            <td class='h-center'>
+                // Convert the difference to days
+                $days_remaining = round($difference / (60 * 60 * 24));
                 
-                <form action='edit_sub_track.php' method='get'>
-                    <input type='hidden' value='$id' name='member_id' />
-                    <input type='submit' name='edit_track' value='Edit' class='edit_sub_track'>
-                </form>
-            </td>
-        </tr>";
-                }
-
-
-            // }
-
-
-
-
-
+                echo "<tr style='background-color: #ffb3b3;'>
+                <td>$i</td>
+                            <td>$name</td>
+                            <td>$phone</td>
+                            <td>$status</td>
+                            <td>  
+                                <form action='membersubscription_detail.php' method='get' target='_blank'>
+                                    <input type='hidden' value='$id' name='member_id' />
+                                    <input type='submit' name='detail' value='Detail' class='edit_sub_track'>
+                                </form>
+                            </td>
+                            <td>$renew_date</td>
+                            <td>$expiry_date</td>
+                            <td>$days_remaining</td>
+                            <td class='h-center'>
+                                <form action='edit_sub_track.php' method='get'>
+                                    <input type='hidden' value='$id' name='member_id' />
+                                    <input type='submit' name='edit_track' value='Edit' class='edit_sub_track'>
+                                </form>
+                            </td>
+                        </tr>";
+            }
             ?>
         </table>
     </div>
