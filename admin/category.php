@@ -3,7 +3,7 @@ include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
 ?>
-
+<!-- if you click delete in category.php this code will run -->
 <?php
 if (isset($_GET['delete_category'])) {
     $id = $_GET['category_id'];
@@ -27,6 +27,7 @@ if (isset($_GET['delete_category'])) {
     }
 }
 ?>
+
 <div id="right">
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
