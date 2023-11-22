@@ -29,7 +29,8 @@ include('layout/adminsession.php');
                     die("database connection error");
                 }
 
-                $sql = "INSERT INTO category (package_name,cname, duration, package_price,  image) VALUES ('$pname','$cname', '$duration', '$price',  '$file_name')";
+                $sql = "INSERT INTO category (package_name,cname, duration, package_price,  image) 
+                VALUES ('$pname','$cname', '$duration', '$price',  '$file_name')";
                 $result = $conn->query($sql);
 
                 if ($result) {

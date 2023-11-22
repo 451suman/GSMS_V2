@@ -8,10 +8,10 @@ include('layout/adminsession.php');
 <div id="right">
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
-    <a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Expired Membership </a>
+    <a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Offline Expired Membership </a>
 
     <form action="memberSubscrition_search.php" method="get">
-        <input type="search" name="name_search" id="" placeholder="Search Name">
+        <input type="search" name="name_search" id="" placeholder="Search Name" required>
         <input type="submit" name="n_search" value="Search" id="">
     </form>
 

@@ -2,19 +2,14 @@
 include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
-
-
-
 ?>
 <div id="right">
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
     <a href="membersubscription.php" class="centermember_botton_trackExpire"> Back</a>
 
-
-
     <form action="memberSubscrition_search.php" method="get">
-        <input type="search" name="name_search" id="" placeholder="Search Name">
+        <input type="search" name="name_search" id="" placeholder="Search Name" required>
         <input type="submit" name="n_search" value="Search" id="">
     </form>
 
@@ -43,12 +38,11 @@ include('layout/adminsession.php');
                 die("Database connection error");
             }
 
-
             $sql = "SELECT member.name, member.phone, member.status, member.mid, mst.msid, mst.renew_date, mst.expiry_date
                 FROM member 
                 JOIN member_subscription_track mst ON member.mid = mst.mid
-                WHERE mst.expiry_date < CURDATE()
-                ORDER BY member.status DESC, mst.expiry_date DESC";
+                WHERE mst.expiry_date < CURDATE() AND member.status = 'offline'
+                ORDER BY mst.expiry_date DESC";
 
             $result = $conn->query($sql);
             $i = 0;
@@ -70,7 +64,7 @@ include('layout/adminsession.php');
 
                 // Convert the difference to days
                 $days_remaining = round($difference / (60 * 60 * 24));
-                
+
                 echo "<tr style='background-color: #ffb3b3;'>
                 <td>$i</td>
                             <td>$name</td>

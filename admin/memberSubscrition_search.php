@@ -9,12 +9,11 @@ include('layout/adminsession.php');
 <div id="right">
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
-    <form action="track_expire_subscription.php" method="post">
-        <input type="submit" name="dec" id="" value="Track Expired Membership" class="centermember_botton_trackExpire">
-    </form>
+    <a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Offline Expired Membership </a>
+
 
     <form action="" method="get">
-        <input type="search" name="name_search" id="" placeholder="Search Name">
+        <input type="search" name="name_search" id="" placeholder="Search Name" required>
         <input type="submit" name="n_search" value="Search" id="">
     </form>
 
@@ -42,10 +41,7 @@ include('layout/adminsession.php');
 
             if (isset($_GET['n_search'])) {
                 $S_name = $_GET['name_search'];
-
-
-
-
+                
                 $conn = new mysqli("localhost", "root", "", "gsms");
                 if ($conn->connect_error) {
                     die("Database connection error");
