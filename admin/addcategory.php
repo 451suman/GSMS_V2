@@ -18,10 +18,14 @@ include('layout/adminsession.php');
 
         $file_name = $_FILES["image"]["name"];       // store the name of the uploaded file
         $file_size = $_FILES["image"]["size"];    //  store the size of the uploaded file
-        $file_tmp = $_FILES["image"]["tmp_name"];  //used to access the temporary filename of the uploaded file
+        $file_tmp = $_FILES["image"]["tmp_name"];
+        $fileType = pathinfo($file_name, PATHINFO_EXTENSION);
+
+        // Generate a unique filename using a timestamp
+         $newFileName = "image_" . time() . '.' . $fileType;  //used to access the temporary filename of the uploaded file
     
         if ($file_size < 5242880) { // Max file size: 5MB (you can adjust this value)
-            $destination = "../img/" . $file_name;
+            $destination = "../img/" . $newFileName;
 
             if (move_uploaded_file($file_tmp, $destination)) {
                 $conn = new mysqli("localhost", "root", "", "gsms");
@@ -30,7 +34,7 @@ include('layout/adminsession.php');
                 }
 
                 $sql = "INSERT INTO category (package_name,cname, duration, package_price,  image) 
-                VALUES ('$pname','$cname', '$duration', '$price',  '$file_name')";
+                VALUES ('$pname','$cname', '$duration', '$price',  '$newFileName')";
                 $result = $conn->query($sql);
 
                 if ($result) {
@@ -87,7 +91,7 @@ include('layout/adminsession.php');
 
             <div>
                 <label for="cname">Category Name</label><br>
-                <input type="text" name="cname" maxlength="10" class="transparent" id="cname" required><br>
+                <input type="text" name="cname" maxlength="10" value="GYM" class="transparent" id="cname" readonly><br>
             </div>
 
             <div>

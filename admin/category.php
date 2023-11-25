@@ -9,21 +9,45 @@ if (isset($_GET['delete_category'])) {
     $id = $_GET['category_id'];
     $conn = new mysqli("localhost", "root", "", "gsms");
     if ($conn->connect_error) {
-        die("connection error");
+        die("Connection error");
     }
-    $sql = "DELETE FROM category WHERE  cid = '$id' ";
-    $r = $conn->query($sql);
-    if ($r) {
-        echo '<script type="text/javascript">';
 
-        echo "Swal.fire({
-                title: 'DELETE SUCCESSFULL!',
-                icon: 'success',
-              })";
-        echo '</script>';
-        // header("location:category.php");
-    } else {
-        echo ("not successful");
+    // Select id and extract image info/ name from the database
+    $imgSQL = "SELECT * FROM category WHERE cid = '$id'";
+    $imgResult = $conn->query($imgSQL);
+
+    if ($imgResult->num_rows > 0) {
+        $row = $imgResult->fetch_assoc();
+        $img_name = $row['image'];
+
+        // Construct file path
+        $folderPath = '../img/'; // Set the path to the folder
+        $filePath = $folderPath . $img_name; 
+
+        // Check if the file exists before attempting to delete
+        if (file_exists($filePath)) {
+            // Delete the file
+            if (unlink($filePath)) {
+                // If file deletion is successful,then  delete data from the database
+                $sql = "DELETE FROM category WHERE cid = '$id'";
+                $result = $conn->query($sql);
+
+                if ($result) {
+                    echo '<script type="text/javascript">';
+                    echo "Swal.fire({
+                        title: 'DELETE SUCCESSFUL!',
+                        icon: 'success',
+                    })";
+                    echo '</script>';
+                } else {
+                    echo "alert('deletion failed.');";
+                }
+            } else {
+                echo "alert('deletion failed.');";
+            }
+        } else {
+            echo "alert('image not found');";
+        }
     }
 }
 ?>
@@ -35,15 +59,9 @@ if (isset($_GET['delete_category'])) {
     <form action="addcategory.php">
         <input type="submit" name="addcategory" id="" value="Add Category" class="centermember">
     </form>
-    <!-- <form action="search.php" method="post">
-          <input type="search" name="text_search" id=""class="centermember_botton" placeholder="Enter a name" value="">
-          
-             <input type="submit" name="search" id="" value="search"class="centermember_botton">
-          </form> -->
 
 
     <div class="table_class">
-        <link rel="stylesheet" href="../css/tableDecorate.css">
 
         <table class="membership">
             <tr>

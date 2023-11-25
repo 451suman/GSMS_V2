@@ -9,6 +9,38 @@ include('layout_member/member_session.php');
 
 
 <div id="right">
+    <?php
+    $conn = new mysqli("localhost", "root", "", "gsms");
+    if ($conn->connect_error) {
+        die("Database connection error");
+    }
+    $sql = "SELECT * FROM member where mid ='$id'";
+    $r = $conn->query($sql);
+    if ($r) {
+        $row = $r->fetch_assoc();
+        $image_name = $row['image'];
+        if ($image_name == "") {
+
+
+            echo '<script>';
+            echo 'Swal.fire({
+                icon: "info",
+                text: "To access the system, you need to upload a profile picture."
+            }).then(function() {
+                window.location = "uploadProfile_index.php";
+            });';
+            echo '</script>';
+
+
+        }
+    }
+    ?>
+
+
+
+
+
+
 
     <div class="right_indexx">
         <?php
@@ -20,6 +52,7 @@ include('layout_member/member_session.php');
         ORDER BY duration ASC
         ";
         $result = $conn->query($sql);
+
         if ($result->num_rows > 0) {
 
 
@@ -69,7 +102,6 @@ include('layout_member/member_session.php');
         } else {
             echo "<p style='font-size:30px;'>No Subscription Category To Enroll. Consult to Admin</p>";
         }
-
 
         ?>
     </div>
