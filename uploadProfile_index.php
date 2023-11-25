@@ -19,7 +19,7 @@ include('layout_member/member_session.php');
         color: black;
     }
 
-    img {
+    #img {
         border: 5px solid black;
     }
 
@@ -122,7 +122,7 @@ if (isset($_POST["upload"])) {
                         <?php echo "Name: $n"; ?>
                     </p>
                     <p>Upload yor profile</p>
-                    <img src="img/defaultuser.jpg" style="height:400px; width:400px;" alt="">
+                    <img src="img/defaultuser.jpg" style="height:400px; width:400px;" id="img" alt="">
 
                 </td>
                 <td>

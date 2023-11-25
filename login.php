@@ -27,7 +27,7 @@ if (isset($_POST["login"])) {
     } else {
 
 
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo "Swal.fire({
     icon: 'error',
     title: 'Oops...',

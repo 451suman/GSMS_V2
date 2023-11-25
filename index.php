@@ -19,7 +19,7 @@ if (isset($_POST['enroll_form'])) {
         $sql = "UPDATE enrollment SET mid = '$mid', cid = '$cid', verified='no' WHERE eid ='$eid'";
         $r = $conn->query($sql);
         if ($r) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                                 text: "Waiting for enrollment verification by an administrator.",
                            }).then(function() {
@@ -27,7 +27,7 @@ if (isset($_POST['enroll_form'])) {
                            });';
             echo '</script>';
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({     
                                 text: "not successful",        
                             }).then(function() {
@@ -40,7 +40,7 @@ if (isset($_POST['enroll_form'])) {
         $sql = "INSERT INTO enrollment (mid, cid) VALUES ( '$mid', '$cid')";
         $r = $conn->query($sql);
         if ($r) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             // echo 'alert("Wating for Enroll verification by Admin");';
             // echo 'window.location.href = "index.php";';
             echo 'swal.fire({
@@ -50,7 +50,7 @@ if (isset($_POST['enroll_form'])) {
                             });';
             echo '</script>';
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             // echo 'alert("not successful");';
             echo 'swal.fire({
                                 text: "not successful",

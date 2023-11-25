@@ -152,7 +152,7 @@ include('layout/adminsession.php');
                                
                             ";
                         } else {
-                            echo '<script type="text/javascript">';
+                            echo '<script>';
                             echo 'swal.fire({
                                         icon: "error",
                                         title: "routine not found!",
@@ -163,7 +163,7 @@ include('layout/adminsession.php');
                         }
                     
                 } else {
-                    echo '<script type="text/javascript">';
+                    echo '<script>';
                     echo 'swal.fire({
                                 icon: "error",
                                 title: "Name not found!",

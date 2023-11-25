@@ -22,7 +22,7 @@ if (isset($_GET['delete_category'])) {
 
         // Construct file path
         $folderPath = '../img/'; // Set the path to the folder
-        $filePath = $folderPath . $img_name; 
+        $filePath = $folderPath . $img_name;
 
         // Check if the file exists before attempting to delete
         if (file_exists($filePath)) {
@@ -33,7 +33,7 @@ if (isset($_GET['delete_category'])) {
                 $result = $conn->query($sql);
 
                 if ($result) {
-                    echo '<script type="text/javascript">';
+                    echo '<script>';
                     echo "Swal.fire({
                         title: 'DELETE SUCCESSFUL!',
                         icon: 'success',
@@ -56,10 +56,7 @@ if (isset($_GET['delete_category'])) {
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
 
-    <form action="addcategory.php">
-        <input type="submit" name="addcategory" id="" value="Add Category" class="centermember">
-    </form>
-
+    <a href="addcategory.php" id="add_category_btn">Add Category</a>
 
     <div class="table_class">
 
@@ -117,8 +114,6 @@ if (isset($_GET['delete_category'])) {
                         <input type='submit' name='delete_category' value='Delete' class='edit_delete_red'>
                         </form>
                 </td>
-            
-                
             </tr>";
             }
 

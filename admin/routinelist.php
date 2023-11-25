@@ -19,7 +19,7 @@ include 'layout/adminsession.php';
         if ($r) {
             header("location:routinelist.php");
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'alert("Update error");';
             echo '</script>';
         }

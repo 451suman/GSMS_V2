@@ -18,6 +18,16 @@ a {
     text-align: center;
 }
 
+
+#add_category_btn{
+    background-color: white;
+    padding: 5px;
+    text-align: center !important;
+    float: right;
+    color: #000000;
+    
+}
+
 form.edit_category_form {
     margin-left: 452px;
     margin-top: 74px;

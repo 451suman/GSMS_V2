@@ -27,7 +27,7 @@ if (isset($_POST["login"])) {
         header("location: dashboard.php");
         exit;
     } else {
-        echo '<script type="text/javascript">';
+        echo '<script>';
 
         echo 'swal.fire({
              icon: "error",

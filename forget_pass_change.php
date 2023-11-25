@@ -23,7 +23,7 @@ if (isset($_POST['Submit'])) {
         }
     }
     if (!empty($error)) {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'var errorMessage = "";';
         foreach ($error as $errorMsg) {
             echo "errorMessage += '$errorMsg. ';";
@@ -40,7 +40,7 @@ if (isset($_POST['Submit'])) {
         $change_pass_sql = "UPDATE member SET password = '$hash' WHERE mid='$mid' ";
         $result = $conn->query($change_pass_sql);
         if ($result) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                      icon: "success",
                     title: "Wow!",
@@ -50,7 +50,7 @@ if (isset($_POST['Submit'])) {
                 });';
             echo '</script>';
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                      icon: "error",
                     title: "ERROR!",
@@ -89,7 +89,7 @@ if (isset($_POST['otp_Submit'])) {
         $current = date('Y-m-d H:i:s');
 
         if ($DB_otp_eDate < $current) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                 icon: "error",
                 title: "Error!",
@@ -100,7 +100,7 @@ if (isset($_POST['otp_Submit'])) {
             echo '</script>';
         } 
         else if ($hash_otp == $DB_otp) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                 icon: "success",
                 text: "The OTP (One-Time Password) has been successfully verified.",
@@ -108,7 +108,7 @@ if (isset($_POST['otp_Submit'])) {
             echo '</script>';
         } else {
             // OTP is invalid
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                 icon: "error",
                 title: "Error!",

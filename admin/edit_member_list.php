@@ -28,12 +28,7 @@ if (isset($_POST['update'])) {
     $error = [];
 
 
-    // Validate name
-//    if (empty($name)) {
-//     echo '<script type="text/javascript">';
-//     echo 'alert("Please enter a name");';
-//     echo '</script>';
-// }
+
     if (!preg_match('/^[A-Za-z]+(?:\s[A-Za-z]+)?$/', $name)) {
         $error['name'] = "Name field should contain alphabets and a maximum of one space between words";
     }

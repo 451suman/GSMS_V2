@@ -27,7 +27,7 @@ if (isset($_POST['sub_update'])) {
     $r = $conn->query($sql);
 
     if ($r) {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo "Swal.fire({
         text: 'Date Update Successful.',
         icon: 'success',

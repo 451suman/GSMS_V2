@@ -41,7 +41,7 @@ if (isset($_POST['searchs'])) {
 
 
             if (mail($to, $subject, $message, $headers)) {
-                echo '<script type="text/javascript">';
+                echo '<script>';
                 echo 'swal.fire({
                              icon: "info",
                             title: "CHECK MAIL!",
@@ -55,7 +55,7 @@ if (isset($_POST['searchs'])) {
             }
 
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                          icon: "error",
                         title: "ERROR!",
@@ -65,7 +65,7 @@ if (isset($_POST['searchs'])) {
             echo '</script>';
         }
     } else {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'swal.fire({
                      icon: "error",
                     title: "email not found !",

@@ -8,150 +8,148 @@ include('layout/adminsession.php');
 
 
 
-<?php
-// Getting values from the form for editing from edit_category.php i.e mathi ko form
-if (isset($_POST['update'])) {
-    $pname = $_POST["pname"];
-    $cname = $_POST["cname"];
-    $duration = $_POST["duration"];
-    $price = $_POST["price"];
-    $cid = $_POST["category_id"];
+    <?php
+    // Getting values from the form for editing from edit_category.php i.e mathi ko form
+    // talla ko edit form ko backend ho yo
+    if (isset($_POST['update'])) {
+        $pname = $_POST["pname"];
+        $cname = $_POST["cname"];
+        $duration = $_POST["duration"];
+        $price = $_POST["price"];
+        $cid = $_POST["category_id"];
 
-    $conn = new mysqli("localhost", "root", "", "gsms");
-    if ($conn->connect_error) {
-        die("database connection error");
-    }
+        $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($conn->connect_error) {
+            die("database connection error");
+        }
 
-    // Check if a file is uploaded
-    if ($_FILES["image"]["name"]) {
-        $file_name = $_FILES["image"]["name"];
-        $file_size = $_FILES["image"]["size"];
-        $file_tmp = $_FILES["image"]["tmp_name"];
-        $fileType = pathinfo($file_name, PATHINFO_EXTENSION);
-        // Generate a unique filename using a timestamp
-        $newFileName = "image_" . time() . '.' . $fileType;  //used to access the temporary filename of the uploaded file
+        // Check if a file is uploaded
+        if ($_FILES["image"]["name"]) {
+            $file_name = $_FILES["image"]["name"];
+            $file_size = $_FILES["image"]["size"];
+            $file_tmp = $_FILES["image"]["tmp_name"];
+            $fileType = pathinfo($file_name, PATHINFO_EXTENSION);
+            // Generate a unique filename using a timestamp
+            $newFileName = "image_" . time() . '.' . $fileType;  //used to access the temporary filename of the uploaded file
+    
 
+            // delete old image form storage
+            $imgSQL = "SELECT * FROM category WHERE cid = '$cid'";
+            $imgResult = $conn->query($imgSQL);
+            if ($imgResult->num_rows > 0) {
+                $row = $imgResult->fetch_assoc();
+                $img_name = $row['image'];
 
-        // delete old image form storage
-        $imgSQL = "SELECT * FROM category WHERE cid = '$cid'";
-        $imgResult = $conn->query($imgSQL);
-        if ($imgResult->num_rows > 0) {
-            $row = $imgResult->fetch_assoc();
-            $img_name = $row['image'];
+                // Construct file path
+                $folderPath = '../img/'; // Set the path to the folder
+                $filePath = $folderPath . $img_name;
 
-            // Construct file path
-            $folderPath = '../img/'; // Set the path to the folder
-            $filePath = $folderPath . $img_name;
+                if ($file_size < 5242880) {
+                    // Check if the file exists before attempting to delete
+                    if (file_exists($filePath)) {
+                        // Delete the image
+                        if (unlink($filePath)) {
+                            // If file deletion is successful,then  delete data from the database
+                            // Max file size: 5MB (you can adjust this value)
+                            $destination = "../img/" . $newFileName;
+                            if (move_uploaded_file($file_tmp, $destination)) {
 
-            if ($file_size < 5242880) {
-            // Check if the file exists before attempting to delete
-            if (file_exists($filePath)) {
-                // Delete the image
-                if (unlink($filePath)) {
-                    // If file deletion is successful,then  delete data from the database
-                        // Max file size: 5MB (you can adjust this value)
-                        $destination = "../img/" . $newFileName;
-                        if (move_uploaded_file($file_tmp, $destination)) {
-
-                            $sql = "UPDATE category SET package_name = '$pname', cname = '$cname', duration = '$duration',
+                                $sql = "UPDATE category SET package_name = '$pname', cname = '$cname', duration = '$duration',
                                         package_price = '$price',image = '$newFileName'  WHERE cid = $cid;";
-                            $r = $conn->query($sql);
-                            if ($r) {
-                                echo '<script>';
-                                echo "Swal.fire({
+                                $r = $conn->query($sql);
+                                if ($r) {
+                                    echo '<script>';
+                                    echo "Swal.fire({
                                                 icon: 'success',
                                                 title: 'Update Successfully',
                                             }).then(function() {
                                                 window.location = 'category.php';
                                             });";
-                                echo '</script>';
+                                    echo '</script>';
 
-                            } else {
-                                echo '<script type="text/javascript">';
-                                echo 'swal.fire({
+                                } else {
+                                    echo '<script>';
+                                    echo 'swal.fire({
                                                 icon: "error",
                                                 title: "ERROR!",
                                                 text: "Image insert unsuccessfull",
                                             }).then(function() {
                                                 window.location = "category.php";
                                             });';
-                                echo '</script>';
-                                // echo '<script type="text/javascript">   alert("Image insert unsuccessful");
-                                //  window.location.href = "category.php;  </script>';
-                            }
-                        } else {
-                            echo '<script type="text/javascript">';
-                            echo 'swal.fire({
+                                    echo '</script>';
+                                    // echo '<script>   alert("Image insert unsuccessful");
+                                    //  window.location.href = "category.php;  </script>';
+                                }
+                            } else {
+                                echo '<script>';
+                                echo 'swal.fire({
                                                 icon: "error",
                                                 title: "ERROR!",
                                                 text: "Error moving uploaded file.",
                                             }).then(function() {
                                                 window.location = "category.php";
                                             });';
-                            echo '</script>';
-                            //   echo '<script type="text/javascript">   alert("Error moving uploaded file.");
-                            //    window.location.href = "category.php;  </script>';
+                                echo '</script>';
+                                //   echo '<script>   alert("Error moving uploaded file.");
+                                //    window.location.href = "category.php;  </script>';
+                            }
+                        } else {
+                            echo "alert('deletion failed.');";
                         }
+
+
                     } else {
-                        echo "alert('deletion failed.');";
+                        echo "alert('image not found');";
                     }
 
 
-                }else {
-                    echo "alert('image not found');";
-                } 
-                
-                
-            }
-            else {
-                echo '<script type="text/javascript">';
-                echo 'swal.fire({
+                } else {
+                    echo '<script>';
+                    echo 'swal.fire({
                                         icon: "error",
                                         title: "ERROR!",
                                         text: "File size exceeds the maximum limit.",
                                     }).then(function() {
                                         window.location = "category.php";
                                     });';
-                echo '</script>';
-                // echo '<script type="text/javascript">   alert("File size exceeds the maximum limit."); 
-                //  window.location.href = "category.php; </script>';
-            } 
-        }
+                    echo '</script>';
+                    // echo '<script>   alert("File size exceeds the maximum limit."); 
+                    //  window.location.href = "category.php; </script>';
+                }
+            }
 
 
 
-    } else {
-        // if Image is Not upload
-        $sql = "UPDATE category SET package_name = '$pname', cname = '$cname', duration = '$duration', package_price = '$price' WHERE cid = $cid;";
-        $r = $conn->query($sql);
-        if ($r) {
-            echo '<script>';
-            echo "Swal.fire({
+        } else {
+            // if Image is Not upload
+            $sql = "UPDATE category SET package_name = '$pname', cname = '$cname', duration = '$duration', package_price = '$price' WHERE cid = $cid;";
+            $r = $conn->query($sql);
+            if ($r) {
+                echo '<script>';
+                echo "Swal.fire({
                         icon: 'success',
                         title: 'Update Successfully',
                     }).then(function() {
                         window.location = 'category.php';
                     });";
-            echo '</script>';
-        } else {
-            echo '<script type="text/javascript">';
-            echo 'swal.fire({
+                echo '</script>';
+            } else {
+                echo '<script>';
+                echo 'swal.fire({
                         icon: "error",
                         title: "ERROR!",
                         text: "Update Failed",
                     }).then(function() {
                         window.location = "category.php";
                     });';
-            echo '</script>';
+                echo '</script>';
 
+            }
         }
     }
-}
 
 
-?>
-
-
+    ?>
 
 
 
@@ -159,6 +157,11 @@ if (isset($_POST['update'])) {
 
 
 
+
+
+
+
+<!-- edit button click gar pachi run huncha yo code from page category.php -->
 
     <?php
 

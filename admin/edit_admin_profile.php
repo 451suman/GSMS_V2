@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
     }
 
     if (!empty($error)) {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'var errorMessage = "";';
         foreach ($error as $errorMsg) {
             // \\n is used to insert a newline character into a string
@@ -69,7 +69,7 @@ if (isset($_POST['update'])) {
         $sql = "UPDATE admin SET name = '$name', phone = '$ph', email = '$e' WHERE aid='$id'";
         $r = $conn->query($sql);
         if ($r) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo "Swal.fire({
             text: 'Update Successful',
             icon: 'success',
@@ -79,7 +79,7 @@ if (isset($_POST['update'])) {
             // echo 'window.location.href = "adminprofile.php";';
             echo '</script>';
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo "Swal.fire({
                 text: 'Update Failed',
                 icon: 'error',

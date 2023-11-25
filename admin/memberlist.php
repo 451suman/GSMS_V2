@@ -27,7 +27,7 @@ if (isset($_GET['delete_member'])) {
                 $sql = "DELETE FROM member WHERE mid='$id'";
                 $r = $conn->query($sql);
                 if ($r) {
-                    echo '<script type="text/javascript">';
+                    echo '<script>';
                     echo 'Swal.fire(
                         "DELETE SUCCESSFULL!",
                         "Member Delete Successful",
@@ -35,7 +35,7 @@ if (isset($_GET['delete_member'])) {
                         )  ';
                     echo '</script>';
                 } else {
-                    echo '<script type="text/javascript">';
+                    echo '<script>';
                     echo 'alert("Delete unsuccessful");';
                     echo '</script>';
                 }

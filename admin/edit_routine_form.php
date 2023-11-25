@@ -21,7 +21,7 @@ if (isset($_POST["update_routine"])) {
     $sql = "UPDATE routine SET chest = '$chest', back= '$back', soulder = '$soulder', biseps = '$biseps', triceps = '$triceps', leg = '$leg', abs='$abs', verify='yes' WHERE rid = $id";
     $r = $conn->query($sql);
     if ($r) {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'Swal.fire({
                     icon: "success",
                     title: "Routine Update successful.",
@@ -35,7 +35,7 @@ if (isset($_POST["update_routine"])) {
         echo '</script>';
         header("location:");
     } else {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'Swal.fire({
                     icon: "error",
                     title: "Routine Update Failed.",

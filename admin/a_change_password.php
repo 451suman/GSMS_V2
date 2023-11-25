@@ -30,7 +30,7 @@ include('layout/adminsession.php');
                 echo '</script>';
 
             } elseif ($pass !== $c_pass) {
-                echo '<script type="text/javascript">';
+                echo '<script>';
                 echo "Swal.fire({
                     icon: 'error',
                     title: 'Error!',
@@ -51,7 +51,7 @@ include('layout/adminsession.php');
                 $sql2 = "UPDATE admin SET password = '$md_pass' WHERE aid = $aid";
                 $result = $conn->query($sql2);
                 if ($result) {
-                    echo '<script type="text/javascript">';
+                    echo '<script>';
                     echo "Swal.fire({
                         icon: 'success',
                         title: 'Successful',
@@ -63,7 +63,7 @@ include('layout/adminsession.php');
                     // echo 'window.location.href = "adminprofile.php";';
                     echo '</script>';
                 } else {
-                    echo '<script type="text/javascript">';
+                    echo '<script>';
                     echo "Swal.fire({
                         icon: 'error',
                         title: 'Error!',
@@ -77,7 +77,7 @@ include('layout/adminsession.php');
                 }
             }
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo "Swal.fire({
                 icon: 'error',
                 title: 'Error!',

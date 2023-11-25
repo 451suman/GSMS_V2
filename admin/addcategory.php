@@ -22,7 +22,7 @@ include('layout/adminsession.php');
         $fileType = pathinfo($file_name, PATHINFO_EXTENSION);
 
         // Generate a unique filename using a timestamp
-         $newFileName = "image_" . time() . '.' . $fileType;  //used to access the temporary filename of the uploaded file
+        $newFileName = "image_" . time() . '.' . $fileType;  //used to access the temporary filename of the uploaded file
     
         if ($file_size < 5242880) { // Max file size: 5MB (you can adjust this value)
             $destination = "../img/" . $newFileName;
@@ -48,7 +48,7 @@ include('layout/adminsession.php');
                     echo '</script>';
                     // header("location:category.php");
                 } else {
-                    echo '<script type="text/javascript">';
+                    echo '<script">';
                     echo 'swal.fire({
                                 icon: "error",
                                 title: "ERROR!",
@@ -58,7 +58,7 @@ include('layout/adminsession.php');
                     // echo "data insert unsuccessful";
                 }
             } else {
-                echo '<script type="text/javascript">';
+                echo '<script">';
                 echo 'swal.fire({
                                 icon: "error",
                                 title: "ERROR!",
@@ -67,7 +67,7 @@ include('layout/adminsession.php');
                 echo '</script>';
             }
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script">';
             echo 'swal.fire({
                                 icon: "error",
                                 title: "ERROR!",
@@ -101,12 +101,6 @@ include('layout/adminsession.php');
                 <label for="price">Price</label><br>
                 <input type="number" name="price" class="transparent" id="price" required><br>
             </div>
-
-
-
-
-
-
             <div>
                 <label for="image">Image</label><br>
                 <input type="file" name="image" class="transparent" id="image" accept=".jpg, .jpeg, .png" required><br>

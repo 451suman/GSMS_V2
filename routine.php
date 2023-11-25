@@ -53,7 +53,7 @@ if (isset($_GET['request_routine'])) {
         $update_sql = "UPDATE routine SET verify = 'no' WHERE rid = $rid";
         $update_r = $conn->query($update_sql);
         if ($update_r) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                      icon: "success",
                     text: "Request Successful. Wait for Admin to Submit your routine.",
@@ -68,7 +68,7 @@ if (isset($_GET['request_routine'])) {
         $insert_sql = "INSERT INTO routine (mid) VALUES ('$mid')";
         $insert_r = $conn->query($insert_sql);
         if ($insert_r) {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'swal.fire({
                                 icon: "success",
                                

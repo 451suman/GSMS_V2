@@ -69,7 +69,7 @@ if (isset($_POST["signup"])) {
     }
 
     if (!empty($error)) {
-        echo '<script type="text/javascript">';
+        echo '<script>';
         echo 'var errorMessage = "";';
         foreach ($error as $errorMsg) {
             echo "errorMessage += '$errorMsg. ';";
@@ -98,7 +98,7 @@ if (isset($_POST["signup"])) {
                 });';
             echo '</script>';
         } else {
-            echo '<script type="text/javascript">';
+            echo '<script>';
             echo 'alert("data insert unsuccessful");';
             echo 'window.location.href = "login.php";';
             echo '</script>';
