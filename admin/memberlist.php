@@ -11,24 +11,46 @@ if (isset($_GET['delete_member'])) {
     if ($conn->connect_error) {
         die("connection error");
     }
-    $sql = "DELETE FROM member WHERE mid='$id'";
-    $r = $conn->query($sql);
-    if ($r) {
-        // header("location:memberlist.php");
-        echo '<script type="text/javascript">';
 
-        echo 'Swal.fire(
-          "DELETE SUCCESSFULL!",
-          "Member Delete Successful",
-          "success"
-        )  ';
-        echo '</script>';
-    } else {
-        echo '<script type="text/javascript">';
-        echo 'alert("Delete unsuccessful");';
-        echo '</script>';
+    $image_sql = "SELECT * FROM member where mid='$id'";
+    $image_sql = $conn->query($image_sql);
+    if ($image_sql->num_rows > 0) {
+        $row = $image_sql->fetch_assoc();
+        $img_name = $row['image'];
+        // if image name is defaultuser.jpg then image will not be deleted
+        //  if image name is other than default user.jpg then that image  is deleted
+        $folderPath = '../img/';
+        $filePath = $folderPath . $img_name;
+        if (file_exists($filePath)) {
+            // Delete the file
+            if (unlink($filePath)) {
+                $sql = "DELETE FROM member WHERE mid='$id'";
+                $r = $conn->query($sql);
+                if ($r) {
+                    echo '<script type="text/javascript">';
+                    echo 'Swal.fire(
+                        "DELETE SUCCESSFULL!",
+                        "Member Delete Successful",
+                        "success"
+                        )  ';
+                    echo '</script>';
+                } else {
+                    echo '<script type="text/javascript">';
+                    echo 'alert("Delete unsuccessful");';
+                    echo '</script>';
+                }
+            } else {
+                echo "alert('deletion failed.');";
+            }
+        } else {
+            echo "alert('image not found');";
+        }
     }
+
+
 }
+
+
 ?>
 
 <div id="right">

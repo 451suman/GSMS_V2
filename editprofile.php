@@ -66,61 +66,82 @@ include('layout_member/member_session.php');
             $file_name = $_FILES["image"]["name"];
             $file_size = $_FILES["image"]["size"];
             $file_tmp = $_FILES["image"]["tmp_name"];
+            $fileType = pathinfo($file_name, PATHINFO_EXTENSION);
+            // Generate a unique filename using a timestamp
+            $newFileName = "image_" . time() . '.' . $fileType;
 
 
-            if ($file_size < 5242880) { // Max file size: 5MB (you can adjust this value)
-    
-                $destination = "img/" . $file_name;
-                if (move_uploaded_file($file_tmp, $destination)) {
-                    $conn = new mysqli("localhost", "root", "", "gsms");
-                    if ($conn->connect_error) {
-                        die("database connection error");
-                    }
-                    $sql = "UPDATE member SET name='$n', phone='$ph', email='$email', image='$file_name' WHERE mid='$mid'";
-                    $result = $conn->query($sql);
-                    if ($result) {
-                        echo '<script >';
-                        echo "Swal.fire({
-                                    title: 'Update successful',
-                                    icon: 'success',
+            $imgSQL = "SELECT * FROM member WHERE mid = '$mid'";
+            $imgResult = $conn->query($imgSQL);
+            if ($imgResult->num_rows > 0) {
+                $row = $imgResult->fetch_assoc();
+                $img_name = $row['image'];
+
+                $folderPath = 'img/'; // Set the path to the folder
+                $filePath = $folderPath . $img_name;
+
+                if ($file_size < 5242880) {
+
+                    if (file_exists($filePath)) {
+                        if (unlink($filePath)) {
+                            $destination = "img/" . $newFileName;
+                            if (move_uploaded_file($file_tmp, $destination)) {
+                                $conn = new mysqli("localhost", "root", "", "gsms");
+                                if ($conn->connect_error) {
+                                    die("database connection error");
+                                }
+                                $sql = "UPDATE member SET name='$n', phone='$ph', email='$email', image='$newFileName' WHERE mid='$mid'";
+                                $result = $conn->query($sql);
+                                if ($result) {
+                                    echo '<script >';
+                                    echo "Swal.fire({
+                                        icon: 'success',
+                                        title: 'Update successful',
                                 }).then(function() {
                                     window.location = 'profile.php';
                                 });";
-                        echo '</script>';
-                        exit;
-                    } else {
-                        echo '<script>';
-                        echo "Swal.fire({
+                                    echo '</script>';
+                                    exit;
+                                } else {
+                                    echo '<script>';
+                                    echo "Swal.fire({
                                     icon: 'error',
                                     title: 'Error!',
                                     text: 'Data insert unsuccessful'
                                 }).then(function() {
                                     window.location = 'profile.php';
                                 });";
-                        echo '</script>';
+                                    echo '</script>';
+                                }
+                            } else {
+                                echo '<script>';
+                                echo "Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: 'Error moving uploaded file.'
+                                }).then(function() {
+                                    window.location = 'profile.php';
+                                });";
+                                echo '</script>';
+                            }
+
+                        }
                     }
-                } else {
+
+                }else {
                     echo '<script>';
                     echo "Swal.fire({
-                        icon: 'error',
-                        title: 'Error!',
-                        text: 'Error moving uploaded file.'
-                    }).then(function() {
-                        window.location = 'profile.php';
-                    });";
+                                        icon: 'error',
+                                        title: 'Error!',
+                                        text: 'File size exceeds the maximum limit.'
+                                    }).then(function() {
+                                        window.location = 'profile.php';
+                                    });";
                     echo '</script>';
                 }
-            } else {
-                echo '<script>';
-                echo "Swal.fire({
-                        icon: 'error',
-                        title: 'Error!',
-                        text: 'File size exceeds the maximum limit.'
-                    }).then(function() {
-                        window.location = 'profile.php';
-                    });";
-                echo '</script>';
-            }
+            } 
+
+
 
         } else {
             $conn = new mysqli("localhost", "root", "", "gsms");
