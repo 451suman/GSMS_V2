@@ -3,6 +3,64 @@ include('layout_member/header.php');
 include('layout_member/left.php');
 include('layout_member/member_session.php');
 
+
+if (isset($_POST['enroll_form'])) {
+    $mid = $_POST['mid'];
+    $cid = $_POST['cid'];
+    $conn = new mysqli("localhost", "root", "", "gsms");
+    if ($conn->connect_error) {
+        die("connection error");
+    }
+    $check_sql = "select * from enrollment where mid='$mid'";
+    $check_r = $conn->query($check_sql);
+    if ($check_r->num_rows > 0) {
+        $row = $check_r->fetch_assoc();
+        $eid = $row['eid'];
+        $sql = "UPDATE enrollment SET mid = '$mid', cid = '$cid', verified='no' WHERE eid ='$eid'";
+        $r = $conn->query($sql);
+        if ($r) {
+            echo '<script type="text/javascript">';
+            echo 'swal.fire({
+                                text: "Waiting for enrollment verification by an administrator.",
+                           }).then(function() {
+                               window.location = "index.php";
+                           });';
+            echo '</script>';
+        } else {
+            echo '<script type="text/javascript">';
+            echo 'swal.fire({     
+                                text: "not successful",        
+                            }).then(function() {
+                                window.location = "index.php";
+                            });';
+            echo '</script>';
+        }
+
+    } else {
+        $sql = "INSERT INTO enrollment (mid, cid) VALUES ( '$mid', '$cid')";
+        $r = $conn->query($sql);
+        if ($r) {
+            echo '<script type="text/javascript">';
+            // echo 'alert("Wating for Enroll verification by Admin");';
+            // echo 'window.location.href = "index.php";';
+            echo 'swal.fire({
+                                text: "Waiting for enrollment verification by an administrator.",
+                            }).then(function() {
+                                window.location = "index.php";
+                            });';
+            echo '</script>';
+        } else {
+            echo '<script type="text/javascript">';
+            // echo 'alert("not successful");';
+            echo 'swal.fire({
+                                text: "not successful",
+                            }).then(function() {
+                                window.location = "index.php";
+                            });';
+            echo '</script>';
+        }
+    }
+}
 ?>
 
 <link rel="stylesheet" href="css/index.css">
@@ -20,8 +78,6 @@ include('layout_member/member_session.php');
         $row = $r->fetch_assoc();
         $image_name = $row['image'];
         if ($image_name == "") {
-
-
             echo '<script>';
             echo 'Swal.fire({
                 icon: "info",
@@ -38,10 +94,7 @@ include('layout_member/member_session.php');
 
 
 
-
-
-
-
+<!-- card code -->
     <div class="right_indexx">
         <?php
         $conn = new mysqli("localhost", "root", "", "gsms");
@@ -54,10 +107,7 @@ include('layout_member/member_session.php');
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-
-
             $i = 0;
-
             while ($row = $result->fetch_assoc()) {
                 $i++;
                 $cid = $row["cid"]; // Add this line to fetch the id
@@ -105,16 +155,6 @@ include('layout_member/member_session.php');
 
         ?>
     </div>
-
-
-
-
-
-
-
-
-
-
 
 </div>
 <?php

@@ -95,40 +95,60 @@ include('layout_member/member_session.php');
                                 if ($result) {
                                     echo '<script >';
                                     echo "Swal.fire({
-                                        icon: 'success',
-                                        title: 'Update successful',
-                                }).then(function() {
-                                    window.location = 'profile.php';
-                                });";
+                                                icon: 'success',
+                                                title: 'Update successful',
+                                        }).then(function() {
+                                            window.location = 'profile.php';
+                                        });";
                                     echo '</script>';
-                                    exit;
+
                                 } else {
                                     echo '<script>';
                                     echo "Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error!',
-                                    text: 'Data insert unsuccessful'
-                                }).then(function() {
-                                    window.location = 'profile.php';
-                                });";
+                                            icon: 'error',
+                                            title: 'Error!',
+                                            text: 'Data insert unsuccessful'
+                                        }).then(function() {
+                                            window.location = 'profile.php';
+                                        });";
                                     echo '</script>';
                                 }
                             } else {
                                 echo '<script>';
                                 echo "Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error!',
-                                    text: 'Error moving uploaded file.'
-                                }).then(function() {
-                                    window.location = 'profile.php';
-                                });";
+                                            icon: 'error',
+                                            title: 'Error!',
+                                            text: 'Error moving uploaded file.'
+                                        }).then(function() {
+                                            window.location = 'profile.php';
+                                        });";
                                 echo '</script>';
                             }
 
+                        } else {
+                            echo '<script>';
+                            echo "Swal.fire({
+                                                icon: 'error',
+                                                title: 'Error!',
+                                                text: 'deletion failed .'
+                                            }).then(function() {
+                                                window.location = 'profile.php';
+                                            });";
+                            echo '</script>';
                         }
+                    } else {
+                        echo '<script>';
+                        echo "Swal.fire({
+                                            icon: 'error',
+                                            title: 'Error!',
+                                            text: 'image not found.'
+                                        }).then(function() {
+                                            window.location = 'profile.php';
+                                        });";
+                        echo '</script>';
                     }
 
-                }else {
+                } else {
                     echo '<script>';
                     echo "Swal.fire({
                                         icon: 'error',
@@ -139,7 +159,7 @@ include('layout_member/member_session.php');
                                     });";
                     echo '</script>';
                 }
-            } 
+            }
 
 
 

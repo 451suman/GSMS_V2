@@ -65,7 +65,6 @@ include('layout/adminsession.php');
                                 text: "Error moving uploaded file",
                             })';
                 echo '</script>';
-                // echo "Error moving uploaded file.";
             }
         } else {
             echo '<script type="text/javascript">';
@@ -75,7 +74,6 @@ include('layout/adminsession.php');
                                 text: "File size exceeds the maximum limit.",
                             })';
             echo '</script>';
-            // echo "File size exceeds the maximum limit.";
         }
 
     }

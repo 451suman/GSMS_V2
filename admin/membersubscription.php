@@ -19,7 +19,7 @@ include('layout/adminsession.php');
         <table class="membership">
             <tr>
                 <td colspan="9">
-                    <h1 class="center">MEMBER SUBSCRIPTION REPORT</h1>
+                    <h1 class="center">ONLINE MEMBER SUBSCRIPTION REPORT</h1>
                 </td>
             </tr>
             <tr>

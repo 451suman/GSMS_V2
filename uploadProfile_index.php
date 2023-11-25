@@ -13,17 +13,21 @@ include('layout_member/member_session.php');
         font-size: 28px;
         margin-left: 330px;
     }
-    table{
+
+    table {
         background-color: white;
         color: black;
     }
-    img{
+
+    img {
         border: 5px solid black;
     }
+
     td {
         padding: 50px;
     }
-    #btn:hover{
+
+    #btn:hover {
         background-color: #525252;
     }
 </style>
