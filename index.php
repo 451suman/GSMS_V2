@@ -20,18 +20,21 @@ include('layout_member/member_session.php');
         ORDER BY duration ASC
         ";
         $result = $conn->query($sql);
-        $i = 0;
+        if ($result->num_rows > 0) {
 
-        while ($row = $result->fetch_assoc()) {
-            $i++;
-            $cid = $row["cid"]; // Add this line to fetch the id
-            $pname = $row["package_name"];
-            $cname = $row["cname"];
-            $duration = $row["duration"];
-            $price = $row["package_price"];
-            $image = $row["image"];
 
-            echo "
+            $i = 0;
+
+            while ($row = $result->fetch_assoc()) {
+                $i++;
+                $cid = $row["cid"]; // Add this line to fetch the id
+                $pname = $row["package_name"];
+                $cname = $row["cname"];
+                $duration = $row["duration"];
+                $price = $row["package_price"];
+                $image = $row["image"];
+
+                echo "
             <div class='index_content'>
             <div class='card'>
              <div>
@@ -62,7 +65,11 @@ include('layout_member/member_session.php');
             </div>
             
             ";
+            }
+        } else {
+            echo "<p style='font-size:30px;'>No Subscription Category To Enroll. Consult to Admin</p>";
         }
+
 
         ?>
     </div>
