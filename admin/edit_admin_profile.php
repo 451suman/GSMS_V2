@@ -109,9 +109,6 @@ if (isset($_GET['edit_admin'])) {
     $name = $row["name"];
     $phone = $row["phone"];
     $email = $row["email"];
-
-
-
 }
 ?>
 

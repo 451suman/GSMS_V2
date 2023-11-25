@@ -119,8 +119,7 @@ include('layout_member/member_session.php');
     <div class="change_pass">
         <div>
             <form action="member_change_password.php" method="get">
-                Name:
-                <?php echo $name ?> <br>
+              
 
                 Old Password: <br>
 

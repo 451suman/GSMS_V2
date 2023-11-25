@@ -485,12 +485,9 @@ input#editdetail_profile {
     /* border: #FFA559 solid 5px; */
     border: rgba(2, 163, 150, 0.289) solid 5px;
     background-color: rgba(255, 255, 255, 0.436);
-
     font-size: 25px;
-    padding: 15px;
+    padding: 35px;
     border-radius: 15px;
-
-
 }
 
 .change_pass {

@@ -113,8 +113,7 @@ include('layout/adminsession.php');
     <div class="achange_pass">
         <div>
             <form action="a_change_password.php" method="post">
-                Name:
-                <?php echo $aname ?> <br>
+             
                 Old Password: <br>
 
                 <input type="password" name="oldpass" id="" style="width: 280px;" placeholder="Enter Old Password"

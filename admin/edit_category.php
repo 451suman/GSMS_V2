@@ -7,68 +7,6 @@ include('layout/adminsession.php');
 <div id="right">
 
 
-    <?php
-
-
-    // Get values from book category.php after clicking the edit button
-    if (isset($_GET['edit_category'])) {
-        $cid = $_GET['category_id'];
-        $conn = new mysqli("localhost", "root", "", "gsms");
-        if ($conn->connect_error) {
-            die("Connection error");
-        }
-        $sql = "SELECT * FROM category WHERE cid = '$cid'";
-        $r = $conn->query($sql);
-        if ($r->num_rows > 0) {
-            $row = $r->fetch_assoc();
-            $pname = $row["package_name"];
-            $cname = $row["cname"];
-            $duration = $row["duration"];
-            $price = $row["package_price"];
-            $image = $row["image"];
-        }
-    }
-    ?>
-
-    <div class="right_container_bg">
-        <form action="edit_category.php" method="post" class="edit_category_form" enctype="multipart/form-data">
-            <div class="form_container">
-                <div><b>EDIT CATEGORY</b></div>
-                <div>
-                    <label for="pname">Package Name</label><br>
-                    <input type="text" name="pname" maxlength="10" class="transparent" id="name"
-                        value="<?php echo $pname; ?>" required><br>
-                </div>
-                <div>
-                    <label for="cname">Name</label><br>
-                    <input type="text" name="cname" maxlength="10" class="transparent" id="cname"
-                        value="<?php echo $cname; ?>" required><br>
-                </div>
-                <div>
-                    <label for="duration">Duration</label><br>
-                    <input type="number" name="duration" class="transparent" id="duration"
-                        value="<?php echo $duration; ?>" required><br>
-                </div>
-                <div>
-                    <label for="price">Price</label><br>
-                    <input type="number" name="price" class="transparent" id="price" value="<?php echo $price; ?>"
-                        required><br>
-                </div>
-                <div>
-                    <label for="tmage">Image</label><br>
-                    <input type="file" name="image" class="transparent" id="image" accept=".jpg, .jpeg, .png"><br>
-                </div>
-                <div>
-                    <input type="hidden" name="category_id" value="<?php echo $cid; ?>">
-                    <input type="submit" name="update" value="Update">
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-
 
 <?php
 // Getting values from the form for editing from edit_category.php i.e mathi ko form
@@ -212,6 +150,80 @@ if (isset($_POST['update'])) {
 
 
 ?>
+
+
+
+
+
+
+
+
+
+
+    <?php
+
+
+    // Get values from book category.php after clicking the edit button
+    if (isset($_GET['edit_category'])) {
+        $cid = $_GET['category_id'];
+        $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($conn->connect_error) {
+            die("Connection error");
+        }
+        $sql = "SELECT * FROM category WHERE cid = '$cid'";
+        $r = $conn->query($sql);
+        if ($r->num_rows > 0) {
+            $row = $r->fetch_assoc();
+            $pname = $row["package_name"];
+            $cname = $row["cname"];
+            $duration = $row["duration"];
+            $price = $row["package_price"];
+            $image = $row["image"];
+        }
+    }
+    ?>
+
+    <div class="right_container_bg">
+        <form action="edit_category.php" method="post" class="edit_category_form" enctype="multipart/form-data">
+            <div class="form_container">
+                <div><b>EDIT CATEGORY</b></div>
+                <div>
+                    <label for="pname">Package Name</label><br>
+                    <input type="text" name="pname" maxlength="10" class="transparent" id="name"
+                        value="<?php echo $pname; ?>" required><br>
+                </div>
+                <div>
+                    <label for="cname">Name</label><br>
+                    <input type="text" name="cname" maxlength="10" class="transparent" id="cname"
+                        value="<?php echo $cname; ?>" required><br>
+                </div>
+                <div>
+                    <label for="duration">Duration</label><br>
+                    <input type="number" name="duration" class="transparent" id="duration"
+                        value="<?php echo $duration; ?>" required><br>
+                </div>
+                <div>
+                    <label for="price">Price</label><br>
+                    <input type="number" name="price" class="transparent" id="price" value="<?php echo $price; ?>"
+                        required><br>
+                </div>
+                <div>
+                    <label for="tmage">Image</label><br>
+                    <input type="file" name="image" class="transparent" id="image" accept=".jpg, .jpeg, .png"><br>
+                </div>
+                <div>
+                    <input type="hidden" name="category_id" value="<?php echo $cid; ?>">
+                    <input type="submit" name="update" value="Update">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
 
 
 <?php
