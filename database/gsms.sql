@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2023 at 04:58 PM
+-- Generation Time: Nov 25, 2023 at 01:52 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`aid`, `name`, `email`, `password`, `phone`, `date`) VALUES
-(1, 'Raphael Olsen', 'admin@gmail.com', '7ece99e593ff5dd200e2b9233d9ba654', 1234567890, '2023-09-18 19:39:10');
+(1, 'Kenneth Nichols', 'admin@gmail.com', '7ece99e593ff5dd200e2b9233d9ba654', 1234567890, '2023-09-18 19:39:10');
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`cid`, `package_name`, `cname`, `duration`, `package_price`, `image`) VALUES
-(2, 'Ciaran Knowles', 'Clare Powell', 1, 1000, '120731998.png');
+(2, 'Zelenia Mccall', 'GYM', 1, 341, 'image_1700915694.png');
 
 -- --------------------------------------------------------
 
@@ -84,8 +84,7 @@ CREATE TABLE `enrollment` (
 --
 
 INSERT INTO `enrollment` (`eid`, `mid`, `cid`, `verified`, `edate`) VALUES
-(2, 2, 2, 'yes', '2023-11-17 21:23:31'),
-(3, 3, 2, 'yes', '2023-11-17 21:34:20');
+(3, 2, 2, 'yes', '2023-11-25 18:21:28');
 
 -- --------------------------------------------------------
 
@@ -101,7 +100,7 @@ CREATE TABLE `member` (
   `password` varchar(255) NOT NULL,
   `status` varchar(500) NOT NULL DEFAULT 'offline',
   `date` datetime NOT NULL DEFAULT current_timestamp(),
-  `image` varchar(1100) DEFAULT 'defaultuser.jpg',
+  `image` varchar(1100) DEFAULT NULL,
   `m_otp` varchar(225) NOT NULL,
   `m_opt_expire_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -111,8 +110,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`mid`, `name`, `phone`, `email`, `password`, `status`, `date`, `image`, `m_otp`, `m_opt_expire_time`) VALUES
-(2, 'Kamal Jenkins', 1234567890, 'hahirunug@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'online', '2023-11-17 21:22:52', 'defaultuser.jpg', '', '0000-00-00 00:00:00'),
-(3, 'Cyrus Schwartz', 1234567890, 'hixotok@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'online', '2023-11-17 21:34:09', 'defaultuser.jpg', '', '0000-00-00 00:00:00');
+(2, 'Iliana Mitchell', 1234567890, 'sycy@mailinator.com', '3a2a5ce900c7489c2112302b646bdef3', 'online', '2023-11-25 18:20:50', 'image_1700916084.png', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -132,8 +130,7 @@ CREATE TABLE `member_subscription_track` (
 --
 
 INSERT INTO `member_subscription_track` (`msid`, `mid`, `renew_date`, `expiry_date`) VALUES
-(2, 2, '2023-11-17 21:34:57', '2023-12-29'),
-(3, 3, '2023-11-17 21:35:18', '2024-01-17');
+(2, 2, '2023-11-25 18:23:22', '2024-01-25');
 
 -- --------------------------------------------------------
 
@@ -156,15 +153,9 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`pid`, `mid`, `cname`, `package_name`, `duration`, `price`, `date`) VALUES
-(6, 2, 'Clare Powell', 'Ciaran Knowles', 33, 237, '2023-11-17 21:23:35'),
-(7, 2, 'Clare Powell', 'Ciaran Knowles', 33, 237, '2023-11-17 21:23:58'),
-(8, 2, 'Clare Powell', 'Ciaran Knowles', 33, 237, '2023-11-17 21:24:14'),
-(9, 2, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:30:25'),
-(10, 2, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:30:34'),
-(11, 2, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:30:57'),
-(12, 3, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:34:27'),
-(13, 3, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:35:03'),
-(14, 3, 'Clare Powell', 'Ciaran Knowles', 1, 1000, '2023-11-17 21:35:18');
+(2, 2, 'GYM', 'Zelenia Mccall', 1, 341, '2023-11-25 18:21:33'),
+(3, 2, 'GYM', 'Zelenia Mccall', 1, 341, '2023-11-25 18:23:14'),
+(4, 2, 'GYM', 'Zelenia Mccall', 1, 341, '2023-11-25 18:23:22');
 
 -- --------------------------------------------------------
 
@@ -175,15 +166,22 @@ INSERT INTO `payment` (`pid`, `mid`, `cname`, `package_name`, `duration`, `price
 CREATE TABLE `routine` (
   `rid` int(11) NOT NULL,
   `mid` int(11) NOT NULL,
-  `chest` varchar(500) DEFAULT NULL,
-  `back` varchar(500) DEFAULT NULL,
-  `soulder` varchar(500) DEFAULT NULL,
-  `biseps` varchar(500) DEFAULT NULL,
-  `triceps` varchar(500) DEFAULT NULL,
-  `leg` varchar(500) DEFAULT NULL,
-  `abs` varchar(500) DEFAULT NULL,
+  `chest` varchar(500) DEFAULT 'Null',
+  `back` varchar(500) DEFAULT 'Null',
+  `soulder` varchar(500) DEFAULT 'Null',
+  `biseps` varchar(500) DEFAULT 'Null',
+  `triceps` varchar(500) DEFAULT 'Null',
+  `leg` varchar(500) DEFAULT 'Null',
+  `abs` varchar(500) DEFAULT 'Null',
   `verify` varchar(4) NOT NULL DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `routine`
+--
+
+INSERT INTO `routine` (`rid`, `mid`, `chest`, `back`, `soulder`, `biseps`, `triceps`, `leg`, `abs`, `verify`) VALUES
+(1, 2, 'Consequatur impedit', 'Cupiditate incidunt', 'Quia sit autem provi', 'Veniam excepteur la', 'Consectetur sit of', 'Amet id vel assumen', 'Mollit aut ratione q', 'yes');
 
 --
 -- Indexes for dumped tables
@@ -264,19 +262,19 @@ ALTER TABLE `enrollment`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `member_subscription_track`
 --
 ALTER TABLE `member_subscription_track`
-  MODIFY `msid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `msid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `routine`

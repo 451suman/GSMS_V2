@@ -38,7 +38,7 @@ if (isset($_POST['pay_delete'])) {
 ?>
 
 <style>
-    img {
+   #payment_img {
         height: 35px;
         width: 35px;
     }
@@ -104,7 +104,7 @@ if (isset($_POST['pay_delete'])) {
                         <td>$i</td>
                         <td>$name</td>
                         <td>$phone</td>
-                        <td><img src='../img/$image' alt=' '></td>
+                        <td><img src='../img/$image' alt=' ' id='payment_img'></td>
                         <td>$cname</td>
                         <td>$package_name</td>
                         <td>$duration</td>
