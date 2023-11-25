@@ -44,17 +44,20 @@ include('layout/adminsession.php');
             $r = $conn->query($sql);
             $i = 0;
 
-            while ($row = $r->fetch_assoc()) {
-                $i++;
-                $id = $row["mid"]; // Add this line to fetch the id
-                $name = $row["name"];
-                $date = $row["date"];
-                $phone = $row["phone"];
-                $email = $row["email"];
-                $image = $row["image"];
-                $status = $row["status"];
+            if ($r->num_rows > 0) {
 
-                echo "<tr>
+
+                while ($row = $r->fetch_assoc()) {
+                    $i++;
+                    $id = $row["mid"]; // Add this line to fetch the id
+                    $name = $row["name"];
+                    $date = $row["date"];
+                    $phone = $row["phone"];
+                    $email = $row["email"];
+                    $image = $row["image"];
+                    $status = $row["status"];
+
+                    echo "<tr>
                 <td>$i</td>
                 <td>$name</td>
                 <td>$phone</td>
@@ -77,9 +80,12 @@ include('layout/adminsession.php');
                 </td>
             </tr>";
 
+                }
+            } else {
+                echo "<tr>
+                <td colspan=8;>No result Found</td> 
+                </tr?";
             }
-        } else {
-            echo "No results found.";
         }
 
 
