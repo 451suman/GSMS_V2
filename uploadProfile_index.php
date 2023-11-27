@@ -122,7 +122,7 @@ if (isset($_POST["upload"])) {
                         <?php echo "Name: $n"; ?>
                     </p>
                     <p>Upload yor profile</p>
-                    <img src="img/defaultuser.jpg" style="height:400px; width:400px;" id="img" alt="">
+                    <img src="img/static/defaultuser.jpg" style="height:400px; width:400px;" id="img" alt="">
 
                 </td>
                 <td>

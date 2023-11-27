@@ -67,7 +67,7 @@ include('layout/adminsession.php');
                 echo '</script>';
             }
         } else {
-            echo '<script">';
+            echo '<script>';
             echo 'swal.fire({
                                 icon: "error",
                                 title: "ERROR!",

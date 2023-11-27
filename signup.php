@@ -72,7 +72,7 @@ if (isset($_POST["signup"])) {
         echo '<script>';
         echo 'var errorMessage = "";';
         foreach ($error as $errorMsg) {
-            echo "errorMessage += '$errorMsg. ';";
+            echo "errorMessage += '$errorMsg. ';"; 
         }
         echo "Swal.fire({
             title: 'Signup Error!',
@@ -112,29 +112,29 @@ if (isset($_POST["signup"])) {
         <div><b>MEMBER SIGNUP</b></div>
         <div>
             <label for="name">Full Name</label><br>
-            <input type="text" name="name" maxlength="30" class="transparent" required><br>
+            <input type="text" name="name" id="name" maxlength="30" class="transparent" required><br>
         </div>
 
         <div>
             <label for="email">Email</label><br>
-            <input type="text" name="email" class="transparent" required><br>
+            <input type="text" name="email" id="email" class="transparent" required><br>
         </div>
 
         <div>
             <label for="password">Password</label><br>
-            <input type="password" name="password" class="transparent" minlength="10" maxlength="10"
+            <input type="password" name="password" id="password" class="transparent" minlength="10" maxlength="10"
                 placeholder="Only 10 character" required><br>
         </div>
 
         <div>
-            <label for="password">Confirm Password</label><br>
-            <input type="password" name="c_pass" minlength="10" class="transparent" placeholder="Only 10 character"
+            <label for="cpassword">Confirm Password</label><br>
+            <input type="password" id="cpassword" name="c_pass" minlength="10" class="transparent" placeholder="Only 10 character"
                 required><br>
         </div>
 
         <div>
             <label for="phone">Phone no.</label><br>
-            <input type="text" name="phone" minlength="10" maxlength="10" class="transparent" required><br>
+            <input type="text" id="phone" name="phone" minlength="10" maxlength="10" class="transparent" required><br>
         </div>
 
         <div>
