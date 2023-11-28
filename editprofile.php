@@ -82,66 +82,46 @@ include('layout_member/member_session.php');
 
                 if ($file_size < 5242880) {
 
-                    if (file_exists($filePath)) {
-                        if (unlink($filePath)) {
-                            $destination = "img/" . $newFileName;
-                            if (move_uploaded_file($file_tmp, $destination)) {
-                                $conn = new mysqli("localhost", "root", "", "gsms");
-                                if ($conn->connect_error) {
-                                    die("database connection error");
-                                }
-                                $sql = "UPDATE member SET name='$n', phone='$ph', email='$email', image='$newFileName' WHERE mid='$mid'";
-                                $result = $conn->query($sql);
-                                if ($result) {
-                                    echo '<script >';
-                                    echo "Swal.fire({
+                    $destination = "img/" . $newFileName;
+                    if (file_exists($filePath) && unlink($filePath) && move_uploaded_file($file_tmp, $destination)) {
+
+
+                        $conn = new mysqli("localhost", "root", "", "gsms");
+                        if ($conn->connect_error) {
+                            die("database connection error");
+                        }
+                        $sql = "UPDATE member SET name='$n', phone='$ph', email='$email', image='$newFileName' WHERE mid='$mid'";
+                        $result = $conn->query($sql);
+                        if ($result) {
+                            echo '<script >';
+                            echo "Swal.fire({
                                                 icon: 'success',
                                                 title: 'Update successful',
                                         }).then(function() {
                                             window.location = 'profile.php';
                                         });";
-                                    echo '</script>';
-
-                                } else {
-                                    echo '<script>';
-                                    echo "Swal.fire({
-                                            icon: 'error',
-                                            title: 'Error!',
-                                            text: 'Data insert unsuccessful'
-                                        }).then(function() {
-                                            window.location = 'profile.php';
-                                        });";
-                                    echo '</script>';
-                                }
-                            } else {
-                                echo '<script>';
-                                echo "Swal.fire({
-                                            icon: 'error',
-                                            title: 'Error!',
-                                            text: 'Error moving uploaded file.'
-                                        }).then(function() {
-                                            window.location = 'profile.php';
-                                        });";
-                                echo '</script>';
-                            }
+                            echo '</script>';
 
                         } else {
                             echo '<script>';
                             echo "Swal.fire({
-                                                icon: 'error',
-                                                title: 'Error!',
-                                                text: 'deletion failed .'
-                                            }).then(function() {
-                                                window.location = 'profile.php';
-                                            });";
+                                            icon: 'error',
+                                            title: 'Error!',
+                                            text: 'Update Failed.'
+                                        }).then(function() {
+                                            window.location = 'profile.php';
+                                        });";
                             echo '</script>';
                         }
+
+
+
                     } else {
                         echo '<script>';
                         echo "Swal.fire({
                                             icon: 'error',
                                             title: 'Error!',
-                                            text: 'image not found.'
+                                            text: 'Update Failed.'
                                         }).then(function() {
                                             window.location = 'profile.php';
                                         });";
@@ -160,9 +140,6 @@ include('layout_member/member_session.php');
                     echo '</script>';
                 }
             }
-
-
-
         } else {
             $conn = new mysqli("localhost", "root", "", "gsms");
             if ($conn->connect_error) {
