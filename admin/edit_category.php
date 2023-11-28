@@ -6,8 +6,6 @@ include('layout/adminsession.php');
 
 <div id="right">
 
-
-
     <?php
     // Getting values from the form for editing from edit_category.php i.e mathi ko form
     // talla ko edit form ko backend ho yo
@@ -44,65 +42,49 @@ include('layout/adminsession.php');
                 $folderPath = '../img/'; // Set the path to the folder
                 $filePath = $folderPath . $img_name;
 
+                // Max file size: 5MB (you can adjust this value)
                 if ($file_size < 5242880) {
                     // Check if the file exists before attempting to delete
-                    if (file_exists($filePath)) {
-                        // Delete the image
-                        if (unlink($filePath)) {
-                            // If file deletion is successful,then  delete data from the database
-                            // Max file size: 5MB (you can adjust this value)
-                            $destination = "../img/" . $newFileName;
-                            if (move_uploaded_file($file_tmp, $destination)) {
-
-                                $sql = "UPDATE category SET package_name = '$pname', cname = '$cname', duration = '$duration',
+                    // Delete the image
+                    // If file deletion is successful thenmove upload file to image folder ,then  delete data from the database 
+                    $destination = "../img/" . $newFileName;
+                    if (file_exists($filePath) && unlink($filePath) && move_uploaded_file($file_tmp, $destination)) {
+                        // if (unlink($filePath)) {
+                        // if (move_uploaded_file($file_tmp, $destination)) {
+                        $sql = "UPDATE category SET package_name = '$pname', cname = '$cname', duration = '$duration',
                                         package_price = '$price',image = '$newFileName'  WHERE cid = $cid;";
-                                $r = $conn->query($sql);
-                                if ($r) {
-                                    echo '<script>';
-                                    echo "Swal.fire({
+                        $r = $conn->query($sql);
+                        if ($r) {
+                            echo '<script>';
+                            echo "Swal.fire({
                                                 icon: 'success',
                                                 title: 'Update Successfully',
                                             }).then(function() {
                                                 window.location = 'category.php';
                                             });";
-                                    echo '</script>';
-
-                                } else {
-                                    echo '<script>';
-                                    echo 'swal.fire({
-                                                icon: "error",
-                                                title: "ERROR!",
-                                                text: "Image insert unsuccessfull",
-                                            }).then(function() {
-                                                window.location = "category.php";
-                                            });';
-                                    echo '</script>';
-                                    // echo '<script>   alert("Image insert unsuccessful");
-                                    //  window.location.href = "category.php;  </script>';
-                                }
-                            } else {
-                                echo '<script>';
-                                echo 'swal.fire({
-                                                icon: "error",
-                                                title: "ERROR!",
-                                                text: "Error moving uploaded file.",
-                                            }).then(function() {
-                                                window.location = "category.php";
-                                            });';
-                                echo '</script>';
-                                //   echo '<script>   alert("Error moving uploaded file.");
-                                //    window.location.href = "category.php;  </script>';
-                            }
+                            echo '</script>';
                         } else {
-                            echo "alert('deletion failed.');";
+                            echo '<script>';
+                            echo 'swal.fire({
+                                                icon: "error",
+                                                title: "ERROR!",
+                                                text: "Update Failed",
+                                            }).then(function() {
+                                                window.location = "category.php";
+                                            });';
+                            echo '</script>';
                         }
-
-
                     } else {
-                        echo "alert('image not found');";
+                        echo '<script>';
+                        echo 'swal.fire({
+                                            icon: "error",
+                                            title: "ERROR!",
+                                            text: "Update Failed",
+                                        }).then(function() {
+                                            window.location = "category.php";
+                                        });';
+                        echo '</script>';
                     }
-
-
                 } else {
                     echo '<script>';
                     echo 'swal.fire({
@@ -117,9 +99,6 @@ include('layout/adminsession.php');
                     //  window.location.href = "category.php; </script>';
                 }
             }
-
-
-
         } else {
             // if Image is Not upload
             $sql = "UPDATE category SET package_name = '$pname', cname = '$cname', duration = '$duration', package_price = '$price' WHERE cid = $cid;";
@@ -152,16 +131,7 @@ include('layout/adminsession.php');
     ?>
 
 
-
-
-
-
-
-
-
-
-
-<!-- edit button click gar pachi run huncha yo code from page category.php -->
+    <!-- edit button click gar pachi run huncha yo code from page category.php -->
 
     <?php
 
@@ -222,12 +192,6 @@ include('layout/adminsession.php');
         </form>
     </div>
 </div>
-
-
-
-
-
-
 
 <?php
 include('layout/footer.php');
