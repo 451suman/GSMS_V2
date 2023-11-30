@@ -41,7 +41,8 @@ include('layout/adminsession.php');
             $sql = "SELECT member.name, member.phone, member.status, member.mid, mst.msid, mst.renew_date, mst.expiry_date
                 FROM member 
                 JOIN member_subscription_track mst ON member.mid = mst.mid
-                WHERE mst.expiry_date < CURDATE() AND member.status = 'offline'
+                -- WHERE mst.expiry_date < CURDATE() AND member.status = 'offline'
+                WHERE member.status = 'offline'
                 ORDER BY mst.expiry_date DESC";
 
             $result = $conn->query($sql);

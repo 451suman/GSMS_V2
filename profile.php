@@ -73,10 +73,7 @@ include('layout_member/member_session.php');
               <h6 class='info'>Cell Phone:</h6>
               <p class='info'>$phone</p>
             </div>
-            <div class='data'>
-              <h6 class='info'>Cell Phone:</h6>
-              <p class='info'>$phone</p>
-            </div>
+           
             
             <div class='data'>
               <h6 class='info'>Status:</h6>
