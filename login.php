@@ -28,11 +28,10 @@ if (isset($_POST["login"])) {
 
         echo '<script>';
         echo "Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'username or password is incorrect!',
-  })";
-        // echo('alert("username or password is incorrect");') ;
+                icon: 'error',
+                title: 'Oops...',
+                text: 'username or password is incorrect!',
+            })";
         echo '</script>';
     }
 }

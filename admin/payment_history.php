@@ -3,7 +3,7 @@ include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
 
-
+// delete payment histoy from database. Backend code from Talla ko korm
 if (isset($_POST['pay_delete'])) {
     $conn = new mysqli("localhost", "root", "", "gsms");
     if ($conn->connect_error) {

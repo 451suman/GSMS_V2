@@ -4,6 +4,7 @@ include('layout_member/left.php');
 include('layout_member/member_session.php');
 ?>
 <div id="right">
+    <!-- talla ko form ko backend code -->
     <?php
     if (isset($_POST['update'])) {
         $n = $_POST['name'];
@@ -170,28 +171,29 @@ include('layout_member/member_session.php');
     }
     ?>
 
+    <!-- retrieve data of member of from bata base -->
+    <?php
+    if (isset($_GET['editdetail'])) {
+        $mid = $_GET['mid'];
+        $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($conn->connect_error) {
+            die("Database connection error");
+        }
+
+        $sql = "SELECT * FROM member where mid=$mid";
+        $r = $conn->query($sql);
+        $row = $r->fetch_assoc();
+        $name = $row["name"];
+        $phone = $row["phone"];
+        $email = $row["email"];
+    }
+    ?>
     <div class="profile_detail">
         <form action="editprofile.php" method="post" enctype="multipart/form-data">
             <table class="profile_form_container">
                 <th colspan="2">
                     <h1>Edit Profile</h1>
                 </th>
-                <?php
-                if (isset($_GET['editdetail'])) {
-                    $mid = $_GET['mid'];
-                    $conn = new mysqli("localhost", "root", "", "gsms");
-                    if ($conn->connect_error) {
-                        die("Database connection error");
-                    }
-
-                    $sql = "SELECT * FROM member where mid=$mid";
-                    $r = $conn->query($sql);
-                    $row = $r->fetch_assoc();
-                    $name = $row["name"];
-                    $phone = $row["phone"];
-                    $email = $row["email"];
-                }
-                ?>
                 <tr>
                     <td>Name</td>
                     <td><input type="text" name="name" maxlength="20" value="<?php echo $name; ?>" required></td>

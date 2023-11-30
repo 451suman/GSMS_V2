@@ -3,15 +3,10 @@
 include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
-
-
 ?>
 
 
 <?php
-
-
-
 // getting values from page form down for edit
 if (isset($_POST['sub_update'])) {
     $id = $_POST['memebr_id'];
@@ -41,9 +36,6 @@ if (isset($_POST['sub_update'])) {
         echo "unsuccessful";
     }
 }
-
-
-
 
 //  get values from book category.php after click edit botton//
 if (isset($_GET['edit_track'])) {
@@ -78,16 +70,10 @@ if (isset($_GET['edit_track'])) {
                 <?php echo "$name"; ?>
             </div>
 
-            <!-- <div>
-                <label for="renew_date">Renew Date</label><br>
-                <input type="date" name="renew_date" id="renew_date" value="<?php echo $renew_date; ?>" ><br>
-            </div> -->
             <div>
                 <label for="expiry_date">Expire date</label><br>
                 <input type="date" name="expiry_date" id="expiry_date" value="<?php echo $expiry_date; ?>"><br>
             </div>
-
-
 
             <div>
                 <input type="hidden" name="memebr_id" id="" value="<?php echo $id; ?>">

@@ -19,10 +19,13 @@ include('layout/adminsession.php');
         $file_name = $_FILES["image"]["name"];       // store the name of the uploaded file
         $file_size = $_FILES["image"]["size"];    //  store the size of the uploaded file
         $file_tmp = $_FILES["image"]["tmp_name"];
-        $fileType = pathinfo($file_name, PATHINFO_EXTENSION);
+        $fileType = pathinfo($file_name, PATHINFO_EXTENSION); // extract extension of file like (.jpg, .png, etc)
 
         // Generate a unique filename using a timestamp
-        $newFileName = "image_" . time() . '.' . $fileType;  //used to access the temporary filename of the uploaded file
+        // name chage garnu ko karan chai  . if same image with same name is upload multiple times then.
+        // when 1 image os same name is deleted the all same image of same name is deleted. whic will generated error when deleted
+        //  because with out uplind sql willnot run for delete
+        $newFileName = "image_" . time() . '.' . $fileType; // generate new name fo file
     
         if ($file_size < 5242880) { // Max file size: 5MB yo vand badi size == error
             $destination = "../img/" . $newFileName;

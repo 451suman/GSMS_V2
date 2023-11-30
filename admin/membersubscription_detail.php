@@ -3,22 +3,6 @@
 include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
-
-
-if (isset($_GET['delete_member'])) {
-  $id = $_GET['member_id'];
-  $conn = new mysqli("localhost", "root", "", "gsms");
-  if ($conn->connect_error) {
-    die("connection error");
-  }
-  $sql = "DELETE FROM member WHERE mid='$id'";
-  $r = $conn->query($sql);
-  if ($r) {
-    header("location:memberlist.php");
-  } else {
-    echo "not successful";
-  }
-}
 ?>
 
 <div id="right">

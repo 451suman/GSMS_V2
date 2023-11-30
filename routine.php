@@ -33,11 +33,15 @@ if ($r) {
 
 ?>
 
-
+   <!-- if you click request routine button which is down form
+                For example, id=1. If there no routine for id 1 Database , 
+            then insert sql code will be used set all exercise = null  nad verify = no; 
+            else, update sql code and set verify = no will be used.     -->
 <?php
 
 
 // if  request routine botton is clicked
+
 if (isset($_GET['request_routine'])) {
     $mid = $_GET['mid'];
     $conn = new mysqli("localhost", "root", "", "gsms");
@@ -92,6 +96,7 @@ if (isset($_GET['request_routine'])) {
         <div class="li_class">
 
             <!-- request routine botton form -->
+         
             <form action="routine.php" method="get">
                 <input type="hidden" name="mid" id="" value="<?php echo $id; ?>">
                 <input type="submit" name="request_routine" value="Request Routine" id="rr">

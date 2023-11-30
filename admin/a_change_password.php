@@ -91,7 +91,7 @@ include('layout/adminsession.php');
 
     ?>
 
-
+<!-- extract data from DB of admin -->
     <?php
     if (isset($_GET['change_apass'])) {
         $aid = $_GET['admin_id'];
@@ -115,20 +115,16 @@ include('layout/adminsession.php');
             <form action="a_change_password.php" method="post">
              
                 Old Password: <br>
-
                 <input type="password" name="oldpass" id="" style="width: 280px;" placeholder="Enter Old Password"
                     required> <br>
-                New Password: <br>
 
+                New Password: <br>
                 <input type="password" name="pass" id="" minlength="10" placeholder="Only 10 characters"
                     style="width: 280px;" required> <br>
 
                 Confirm Password: <br>
-
                 <input type="password" name="c_pass" minlength="10" placeholder="Only 10 characters" id=""
                     style="width: 280px;" required> <br>
-
-
                 <input type="hidden" name="aid" id="" value="<?php echo $aid ?>">
                 <input type="submit" name="change_password" value="Change Password" id="">
             </form>

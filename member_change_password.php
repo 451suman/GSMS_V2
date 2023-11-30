@@ -5,7 +5,7 @@ include('layout_member/member_session.php');
 ?>
 
 <div id="right">
-
+<!--  talla ko form  ko backend code -->
     <?php
     if (isset($_GET['change_password'])) {
         $mid = $_GET['mid'];
@@ -96,7 +96,7 @@ include('layout_member/member_session.php');
         }
     }
     ?>
-
+<!-- getting data from data base -->
     <?php
     if (isset($_GET['change_pass'])) {
         $conn = new mysqli("localhost", "root", "", "gsms");

@@ -1,3 +1,4 @@
+<!-- this page is rum after u search routine of member wuing their name in search box in routine list.php -->
 <?php
 include('layout/header.php');
 include('layout/left.php');
@@ -6,9 +7,7 @@ include('layout/adminsession.php');
 
 ?>
 <div id="right">
-    <!-- <div class="li_class">
-        <h1 style="text-align: center; color: #FFA559;">ROUTINE</h1>
-            <div class="li2_class_a"> -->
+
    
             <?php
 

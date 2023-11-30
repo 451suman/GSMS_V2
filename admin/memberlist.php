@@ -17,10 +17,9 @@ if (isset($_GET['delete_member'])) {
     if ($image_sql->num_rows > 0) {
         $row = $image_sql->fetch_assoc();
         $img_name = $row['image'];
-        // if there is image name in database run if code
+        // if there is image name in database run if code to unling image ad delete row from tavle
+        //else (if there is no image in data base just remove data row from database)
         if ($img_name != "") {
-            // if image name is defaultuser.jpg then image will not be deleted
-            //  if image name is other than default user.jpg then that image  is deleted
             $folderPath = '../img/';
             $filePath = $folderPath . $img_name;
             if (file_exists($filePath)) {

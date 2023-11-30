@@ -3,7 +3,7 @@ include('layout_member/header.php');
 include('layout_member/left.php');
 include('layout_member/member_session.php');
 
-
+// back end of enroll.php form 
 if (isset($_POST['enroll_form'])) {
     $mid = $_POST['mid'];
     $cid = $_POST['cid'];
@@ -65,8 +65,10 @@ if (isset($_POST['enroll_form'])) {
 
 <link rel="stylesheet" href="css/index.css">
 
-
 <div id="right">
+    <!-- check image name in database of member if there is no 
+    image name run this code and headed to uploadProfile._index.php to upload profile -->
+
     <?php
     $conn = new mysqli("localhost", "root", "", "gsms");
     if ($conn->connect_error) {
@@ -94,7 +96,7 @@ if (isset($_POST['enroll_form'])) {
 
 
 
-<!-- card code -->
+<!-- card code to display category ingo for enrollment -->
     <div class="right_indexx">
         <?php
         $conn = new mysqli("localhost", "root", "", "gsms");

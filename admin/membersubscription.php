@@ -1,9 +1,8 @@
+<!-- this page show all eber subscription info from member_subscription_track data base whose status is online -->
 <?php
 include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
-
-
 ?>
 <div id="right">
     <link rel="stylesheet" href="../css/tableDecorate.css">

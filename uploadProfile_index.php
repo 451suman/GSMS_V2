@@ -44,7 +44,7 @@ if (isset($_POST["upload"])) {
     // Generate a unique filename using a timestamp
     $newFileName = "image_" . time() . '.' . $fileType;
 
-    if ($file_size < 5242880) { // 5 MB (in bytes)
+    if ($file_size < 5242880) { // 5242880(bytes) = 5 MB 
         $destination = "img/" . $newFileName;
 
         if (move_uploaded_file($file_tmp, $destination)) {

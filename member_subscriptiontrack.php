@@ -5,7 +5,7 @@ include('layout_member/member_session.php');
 
 
 ?>
-
+<!-- check status if status == offline  then run this code -->
 <?php
 $conn = new mysqli("localhost", "root", "", "gsms");
 if ($conn->connect_error) {
