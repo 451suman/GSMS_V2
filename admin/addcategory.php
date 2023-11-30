@@ -93,7 +93,7 @@ include('layout/adminsession.php');
             </div>
 
             <div>
-                <label for="duration">Duration</label><br>
+                <label for="duration">Duration(Months)</label><br>
                 <input type="number" name="duration" class="transparent" id="duration" required><br>
             </div>
 
