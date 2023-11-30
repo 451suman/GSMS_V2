@@ -71,11 +71,6 @@ if ($r) {
 
                 // Convert the difference to days
                 $days_remaining = round($difference / (60 * 60 * 24));
-                // if($days_remaining <0)
-                // {
-                //     $days_remaining ="EXPIRE";
-                // }
-            
 
                 echo " <tr>
                 <td>Name: $name</td>

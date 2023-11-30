@@ -24,7 +24,7 @@ include('layout/adminsession.php');
         // Generate a unique filename using a timestamp
         $newFileName = "image_" . time() . '.' . $fileType;  //used to access the temporary filename of the uploaded file
     
-        if ($file_size < 5242880) { // Max file size: 5MB (you can adjust this value)
+        if ($file_size < 5242880) { // Max file size: 5MB yo vand badi size == error
             $destination = "../img/" . $newFileName;
 
             if (move_uploaded_file($file_tmp, $destination)) {

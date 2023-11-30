@@ -81,7 +81,7 @@ include('layout_member/member_session.php');
                     echo '</script>';
                 }
             }
-              } else {
+        } else {
             echo '<script>';
             echo "Swal.fire({
                     icon: 'error',
@@ -94,10 +94,7 @@ include('layout_member/member_session.php');
             // echo 'window.location.href = "profile.php";';
             echo '</script>';
         }
-        
-
     }
-
     ?>
 
     <?php
@@ -113,13 +110,12 @@ include('layout_member/member_session.php');
         $name = $row["name"];
         $password = $row["password"];
     }
-
     ?>
 
     <div class="change_pass">
         <div>
             <form action="member_change_password.php" method="get">
-              
+
 
                 Old Password: <br>
 

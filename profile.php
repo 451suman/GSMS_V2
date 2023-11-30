@@ -6,7 +6,6 @@ include('layout_member/member_session.php');
 
 
 <div id="right">
-  <!-- <link rel="stylesheet" href="css/p.css"> -->
   <link rel="stylesheet" href="css/member_detail.css">
 
 

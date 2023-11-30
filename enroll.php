@@ -6,15 +6,6 @@ include('layout_member/member_session.php');
 <div id="right">
 
     <?php
-    
-
-
-
-
-
-
-
-
     if (isset($_POST['enroll'])) {
         $cid = $_POST['category_id'];
         $price = $_POST['price'];

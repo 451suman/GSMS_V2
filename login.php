@@ -13,7 +13,6 @@ if (isset($_POST["login"])) {
     $conn = new mysqli("localhost", "root", "", "gsms");
     if ($conn->connect_error) {
         die("database connection error");
-
     }
     $sql = "select * from member where email='$e' and password='$p'";
     $r = $conn->query($sql);

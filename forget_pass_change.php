@@ -65,7 +65,6 @@ if (isset($_POST['Submit'])) {
 }
 ?>
 
-
 <?php
 if (isset($_POST['otp_Submit'])) {
     $conn = new mysqli("localhost", "root", "", "gsms");
@@ -98,8 +97,7 @@ if (isset($_POST['otp_Submit'])) {
                 window.location = "forgetpassEmail.php";
             });';
             echo '</script>';
-        } 
-        else if ($hash_otp == $DB_otp) {
+        } else if ($hash_otp == $DB_otp) {
             echo '<script>';
             echo 'swal.fire({
                 icon: "success",

@@ -22,18 +22,15 @@ if (isset($_POST['searchs'])) {
         $otp = rand(100000, 999999);
         $hash_otp = md5($otp);
 
-        // Assuming you have already defined $otp_expiry and $mid securely
 
         $sqll = "UPDATE member SET m_otp='$hash_otp', m_opt_expire_time='$otp_expiry' WHERE mid='$mid'";
         $rr = $conn->query($sqll);
         if ($rr) {
 
-            $to = "$email"; // Recipient's email address
-            $subject = "GYM Subscription MS"; // Subject of your email
+            $to = "$email";
+            $subject = "GYM Subscription MS"; 
             $message = "Good day there, $name! Your one-time password (OTP) is $otp. 
-                    Remember that this OTP is only valid until $otp_expiry.  From GSMS
-                    "; // Message to be sent
-
+                    Remember that this OTP is only valid until $otp_expiry.  From GSMS"; 
             $headers = "From: orozmush@gmail.com\r\n";
             $headers .= "Reply-To: orozmush@gmail.com\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
