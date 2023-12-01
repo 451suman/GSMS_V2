@@ -16,14 +16,13 @@ if (isset($_POST['update'])) {
     $error = [];
 
 
-    if (!preg_match('/^[A-Za-z]+(?:\s[A-Za-z]+)?$/', $name)) {
-        $error['name'] = "Name field should contain alphabets and a maximum of one space between words";
-
+   if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+        $error['name'] = "Name should only contain letters and spaces.";
     }
 
     // Validate email
     if (strlen($e) > 30) {
-        $error['email'] = "Email should be maximum 30 characters long";
+        $error['email'] = "Email should be maximum 30 characters long.";
     } elseif (!filter_var($e, FILTER_VALIDATE_EMAIL)) {
         $error['email'] = "Please enter a valid email address";
     } else {
@@ -49,7 +48,7 @@ if (isset($_POST['update'])) {
         echo 'var errorMessage = "";';
         foreach ($error as $errorMsg) {
             // \\n is used to insert a newline character into a string
-            echo "errorMessage += '*$errorMsg\\n';";
+            echo "errorMessage += ' $errorMsg\\n';";
         }
         // echo "alert(errorMessage);";
         echo "Swal.fire({

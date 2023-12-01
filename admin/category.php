@@ -3,8 +3,8 @@ include('layout/header.php');
 include('layout/left.php');
 include('layout/adminsession.php');
 ?>
-<!-- if you click delete in category.php this code will run -->
 <?php
+// if you click delete in category.php this code will run 
 if (isset($_GET['delete_category'])) {
     $id = $_GET['category_id'];
     $conn = new mysqli("localhost", "root", "", "gsms");
@@ -17,19 +17,18 @@ if (isset($_GET['delete_category'])) {
     $imgResult = $conn->query($imgSQL);
 
     if ($imgResult->num_rows > 0) {
-        $row = $imgResult->fetch_assoc();
-        $img_name = $row['image'];
+        $row = $imgResult->fetch_assoc(); //extract all data from row in database
+        $img_name = $row['image']; //extract onli inage name from database
 
         // Construct file path
         $folderPath = '../img/'; // Set the path to the folder
-        $filePath = $folderPath . $img_name;
+        $filePath = $folderPath . $img_name;    // join $folderpath + $image name
 
-        // Check if the file exists before attempting to delete
         if (file_exists($filePath)) {
-            // Delete the file
-            if (unlink($filePath)) {
-                // If file deletion is successful,then  delete data from the database
-                $sql = "DELETE FROM category WHERE cid = '$id'";
+            // Check if the file exists before attempting to delete
+            if (unlink($filePath)) {// Delete the file from following path
+                // If file deletion is successful,then  delete data from the databaseusing sql
+                $sql = "DELETE FROM category WHERE cid = '$id'"; 
                 $result = $conn->query($sql);
 
                 if ($result) {
@@ -83,12 +82,12 @@ if (isset($_GET['delete_category'])) {
                 die("Database connection error");
             }
             $sql = "select * from category ORDER BY duration ASC";
-            $result = $conn->query($sql);
+            $result = $conn->query($sql); 
             $i = 0;
-            while ($row = $result->fetch_assoc()) {
+            while ($row = $result->fetch_assoc()) { //extract all row data from database 
                 $i++;
-                $cid = $row["cid"]; // Add this line to fetch the id
-                $cname = $row["cname"];
+                $cid = $row["cid"]; // assigining cid column data into $cid
+                $cname = $row["cname"]; 
                 $pname = $row["package_name"];
                 $duration = $row["duration"];
                 $price = $row["package_price"];

@@ -9,7 +9,7 @@ include('layout/adminsession.php');
 
     <?php
 
-
+// this if code will run when u fill up form of add category and submitted the data
     if (isset($_POST["add_category"])) {
         $pname = $_POST["pname"];
         $cname = $_POST["cname"];
@@ -20,26 +20,27 @@ include('layout/adminsession.php');
         $file_size = $_FILES["image"]["size"];    //  store the size of the uploaded file
         $file_tmp = $_FILES["image"]["tmp_name"];
         $fileType = pathinfo($file_name, PATHINFO_EXTENSION); // extract extension of file like (.jpg, .png, etc)
-
+    
+        $newFileName = "image_" . time() . '.' . $fileType; // generate new name fo file by joining image + unixtimestamp+ extension
         // Generate a unique filename using a timestamp
         // name chage garnu ko karan chai  . if same image with same name is upload multiple times then.
-        // when 1 image os same name is deleted the all same image of same name is deleted. whic will generated error when deleted
-        //  because with out uplind sql willnot run for delete
-        $newFileName = "image_" . time() . '.' . $fileType; // generate new name fo file
+        // when 1 image of same name is deleted then. All same image of same name is deleted. which will generated error when deleted
+        //  because without unlink image delete category  sql will not run
     
-        if ($file_size < 5242880) { // Max file size: 5MB yo vand badi size == error
-            $destination = "../img/" . $newFileName;
-
-            if (move_uploaded_file($file_tmp, $destination)) {
-                $conn = new mysqli("localhost", "root", "", "gsms");
+        if ($file_size < 5242880) { // Max file size: 5MB,5mb vand badi size == error
+            $destination = "../img/" . $newFileName; //path to upload file with new name
+    
+            if (move_uploaded_file($file_tmp, $destination)) { //upload the image which is uploaded from talla ko HTML ko form
+                $conn = new mysqli("localhost", "root", "", "gsms");  //database connection
                 if ($conn->connect_error) {
-                    die("database connection error");
+                    die("database connection error"); //die if database connection is unsucessfull
                 }
 
                 $sql = "INSERT INTO category (package_name,cname, duration, package_price,  image) 
                 VALUES ('$pname','$cname', '$duration', '$price',  '$newFileName')";
-                $result = $conn->query($sql);
 
+                $result = $conn->query($sql); //run sql into database
+    
                 if ($result) {
                     echo '<script>';
                     echo "Swal.fire({
@@ -49,16 +50,14 @@ include('layout/adminsession.php');
                         window.location = 'category.php';
                     });";
                     echo '</script>';
-                    // header("location:category.php");
                 } else {
                     echo '<script">';
                     echo 'swal.fire({
                                 icon: "error",
-                                title: "ERROR!",
+                                title: "ERROR!",   
                                 text: "data insert unsuccessful",
                             })';
                     echo '</script>';
-                    // echo "data insert unsuccessful";
                 }
             } else {
                 echo '<script">';
@@ -82,7 +81,9 @@ include('layout/adminsession.php');
     }
     ?>
 
-    <form action="addcategory.php" method="post" class="addcategory_form" enctype="multipart/form-data">
+    <!-- enctype is uded for when it includes file uploads will be encoded as a multipart MIME message, 
+    allowing binary files to be sent to the server. -->
+    <form action="addcategory.php" method="post" class="addcategory_form" enctype="multipart/form-data"> 
         <div class="form_container">
             <div><b>ADD CATEGORY</b></div>
             <div>
