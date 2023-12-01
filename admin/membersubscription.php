@@ -7,7 +7,8 @@ include('layout/adminsession.php');
 <div id="right">
     <link rel="stylesheet" href="../css/tableDecorate.css">
 
-    <a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Offline Expired Membership </a>
+    <a href="track_expire_subscription.php" class="centermember_botton_trackExpire">Track Offline Expired Membership
+    </a>
 
     <form action="memberSubscrition_search.php" method="get">
         <input type="search" name="name_search" id="" placeholder="Search Name" required>
@@ -46,29 +47,32 @@ include('layout/adminsession.php');
             ";
             $result = $conn->query($sql);
             $i = 0;
-            while ($row = $result->fetch_assoc()) {
-
-                $i++;
-                $id = $row["mid"];
-                $name = $row["name"];
-                $phone = $row["phone"];
-                $status = $row["status"];
+            if ($result->num_rows > 0) {
 
 
-                $renew_date = $row["renew_date"];
-                $expiry_date = $row["expiry_date"];
-                $date = date('F j, Y');
-                // Convert the expiry date and today's date to Unix timestamps
-                $expiry_timestamp = strtotime($expiry_date);
-                $today_timestamp = strtotime($date);
-                // Calculate the difference in seconds
-                $difference = $expiry_timestamp - $today_timestamp;
+                while ($row = $result->fetch_assoc()) {
 
-                // Convert the difference to days
-                $days_remaining = round($difference / (60 * 60 * 24));
-                // expire members display row in red colour
-                if ($days_remaining <= 0) {
-                    echo "<tr style='background-color: #ffb3b3;'>
+                    $i++;
+                    $id = $row["mid"];
+                    $name = $row["name"];
+                    $phone = $row["phone"];
+                    $status = $row["status"];
+
+
+                    $renew_date = $row["renew_date"];
+                    $expiry_date = $row["expiry_date"];
+                    $date = date('F j, Y');
+                    // Convert the expiry date and today's date to Unix timestamps
+                    $expiry_timestamp = strtotime($expiry_date);
+                    $today_timestamp = strtotime($date);
+                    // Calculate the difference in seconds
+                    $difference = $expiry_timestamp - $today_timestamp;
+
+                    // Convert the difference to days
+                    $days_remaining = round($difference / (60 * 60 * 24));
+                    // expire members display row in red colour
+                    if ($days_remaining <= 0) {
+                        echo "<tr style='background-color: #ffb3b3;'>
                         <td>$i</td>
                         <td>$name</td>
                         <td>$phone</td>
@@ -90,11 +94,11 @@ include('layout/adminsession.php');
                             </form>
                         </td>
                     </tr>";
-                }
-                //  members display row in green colour
-                // if ($days_remaining > 0)
-                 else{
-                    echo "<tr style='background-color: #C5E898;'>
+                    }
+                    //  members display row in green colour
+                    // if ($days_remaining > 0)
+                    else {
+                        echo "<tr style='background-color: #C5E898;'>
                         <td>$i</td>
                         <td>$name</td>
                         <td>$phone</td>
@@ -116,7 +120,10 @@ include('layout/adminsession.php');
                             </form>
                         </td>
                     </tr>";
+                    }
                 }
+            } else {
+                echo "<tr> <td colspan='9'>No rows found</td></tr>";
             }
             ?>
         </table>

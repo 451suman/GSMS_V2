@@ -55,6 +55,7 @@ include('layout/adminsession.php');
             ";
                 $result = $conn->query($sql);
                 $i = 0;
+                if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $i++;
                     $id = $row["mid"];
@@ -122,7 +123,10 @@ include('layout/adminsession.php');
                         </tr>";
                     }
                 }
+            }else{
+                echo "<tr> <td colspan='9'>No rows found</td></tr>";
 
+            }
             }
             ?>
         </table>
