@@ -29,8 +29,8 @@ if (isset($_POST['update'])) {
 
 
 
-    if (!preg_match('/^[A-Za-z]+(?:\s[A-Za-z]+)?$/', $name)) {
-        $error['name'] = "Name field should contain alphabets and a maximum of one space between words";
+    if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+        $error['name'] = "Name should only contain letters and spaces.";
     }
 
     // Validate email

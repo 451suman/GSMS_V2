@@ -30,9 +30,9 @@ if (isset($_POST["signup"])) {
     } elseif (strlen($name) > 20) {
         $error['name'] = "The name address should not exceed more than 20 characters in length.";
     } else {
-        if (!preg_match('/^[A-Za-z]+(?:\s[A-Za-z]+)?$/', $name)) {
-            $error['name'] = "Name field should contain alphabets and a maximum of one space between words";
-        }
+        if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+                $error['name'] = "Name should only contain letters and spaces.";
+            }
     }
 
     // Validate email

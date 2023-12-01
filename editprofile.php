@@ -6,15 +6,16 @@ include('layout_member/member_session.php');
 <div id="right">
     <!-- talla ko form ko backend code -->
     <?php
+      
     if (isset($_POST['update'])) {
         $n = $_POST['name'];
         $ph = $_POST['phone'];
         $email = $_POST['email'];
         $mid = $_POST['mid'];
-
+        $error = [];
         // Validate name
-        if (!preg_match('/^[A-Za-z]+(?:\s[A-Za-z]+)?$/', $n)) {
-            $error['name'] = "Name field should contain alphabets and a maximum of one space between words";
+        if (!preg_match("/^[a-zA-Z ]*$/", $n)) {
+            $error['name'] = "Name should only contain letters and spaces.";
         }
         // Validate email
         if (strlen($email) > 30) {
