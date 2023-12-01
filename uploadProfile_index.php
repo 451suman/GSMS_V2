@@ -127,7 +127,7 @@ if (isset($_POST["upload"])) {
                 </td>
                 <td>
                     <br>
-                    <input type="file" name="image" id="" accept=".jpg, .jpeg, .png">
+                    <input type="file" name="image" id="" accept=".jpg, .jpeg, .png" required>
                     <br>
                     <input type="submit" name="upload" value="Upload Image" id="btn">
 

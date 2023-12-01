@@ -62,7 +62,7 @@ if (isset($_GET['edit_track'])) {
 
 
 <div id="right">
-    <form action="edit_sub_track.php" method="post" class="editsub_track_form">
+    <form action="edit_sub_track.php" method="post" class="editsub_track_form" autocomplete="off" >
         <div class="form_container">
             <div> <b>EDIT CATEGORY</b></div>
             <div>

@@ -133,10 +133,6 @@ if (isset($_GET['edit_member'])) {
     $phone = $row["phone"];
     $email = $row["email"];
     $status = $row["status"];
-
-
-
-
 }
 ?>
 

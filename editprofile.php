@@ -6,7 +6,7 @@ include('layout_member/member_session.php');
 <div id="right">
     <!-- talla ko form ko backend code -->
     <?php
-      
+
     if (isset($_POST['update'])) {
         $n = $_POST['name'];
         $ph = $_POST['phone'];
@@ -21,8 +21,6 @@ include('layout_member/member_session.php');
         if (strlen($email) > 30) {
             $error['email'] = "The email address should not exceed more than 30 characters in length.";
 
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $error['email'] = "Please enter a valid email address";
         } else {
             // check dublicate email in database.
             $conn = new mysqli("localhost", "root", "", "gsms");
@@ -115,9 +113,6 @@ include('layout_member/member_session.php');
                                         });";
                             echo '</script>';
                         }
-
-
-
                     } else {
                         echo '<script>';
                         echo "Swal.fire({
@@ -190,7 +185,7 @@ include('layout_member/member_session.php');
     }
     ?>
     <div class="profile_detail">
-        <form action="editprofile.php" method="post" enctype="multipart/form-data">
+        <form action="editprofile.php" method="post" enctype="multipart/form-data" autocomplete="off">
             <table class="profile_form_container">
                 <th colspan="2">
                     <h1>Edit Profile</h1>
@@ -206,7 +201,7 @@ include('layout_member/member_session.php');
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" name="email" value="<?php echo $email; ?>" required></td>
+                    <td><input type="email" name="email" value="<?php echo $email; ?>" required></td>
                 </tr>
                 <tr>
                     <td>Upload Profile</td>

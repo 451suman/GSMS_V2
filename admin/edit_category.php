@@ -168,7 +168,7 @@ include('layout/adminsession.php');
                 <div>
                     <label for="cname">Name</label><br>
                     <input type="text" name="cname" maxlength="10" class="transparent" id="cname"
-                        value="<?php echo $cname; ?>" required><br>
+                        value="<?php echo $cname; ?>" readonly required><br>
                 </div>
                 <div>
                     <label for="duration">Duration</label><br>
