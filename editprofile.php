@@ -49,8 +49,7 @@ include('layout_member/member_session.php');
         if (!empty($error)) {
             echo '<script >';
             echo 'var errorMessage = "";';
-            foreach ($error as $errorMsg) {
-                // \\n is used to insert a newline character into a string
+            foreach ($error as $errorMsg) { //collect all erros and concat every time loop runs and store it in errorMessage
                 echo "errorMessage += '$errorMsg. ';";
             }
             echo "Swal.fire({
@@ -63,12 +62,12 @@ include('layout_member/member_session.php');
         });";
             echo '</script>';
         } elseif ($_FILES["image"]["name"]) {
-            $file_name = $_FILES["image"]["name"];
-            $file_size = $_FILES["image"]["size"];
-            $file_tmp = $_FILES["image"]["tmp_name"];
-            $fileType = pathinfo($file_name, PATHINFO_EXTENSION);
-            // Generate a unique filename using a timestamp
-            $newFileName = "image_" . time() . '.' . $fileType;
+            $file_name = $_FILES["image"]["name"]; //store file name 
+            $file_size = $_FILES["image"]["size"]; //store file size
+            $file_tmp = $_FILES["image"]["tmp_name"]; //store file for temporay in to file_tep
+            $fileType = pathinfo($file_name, PATHINFO_EXTENSION); //store file extension 
+            // Generate a unique filename using a timestamp by boncate with a (image + unixtimestamp+,+ extension)
+            $newFileName = "image_" . time() . '.' . $fileType; 
 
 
             $imgSQL = "SELECT * FROM member WHERE mid = '$mid'";
