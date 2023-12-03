@@ -44,8 +44,9 @@ if (isset($_POST["signup"])) {
         $error['email'] = "Please enter a valid email address";
     } else {
         // Check for duplicate email in the database
-        $check_duplicate = $conn->query("SELECT email FROM member WHERE email = '$e'");
-        if ($check_duplicate->num_rows > 0) {
+        $check_duplicate ="SELECT email FROM member WHERE email = '$e'";
+        $result_check= $conn->query($check_duplicate);
+        if ($result_check->num_rows > 0) {
             $error['email'] = "Email already registered";
         }
     }

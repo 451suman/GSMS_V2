@@ -171,12 +171,12 @@ include('layout/adminsession.php');
                 </div>
                 <div>
                     <label for="duration">Duration</label><br>
-                    <input type="number" name="duration" class="transparent" id="duration"
+                    <input type="number" name="duration" min="0" class="transparent" id="duration"
                         value="<?php echo $duration; ?>" required><br>
                 </div>
                 <div>
                     <label for="price">Price</label><br>
-                    <input type="number" name="price" class="transparent" id="price" value="<?php echo $price; ?>"
+                    <input type="number" name="price" min="0" class="transparent" id="price" value="<?php echo $price; ?>"
                         required><br>
                 </div>
                 <div>

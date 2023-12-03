@@ -23,7 +23,7 @@ include('layout/adminsession.php');
     
         $newFileName = "image_" . time() . '.' . $fileType; // generate new name fo file by joining image + unixtimestamp+ extension
         // Generate a unique filename using a timestamp
-        // name chage garnu ko karan chai  . if same image with same name is upload multiple times then.
+        // if same image with same name is upload multiple times then.
         // when 1 image of same name is deleted then. All same image of same name is deleted. which will generated error when deleted
         //  because without unlink image delete category  sql will not run
     
@@ -98,12 +98,12 @@ include('layout/adminsession.php');
 
             <div>
                 <label for="duration">Duration(Months)</label><br>
-                <input type="number" name="duration" class="transparent" id="duration" required><br>
+                <input type="number" name="duration" min="0" class="transparent" id="duration" required><br>
             </div>
 
             <div>
                 <label for="price">Price</label><br>
-                <input type="number" name="price" class="transparent" id="price" required><br>
+                <input type="number" name="price" min="0" class="transparent" id="price" required><br>
             </div>
             <div>
                 <label for="image">Image</label><br>
