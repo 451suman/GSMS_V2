@@ -10,10 +10,10 @@ can choose and customize their Gym routine based on their body structure.
 The Admin is able to search members through name.
 
 System Implementations Tools
->IDE:VS CODE
->DATABASE:MYSQL
->DRONTEND:HTML, CSS, JAVASCRIPT
->BACKEND: PHP
+IDE:VS CODE
+DATABASE:MYSQL
+DRONTEND:HTML, CSS, JAVASCRIPT
+BACKEND: PHP
 
 USECASE
 • The member is able to view the exercise routine.
